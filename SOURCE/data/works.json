@@ -1,0 +1,62 @@
+[
+  {
+    "id": "TAKEN_FOR_A_BAT_SPACE_VISUAL_3",
+    "title": "TAKEN FOR A BAT SPACE",
+    "year": "2025",
+    "type": "Multimedia show",
+    "order": 1,
+    "hero": "assets/works/TAKEN_FOR_A_BAT_SPACE_VISUAL_3.webp",
+    "summary": "",
+    "credits": "Dora Heller Russel/ Tymon Zaniewski/ C�leste Zion/ "
+  },
+  {
+    "id": "BIRDS_AND_MACHINES_VISUAL_1",
+    "title": "BIRDS AND MACHINES",
+    "year": "2025",
+    "type": "Video research",
+    "order": 2,
+    "hero": "assets/works/BIRDS_AND_MACHINES_VISUAL_1.webp",
+    "summary": "",
+    "credits": ""
+  },
+  {
+    "id": "BORDERS_OF_NEUTRALITY_VISUAL_8",
+    "title": "BORDERS OF NEUTRALITY",
+    "year": "2024",
+    "type": "Installation",
+    "order": 3,
+    "hero": "assets/works/BORDERS_OF_NEUTRALITY_VISUAL_8.webp",
+    "summary": "",
+    "credits": "Aleksandra Nazarova"
+  },
+  {
+    "id": "ASML_VISUAL_1",
+    "title": "I thought ASML slept on Sundays",
+    "year": "2024",
+    "type": "Sound Installation",
+    "order": 4,
+    "hero": "assets/works/ASML_VISUAL_1.webp",
+    "summary": "",
+    "credits": "Emma Zerial/ Aleksandra Nazarova"
+  },
+  {
+    "id": "ULTRASONIC_SYSTEMS_VISUAL_3",
+    "title": "ULTRASONIC SYSTEMS",
+    "year": "2024",
+    "type": "Video Installation",
+    "order": 5,
+    "hero": "assets/works/ULTRASONIC_SYSTEMS_VISUAL_3.webp",
+    "summary": "",
+    "credits": ""
+  },
+  {
+    "id": "HARVEST_OF_NOISE_VISUAL_2",
+    "title": "A HARVEST OF NOISE",
+    "year": "2024",
+    "type": "Sound Installation",
+    "order": 6,
+    "hero": "assets/works/HARVEST_OF_NOISE_VISUAL_2.webp",
+    "summary": "",
+    "credits": ""
+  }
+]
