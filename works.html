@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Selected Works – Mathis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="archive.css">
+<link rel="stylesheet" href="works.css">
+</head>
+
+<body data-page="works">
+
+<!-- GLOBAL NAV -->
+<div id="nav"></div>
+<script>fetch("nav.html").then(r=>r.text()).then(d=>nav.innerHTML=d);</script>
+
+<!-- SOUND UI (same as archive) -->
+<div class="archive-button" id="archive-button"></div>
+<div class="now-playing-wrap">
+  <div id="skip-sound" class="skip-sound-btn"></div>
+  <div id="now-playing" class="now-playing-text">Now Playing: —</div>
+  <div id="skip-notice" class="skip-notice">skipped</div>
+</div>
+
+</script>
+
+
+<script src="sound.js"></script>
+<script src="transition.js"></script>
+<script>
+document.getElementById("archive-button").onclick = ()=>{
+  document.body.classList.toggle("theme-warm");
+  handleSoundState();
+};
+document.getElementById("skip-sound").onclick = ()=> skipTrack();
+</script>
+
+<script>
+fetch("data/works.json")
+  .then(r=>r.json())
+  .then(projects=>{
+    const container=document.createElement("div");
+    container.className="works-grid";
+    document.body.appendChild(container);
+
+    projects.sort((a,b)=>a.order-b.order).forEach(p=>{
+      const item=document.createElement("div");
+      item.className="work-card";
+      item.style.backgroundImage=`url(${p.hero})`;
+
+      item.innerHTML = `
+        <div class="work-meta">
+          <h2>${p.title}</h2>
+          <span class="year">${p.year}</span>
+        </div>
+        <div class="summary-icon">▲</div>
+        <div class="summary-tooltip">${p.summary || "— No summary yet —"}</div>
+      `;
+
+      // click to open project detail page
+      item.addEventListener("click", e=>{
+        if(!e.target.classList.contains("summary-icon")){
+          window.location=`work.html#${p.id}`;
+        }
+      });
+
+      // toggle summary tooltip
+      item.querySelector(".summary-icon").onclick=(e)=>{
+        e.stopPropagation();
+        item.classList.toggle("show-summary");
+      };
+
+      container.appendChild(item);
+    });
+});
+</script>
+
+
+</body>
+</html>

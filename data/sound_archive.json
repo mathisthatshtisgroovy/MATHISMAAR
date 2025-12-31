@@ -1,0 +1,93 @@
+[
+  {
+    "id": "ASML_SOUND",
+    "file_main": "ASML_SOUND.mp3",
+    "title": "I thought ASML slept on Sundays",
+    "year": 2024,
+    "location": "Veldhoven",
+    "tags": [
+      "\"Sonic investigation"
+    ],
+    "duration": null,
+    "random": 1,
+    "notes": "00:03"
+  },
+  {
+    "id": "BIRDS_AND_MACHINES_SOUND_1",
+    "file_main": "BIRDS_AND_MACHINES_AUDIO_1.mp3",
+    "title": "Birds and Machines Kindergarden Set",
+    "year": 2024,
+    "location": "Eindhoven",
+    "tags": [
+      "Ambiant performance"
+    ],
+    "duration": 20,
+    "random": 3,
+    "notes": "performance"
+  },
+  {
+    "id": "HARVEST_OF_NOISE_SOUND",
+    "file_main": "HARVEST_OF_NOISE.mp3",
+    "title": "A Harvest of Noise Soundtrack",
+    "year": 2024,
+    "location": "Eindhoven",
+    "tags": [
+      "\"Performance"
+    ],
+    "duration": null,
+    "random": 1,
+    "notes": "00:03"
+  },
+  {
+    "id": "ULTRASONIC_SYTEMS_SOUND",
+    "file_main": "ULTRASONIC_SYTEMS_SOUND.mp3",
+    "title": "Ultrasonic systems soundtrack",
+    "year": 2024,
+    "location": "Eindhoven",
+    "tags": [
+      "\"Moving Image"
+    ],
+    "duration": null,
+    "random": 1,
+    "notes": "Field recording\""
+  },
+  {
+    "id": "UNDERSCORE_SOUND",
+    "file_main": "UNDERSCORE_SOUND.mp3",
+    "title": "Underscore",
+    "year": 2024,
+    "location": "Eindhoven",
+    "tags": [
+      "\"Instrument"
+    ],
+    "duration": null,
+    "random": 1,
+    "notes": "00:01"
+  },
+  {
+    "id": "VASTOKEND_SOUND",
+    "file_main": "VASTOKEND_SOUND.mp3",
+    "title": "Vastokend",
+    "year": 2023,
+    "location": "Eindhoven",
+    "tags": [
+      "\"Moving Image"
+    ],
+    "duration": null,
+    "random": 1,
+    "notes": "00:12"
+  },
+  {
+    "id": "TAKEN_FOR_A_BAT_SPACE_1",
+    "file_main": "TAKEN_FOR_A_BAT_SPACE_1.mp3",
+    "title": "Taken For a Bat Space",
+    "year": 2025,
+    "location": "Eindhoven",
+    "tags": [
+      "Performance"
+    ],
+    "duration": 46,
+    "random": 3,
+    "notes": "performance"
+  }
+]

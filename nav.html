@@ -1,0 +1,19 @@
+<div class="nav-container">
+    <a href="index.html" class="home-button"></a>
+    <div class="menu-items">
+      <a href="works.html">Selected Works</a>
+      <a href="info.html">Info</a>
+      <a href="archive.html">Archive</a>
+    </div>
+</div>
+
+<script>
+window.addEventListener("scroll", ()=>{
+  const doc = document.documentElement;
+  const bar = document.querySelector(".scroll-progress");
+  if(!bar) return;
+  const percent = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+  bar.style.width = percent + "%";
+  bar.classList.toggle("visible", percent > 0);
+});
+</script>

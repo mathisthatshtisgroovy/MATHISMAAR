@@ -1,0 +1,188 @@
+.work-hero{
+  height:100vh;width:100vw;
+  background-size:cover;
+  background-position:center;
+}
+
+.work-header{
+  position:fixed;
+  top:100px; /* below main nav */
+  right:80px;
+  display:flex;
+  gap:1rem;
+  z-index:10;
+}
+.work-title{font-size:1.4rem;}
+.work-toggle{cursor:pointer;opacity:.7;}
+
+.work-more-content{
+  margin-top:120vh;
+  max-width:70vw;
+  margin-left:auto;margin-right:auto;
+  opacity:0;transform:translateY(20px);
+  transition:.4s;
+}
+.work-more-content.open{
+  opacity:1;transform:translateY(0);
+}
+
+.work-gallery img{
+  width:100%;margin:20px 0;
+}
+
+/* Remove sideways scroll completely */
+body[data-page="works"] {
+    overflow-x: hidden;
+}
+
+/* Ensure hero never overflows width */
+.work-hero {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Fix header pushing layout horizontally */
+.work-header {
+    right: 40px; /* instead of 80px */
+    max-width: calc(100vw - 80px);
+}
+
+.work-header {
+    position:fixed;
+    top:100px;
+    left:80px;       /* was right: */
+    right:auto;
+    display:flex;
+    flex-direction:column;
+    gap:0.3rem;
+    text-align:left;
+    z-index:20;
+}
+
+.work-title { font-size:1.6rem; font-weight:400; }
+.work-year  { opacity:.6; font-size:1rem; }
+
+.work-toggle{
+    font-size:1.2rem;
+    cursor:pointer;
+    transform:rotate(90deg); /* cool triangle aesthetic */
+    transition:.2s;
+}
+.work-more-content.open + .work-toggle{
+    transform:rotate(180deg);
+}
+
+.works-grid{
+  width:90vw;
+  margin:100px auto;
+  display:grid;
+  gap:3vw;
+  grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+}
+
+.work-card{
+  aspect-ratio:4/5;
+  background-size:cover;
+  background-position:center;
+  cursor:pointer;
+  position:relative;
+  transition:.3s;
+}
+
+.work-meta{
+  position:absolute;
+  left:20px;bottom:20px;
+  color:white;
+  max-width:70%;
+}
+
+.work-meta h2{margin:0;font-size:1.3rem;}
+.work-meta .year{opacity:.7;font-size:.9rem;}
+
+.work-card .summary{
+  display:none;
+  font-size:.9rem;
+  opacity:.8;
+  margin-top:8px;
+}
+
+.work-card .toggle{
+  margin-top:6px;
+  font-size:1rem;
+  cursor:pointer;
+  display:inline-block;
+  transform:rotate(90deg);
+}
+
+.work-card.open .summary{display:block;}
+.work-card.open .toggle{transform:rotate(180deg);}
+
+body[data-page="works"]{
+    background:#000;         /* Full black background */
+    color:#fff;              /* White typography */
+}
+
+.works-grid{
+    width:90vw;
+    margin:120px auto 200px;
+    display:grid;
+    gap:2vw;
+    grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
+}
+
+.work-card{
+    aspect-ratio:4/5;
+    background-size:cover;
+    background-position:center;
+    transition:opacity .3s;
+    cursor:pointer;
+    position:relative;
+    border:1px solid rgba(255,255,255,.08); /* subtle museum catalogue feel */
+}
+
+/* Title & year pinned bottom-left inside card */
+.work-meta{
+    position:absolute;
+    left:20px;
+    bottom:20px;
+    pointer-events:none;
+}
+.work-meta h2{
+    font-size:1.2rem;
+    margin:0;
+    font-weight:400;
+}
+.work-meta .year{
+    opacity:.6;
+    font-size:.85rem;
+}
+
+/* Hover summary tooltip style */
+.summary-tooltip{
+    position:absolute;
+    left:20px;
+    bottom:80px;
+    background:rgba(0,0,0,.85);
+    padding:12px 15px;
+    max-width:250px;
+    border:1px solid rgba(255,255,255,.2);
+    display:none;
+    font-size:.85rem;
+    line-height:1.4;
+}
+
+/* show tooltip when card is toggled */
+.work-card.show-summary .summary-tooltip{
+    display:block;
+}
+
+/* Click zone for summary icon */
+.summary-icon{
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    font-size:1.3rem;
+    transform:rotate(90deg);   /* your triangle aesthetic */
+    cursor:pointer;
+}
+

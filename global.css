@@ -1,0 +1,178 @@
+.page-title {
+  position:fixed;
+  top:22px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:0.95rem;
+  font-weight:400;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  opacity:.75;
+  margin:0;
+  z-index:1500;
+}
+
+
+
+/* Global Typography + Smooth Fade Behavior */
+
+html, body{
+  margin:0;
+  color:#fff;
+  background:#000;        /* let load black first */
+  font-family:"Helvetica Neue", sans-serif;
+  transition:opacity .35s ease;
+}
+body.transparent-bg{
+  background:transparent; /* we apply this to pages that need hero visible */
+}
+
+
+body.fade-out{
+  opacity:0;
+}
+
+/* Links unified feel */
+a{
+  color:#fff;
+  text-decoration:none;
+  opacity:.75;
+  transition:.3s;
+}
+a:hover{opacity:1;}
+
+.global-nav{
+  position:fixed;
+  top:37px;
+  left:270px;
+  display:flex;
+  align-items:center;
+  gap:2.8rem;
+  z-index:2000;
+}
+
+.global-nav a{
+  color:#fff;
+  font-size:1rem;
+  text-decoration:none;
+  opacity:.75;
+  transition:.25s;
+}
+
+.global-nav a:hover{opacity:1;}
+.global-nav a::after{
+  content:"";
+  width:7px;height:7px;
+  border-radius:50%;
+  background:#fff;
+  display:block;
+  margin:auto;
+  margin-top:4px;
+  opacity:.35;
+  transition:.25s;
+}
+
+.global-nav a:hover::after{opacity:1;}
+body[data-page="home"]   .home-link::after,
+body[data-page="works"]  a[href*='works']::after,
+body[data-page="info"]   a[href*='info']::after,
+body[data-page="archive"]a[href*='archive']::after{
+  opacity:1 !important;
+}
+
+.home-link{
+  font-size:22px;
+  opacity:.9;
+  margin-right:0.8rem;
+  border:2px solid #fff;
+  border-radius:50%;
+  width:18px;height:18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-indent:-9999px; /* hides the circle text, keeps shape */
+}
+.home-link::after{display:none !important;} /* remove dot underline */
+
+.nav-container{
+  position:fixed;
+  top:22px;
+  left:22px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  z-index:2000;
+}
+
+/* HOME ROUND BUTTON like red circle */
+.home-button{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  border:2px solid #e30000;   /* later swap to red if desired */
+  display:block;
+  margin-right:28px;
+}
+
+/* turns white when sound (theme-warm) is active */
+body.theme-warm .home-button{
+  background:#fff;
+  border-color:#fff;
+}
+
+/* MENU center independent */
+.menu-items{
+  position:fixed;
+  top:22px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:2.8rem;
+  z-index:2000;
+}
+
+.menu-items a::after{ /* dot underlining remains */ }
+
+
+body.theme-warm .scroll-progress {
+    background:#fff;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }  /* invisible track */
+::-webkit-scrollbar-thumb {
+    background: var(--accent);      /* red theme */
+    border-radius: 10px;
+}
+
+body.theme-warm ::-webkit-scrollbar-thumb {
+    background: #fff;               /* white when sound ON */
+}
+
+html { scrollbar-gutter: stable; } /* prevents UI shift & keeps it visible */
+
+/* GLOBAL SCROLLBAR — unified across pages */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #e20b01;       /* always red */
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #ff3d20;      /* optional subtle hover */
+}
+body.theme-warm ::-webkit-scrollbar-thumb {
+    background: #fff;         /* turns white when sound mode active */
+}
+
+
+
+
+
+
+
+
