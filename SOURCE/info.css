@@ -1,0 +1,44 @@
+/* Make info page tall + readable */
+body[data-page="info"]{
+    min-height: 100vh;
+    padding: 14vh 10vw;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100vw;              /* fill full page width */
+}
+
+/* Inner container for text layout */
+.info-inner {
+    max-width: 800px;          /* keep readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Always full-height so theme background fills screen */
+body[data-page="info"] {
+    min-height: 120vh;     /* Slightly longer than viewport */
+    overflow-y: auto;
+}
+
+
+/* Remove sideways scroll completely */
+body[data-page="info"] {
+    overflow-x: hidden;
+}
+
+/* Ensure hero never overflows width */
+.work-hero {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Fix header pushing layout horizontally */
+.work-header {
+    right: 40px; /* instead of 80px */
+    max-width: calc(100vw - 80px);
+}
+

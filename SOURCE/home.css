@@ -1,0 +1,133 @@
+.hero{
+  position:fixed;
+  top:0; left:0;
+  width:100vw; height:100vh;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  z-index:0;             /* instead of -10 or -2 */
+}
+
+
+/* scroll indicator */
+.scroll-indicator{
+  position:absolute;
+  bottom:22vh;
+  left:50%; transform:translateX(-50%);
+  opacity:.7; font-size:.9rem;
+}
+
+/* teaser section */
+.teaser{
+  margin-top:100vh;
+  height:80vh;
+  display:flex; align-items:center; justify-content:center;
+}
+.teaser video{
+  height:70vh; max-width:90vw; opacity:.9; border-radius:6px;
+}
+
+
+.archive-button{
+  position:fixed;
+  top:22px;
+  right:40px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#E30402;
+  cursor:pointer;
+}
+body.theme-warm .archive-button{
+  background:#fff;
+}
+
+
+.skip-sound-btn{
+  width:12px; height:12px;
+  border-radius:50%;
+  background:#fff;
+  cursor:pointer;
+  opacity:.7;
+  transition:.2s;
+}
+.skip-sound-btn:hover{opacity:1;}
+
+#now-playing.now-playing-text{
+  font-size:.85rem;
+  opacity:.85;
+  letter-spacing:.03em;
+}
+
+#skip-notice{
+  font-size:.7rem;
+  position:absolute;
+  left:0; top:-18px;
+  color:#fff;
+  opacity:0;
+  transition:.3s;
+}
+
+/* Unified Now Playing UI identical to archive */
+.now-playing-wrap{
+  position:fixed;
+  top:32px;                 /* SAME AS ARCHIVE */
+  right:110px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  z-index:9999;
+}
+
+.skip-sound-btn{
+  width:14px;height:14px;border-radius:50%;
+  background:#fff;cursor:pointer;opacity:0;transition:.2s;
+}
+body.theme-warm .skip-sound-btn{opacity:1;}
+
+.now-playing-text{
+  font-size:14px;color:#ffffff80;opacity:0;transition:.6s;
+}
+body.theme-warm .now-playing-text{opacity:1;color:#fff;}
+
+.reset-archive{
+  position:fixed;
+  top:72px;
+  right:52px;
+  font-size:18px;
+  opacity:.9;
+  cursor:pointer;
+}
+
+
+.menu-section{
+  position:fixed;
+  top:32px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;gap:3rem;
+  z-index:1000;
+}
+
+/* underline dot center */
+.menu-section a::after{
+  content:"";
+  width:6px;height:6px;
+  display:block;margin:auto;margin-top:4px;
+  border-radius:50%;
+  background:#fff;opacity:.4;
+}
+.menu-section a:hover::after{opacity:1;}
+
+body[data-page="home"] {
+    overflow-x:hidden;
+}
+
+html, body {
+    overflow-y: auto;
+}
+
+
+
+
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Archive – Mathis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="global.css"> <!-- NEW -->
+  <link rel="stylesheet" href="archive.css">
+</head>
+<body data-page="archive">
+ <div id="nav"></div>
+
+  <script> fetch("nav.html").then(r=>r.text()).then(d=>document.getElementById("nav").innerHTML=d); </script>
+
+  <div class="archive-page">
+
+  
+
+    <!-- 🔴 Sound Toggle Button -->
+    <div class="archive-button" id="archive-button"></div>
+
+    <!-- ⵙ Reset -->
+    <div id="reset-archive" class="reset-archive">ⵙ</div>
+
+    <!-- NOW PLAYING + SKIP -->
+    <div class="now-playing-wrap">
+      <div id="skip-sound" class="skip-sound-btn"></div>
+      <div id="now-playing" class="now-playing-text">Now Playing: —</div>
+      <div id="skip-notice" class="skip-notice">skipped</div>
+    </div>
+
+    <!-- GRID -->
+    <main class="archive-grid" id="archive-grid"></main>
+  </div>
+
+ <!-- OVERLAY -->
+  <div class="overlay" id="overlay">
+    <div class="overlay-inner">
+      <button class="overlay-close" id="overlay-close">×</button>
+      <img id="overlay-image" alt="">
+      <div class="overlay-meta" id="overlay-meta"></div>
+    </div>
+  </div>
+
+<!-- Order matters: nav + sound first, then archive -->
+<script src="sound.js"></script>
+<script src="transition.js"></script>
+<script src="archive.js"></script>
+
+
+<script>
+document.getElementById("skip-sound").onclick = ()=> skipTrack();
+</script>
+
+<script>
+function randomizePositions(){
+  document.querySelectorAll('.archive-item[data-scale]').forEach(el=>{
+    el.style.position="absolute";
+    el.style.left = (Math.random()*75+10) + "vw";
+    el.style.top  = (Math.random()*450) + "vh";
+    el.dataset.speed = (Math.random()*1.3 + .4).toFixed(2);
+  });
+}
+
+function applyScroll(){
+  const y = window.scrollY;
+  
+  document.querySelectorAll('.archive-item[data-scale]').forEach(el=>{
+    if(el.dataset.scale=="1") return; // keep hero still
+    const speed = parseFloat(el.dataset.speed);
+    const factor = el.dataset.scale=="3" ? 1.4 : 0.9;
+    el.style.transform = `translateY(${y * speed * factor}px)`;
+  });
+}
+
+function init(){
+  if(!document.querySelector('.archive-item')) return setTimeout(init,200);
+  randomizePositions();
+  applyScroll();
+}
+
+init();
+window.addEventListener("scroll",applyScroll);
+
+document.getElementById("reset-archive").onclick = ()=>{
+  randomizePositions();
+  window.scrollTo({top:0,behavior:"smooth"});
+};
+</script>
+
+
+</body>
+</html>
