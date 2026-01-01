@@ -37,6 +37,61 @@ document.getElementById("skip-sound").onclick = ()=> skipTrack();
 </script>
 
 <script>
+const isDesktop = window.innerWidth > 900; // threshold for desktop cinematic layout
+
+fetch("data/works.json")
+  .then(r=>r.json())
+  .then(projects=>{
+    
+    // DESKTOP cinematic layout
+    if(isDesktop){
+      const wrapper=document.createElement("div");
+      wrapper.className="works-fullscreen";
+      document.body.appendChild(wrapper);
+
+      projects.sort((a,b)=>a.order-b.order).forEach(p=>{
+        const section=document.createElement("section");
+        section.className="work-full";
+        section.style.backgroundImage=`url(${p.hero})`;
+	
+	section.innerHTML = `
+  	  <div class="work-info">
+    	    <h1>${p.title}</h1>
+  	    <span>${p.year}</span>
+   	    <div class="peek-info">▼</div>
+ 	  </div>
+
+ 	    <div class="info-panel">
+  <h2>${p.title}</h2>
+  <span>${p.year} · ${p.type}</span>
+  <p class="short">${p.summary}</p>
+  <p class="long">${p.description_long || ""}</p>
+  <p class="credits">Credits: ${p.credits}</p>
+</div>
+
+` 	    ;		
+	
+// ▼ triangle reveals info panel
+section.querySelector(".peek-info").onclick = (e)=>{
+    e.stopPropagation();
+    section.classList.toggle("show-info");
+};
+
+// click anywhere else opens project page
+section.addEventListener("click", ()=>{
+    window.location=`work.html#${p.id}`;
+});
+
+        wrapper.appendChild(section);
+      });
+
+      return; // stop, prevent grid from rendering here
+    }
+});
+</script>
+
+
+<script>
 fetch("data/works.json")
   .then(r=>r.json())
   .then(projects=>{

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Work</title>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="work.css">
+</head>
+
+<body data-page="work">
+
+<div id="nav"></div>
+<script>
+fetch("nav.html").then(r=>r.text()).then(html=>{
+  document.getElementById("nav").innerHTML = html;
+});
+</script>
+
+<div id="work-container"></div>
+
+<script src="work.js"></script>
+<script src="sound.js"></script>
+<script src="transition.js"></script>
+</body>
+</html>
