@@ -8,7 +8,11 @@
     if (u.startsWith("http")) return u;
     return window.ASSET_BASE + "/" + u.replace(/^\/+/, "");
   };
+
+  // ✅ make sure `assetUrl(...)` exists as a global name too
+  var assetUrl = window.assetUrl;
 </script>
+
 
 <meta charset="UTF-8">
 <title>Info – Mathis</title>
