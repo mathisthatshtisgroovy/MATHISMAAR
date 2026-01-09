@@ -47,7 +47,11 @@
 <div class="scroll-indicator">scroll ↓</div>
 
 <section class="teaser">
-  <video src="https://mathismaar.b-cdn.net/assets/home/teaser.mp4" autoplay muted loop playsinline></video>
+  <video id="teaserVideo" autoplay muted loop playsinline></video>
+<script>
+  document.getElementById("teaserVideo").src = assetUrl("assets/home/teaser.mp4");
+</script>
+
 </section>
 
 <script src="sound.js"></script>
