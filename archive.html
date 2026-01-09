@@ -65,5 +65,17 @@
 document.getElementById("skip-sound").onclick = ()=> skipTrack();
 </script>
 
+<script>
+  // ensure keyboard scroll works (arrow keys / page up/down)
+  window.addEventListener("keydown", (e) => {
+    const keys = ["ArrowDown","ArrowUp","PageDown","PageUp","Home","End"," "];
+    if (!keys.includes(e.key)) return;
+    // don't interfere with inputs
+    if (["INPUT","TEXTAREA"].includes(document.activeElement?.tagName)) return;
+    // let browser scroll normally
+  });
+</script>
+
+
 </body>
 </html>

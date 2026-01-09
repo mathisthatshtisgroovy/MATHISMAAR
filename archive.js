@@ -107,11 +107,12 @@ function fetchArchive() {
 const preloadMargin = 2400; // px above/below viewport to preload & keep decoded
 let observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) return;
-      const img = entry.target.querySelector("img");
-      enqueueImgLoad(img);
+    if (!entry.isIntersecting) return;   // ✅ only when inside preload zone
+    const img = entry.target.querySelector("img");
+    enqueueImgLoad(img);
   });
 }, { rootMargin: `${preloadMargin}px 0px ${preloadMargin}px 0px` });
+);
 
 function observeItems() {
   archiveItems.forEach(i => observer.observe(i.el));
