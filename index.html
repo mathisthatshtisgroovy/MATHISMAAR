@@ -47,46 +47,44 @@
 <div class="scroll-indicator">scroll ↓</div>
 
 <section class="teaser">
-  <video src="https://pub-2469350b5b7041f197fdcd97ef5af87d.r2.dev/assets/home/teaser.mp4" autoplay muted loop playsinline></video>
+  <video src="https://mathismaar.b-cdn.net/assets/home/teaser.mp4" autoplay muted loop playsinline></video>
 </section>
 
 <script src="sound.js"></script>
 <script src="transition.js"></script>
 
-// HERO BACKGROUND ROTATION
-const heroImages = [
-  "hero1.webp",
-  "hero2.webp",
-  "hero3.webp"
-];
+<script>
+  // HERO BACKGROUND ROTATION
+  const heroImages = [
+    "hero1.webp",
+    "hero2.webp",
+    "hero3.webp"
+  ];
 
-const hero = document.getElementById("hero");
+  const hero = document.getElementById("hero");
 
+  // Load one random hero on page load
+  function loadHero() {
+    const img = heroImages[Math.floor(Math.random() * heroImages.length)];
+    hero.style.backgroundImage = `url('${assetUrl(`assets/home/${img}`)}')`;
+  }
 
+  loadHero();
 
-// Load one random hero on page load
-function loadHero(){
-  const img = heroImages[Math.floor(Math.random() * heroImages.length)];
-  hero.style.backgroundImage = `url('${assetUrl(`assets/home/${img}`)}')`;
+  // 1) Ensure audio only activates when warm mode toggles
+  document.getElementById("archive-button").onclick = () => {
+    document.body.classList.toggle("theme-warm");
+    handleSoundState(); // starts audio
+  };
 
+  // 2) Skip button on home
+  document.getElementById("skip-sound").onclick = () => skipTrack();
 
-// 1) Ensure audio only activates when warm mode toggles
-document.getElementById("archive-button").onclick = ()=>{
-  document.body.classList.toggle("theme-warm");
-  handleSoundState();          // ← THIS STARTS AUDIO
-};
-
-// 2) Skip button on home
-document.getElementById("skip-sound").onclick = ()=> skipTrack();
-
-// 4) When page loads (including back navigation), if warm mode was active → resume sound
-window.onload = ()=>{
-  if(document.body.classList.contains("theme-warm")) handleSoundState();
-};
-
+  // 3) When page loads, if warm mode was active → resume sound
+  window.addEventListener("load", () => {
+    if (document.body.classList.contains("theme-warm")) handleSoundState();
+  });
 </script>
-
-
 
 
 </body>
