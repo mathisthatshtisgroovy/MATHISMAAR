@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  window.ASSET_BASE = "https://pub-2469350b5b7041f197fdcd97ef5af87d.r2.dev";
+  window.assetUrl = function (u) {
+    if (!u) return "";
+    if (u.startsWith("http")) return u;
+    return window.ASSET_BASE + "/" + u.replace(/^\/+/, "");
+  };
+</script>
+
 <meta charset="UTF-8">
 <title>Mathis</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
