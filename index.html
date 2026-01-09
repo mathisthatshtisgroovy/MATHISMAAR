@@ -48,6 +48,7 @@
 
 <section class="teaser">
   <video id="teaserVideo" autoplay muted loop playsinline></video>
+
 <script>
   document.getElementById("teaserVideo").src = assetUrl("assets/home/teaser.mp4");
 </script>
@@ -59,11 +60,8 @@
 
 <script>
   // HERO BACKGROUND ROTATION
-  const heroImages = [
-    "hero1.webp",
-    "hero2.webp",
-    "hero3.webp"
-  ];
+  const heroImages = ["hero1.webp","hero2.webp","hero3.webp"];
+  const hero = document.getElementById("hero");
 
   const hero = document.getElementById("hero");
 
