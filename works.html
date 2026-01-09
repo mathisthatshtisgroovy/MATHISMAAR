@@ -52,7 +52,7 @@ fetch("data/works.json")
       projects.sort((a,b)=>a.order-b.order).forEach(p=>{
         const section=document.createElement("section");
         section.className="work-full";
-        section.style.backgroundImage=`url(${p.hero})`;
+        section.style.backgroundImage = `url(${assetUrl(p.hero)})`;
 	
 	section.innerHTML = `
   	  <div class="work-info">
@@ -102,7 +102,7 @@ fetch("data/works.json")
     projects.sort((a,b)=>a.order-b.order).forEach(p=>{
       const item=document.createElement("div");
       item.className="work-card";
-      item.style.backgroundImage=`url(${p.hero})`;
+      item.style.backgroundImage = `url(${assetUrl(p.hero)})`;
 
       item.innerHTML = `
         <div class="work-meta">
