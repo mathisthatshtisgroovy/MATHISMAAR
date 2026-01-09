@@ -8,6 +8,7 @@ const overlayClose = document.getElementById('overlay-close');
 const resetBtn = document.getElementById('reset-archive');
 const themeButton = document.getElementById('archive-button');
 
+
 let archiveItems = [];
 
 // ------- helpers -------
@@ -33,6 +34,59 @@ function weightedScale(original) {
   return original || 2;
 }
 
+// --- preload control (scroll = light, stop = burst) ---
+const PRELOAD_SCROLL_MARGIN = 300;   // small margin while scrolling
+const PRELOAD_STOP_MARGIN   = 2200;  // big margin after stop
+const PRELOAD_CONCURRENCY   = 4;
+
+let preloadQueue = [];
+let activeLoads = 0;
+
+function enqueueImgLoad(imgEl) {
+  if (!imgEl || !imgEl.dataset || !imgEl.dataset.src) return;
+  if (imgEl.dataset.queued === "1") return;
+  imgEl.dataset.queued = "1";
+  preloadQueue.push(imgEl);
+  pumpPreloadQueue();
+}
+
+function pumpPreloadQueue() {
+  while (activeLoads < PRELOAD_CONCURRENCY && preloadQueue.length) {
+    const img = preloadQueue.shift();
+    if (!img || !img.dataset || !img.dataset.src) continue;
+
+    activeLoads++;
+    const src = img.dataset.src;
+    img.src = src;
+    delete img.dataset.src;
+    delete img.dataset.queued;
+
+    // release slot after decode/settle
+    const done = () => { activeLoads = Math.max(0, activeLoads - 1); pumpPreloadQueue(); };
+    img.decode ? img.decode().then(done).catch(done) : setTimeout(done, 80);
+  }
+}
+
+function preloadAroundViewport(marginPx) {
+  const scrollY = window.scrollY || 0;
+  const vh = window.innerHeight || 0;
+
+  archiveItems.forEach(item => {
+    const { el, baseTop, scale } = item;
+    const img = el.querySelector("img");
+    if (!img) return;
+
+    // visual Y position = baseTop + transformOffset
+    const factor = scale === 1 ? 0.02 : scale === 2 ? 0.2 : 0.3;
+    const visualY = baseTop + scrollY * factor;
+
+    // load if within viewport +/- margin
+    if (visualY > -200 && visualY < vh + marginPx) {
+      enqueueImgLoad(img);
+    }
+  });
+}
+
 // ------- data loading -------
 
 function fetchArchive() {
@@ -53,14 +107,9 @@ function fetchArchive() {
 const preloadMargin = 2400; // px above/below viewport to preload & keep decoded
 let observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    const img = entry.target.querySelector("img");
-    if (entry.isIntersecting) {
-      // image enters preload zone → ensure it's loaded & stays decoded
-      if (img.dataset.src) {
-        img.src = img.dataset.src;
-        delete img.dataset.src;
-      }
-    }
+    if (entry.isIntersecting) return;
+      const img = entry.target.querySelector("img");
+      enqueueImgLoad(img);
   });
 }, { rootMargin: `${preloadMargin}px 0px ${preloadMargin}px 0px` });
 
@@ -195,16 +244,28 @@ if (itemScreenPos < -500 || itemScreenPos > window.innerHeight + 500) return;
 }
 
 
-let ticking = false;
+let archiveTicking = false;
+let scrollStopTimer = null;
+
 window.addEventListener("scroll", () => {
-  if (!ticking) {
-    ticking = true;
+  // 1) smooth transforms while scrolling
+  if (!archiveTicking) {
+    archiveTicking = true;
     requestAnimationFrame(() => {
       onScroll();
-      ticking = false;
+      // light preload while scrolling (small margin)
+      preloadAroundViewport(PRELOAD_SCROLL_MARGIN);
+      archiveTicking = false;
     });
   }
+
+  // 2) burst preload when user stops scrolling
+  clearTimeout(scrollStopTimer);
+  scrollStopTimer = setTimeout(() => {
+    preloadAroundViewport(PRELOAD_STOP_MARGIN);
+  }, 160); // <- "stop scrolling" threshold
 });
+
 window.addEventListener("resize", positionItems);
 
 // ------- overlay -------
@@ -235,23 +296,6 @@ if (overlayEl) {
 document.addEventListener("keydown", e => {
   if (e.key === "Escape") closeOverlay();
 });
-
-
-// --- Slow down scroll speed ---
-let scrollTarget = 0;
-let currentScroll = 0;
-
-window.addEventListener("wheel", (e) => {
-  e.preventDefault(); // stop default wheel scroll
-  scrollTarget += e.deltaY * 0.35; // 👉 0.35 = 65% slower (tweak to taste)
-}, { passive:false });
-
-function smoothScrollStep() {
-  currentScroll += (scrollTarget - currentScroll) * 0.18; 
-  window.scrollTo(0, currentScroll);
-  requestAnimationFrame(smoothScrollStep);
-}
-smoothScrollStep();
 
 
 // ------- buttons -------
