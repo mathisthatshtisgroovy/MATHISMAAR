@@ -98,6 +98,8 @@ function fetchArchive() {
     .then(data => {
       console.log("Loaded items from JSON:", data.length);
       renderArchive(data);
+preloadAroundViewport(PRELOAD_SCROLL_MARGIN);
+
     })
     .catch(err => console.error("Error fetching JSON:", err));
 }
@@ -107,12 +109,15 @@ function fetchArchive() {
 const preloadMargin = 2400; // px above/below viewport to preload & keep decoded
 let observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (!entry.isIntersecting) return;   // ✅ only when inside preload zone
+    if (!entry.isIntersecting) return;   // only when inside preload zone
     const img = entry.target.querySelector("img");
     enqueueImgLoad(img);
   });
-}, { rootMargin: `${preloadMargin}px 0px ${preloadMargin}px 0px` });
-);
+}, {
+  rootMargin: `${preloadMargin}px 0px ${preloadMargin}px 0px`
+});
+
+
 
 function observeItems() {
   archiveItems.forEach(i => observer.observe(i.el));
