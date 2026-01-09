@@ -66,8 +66,11 @@ document.getElementById("skip-sound").onclick = ()=> skipTrack();
 </script>
 
 <script>
+let items = [];
+
 function randomizePositions(){
-  document.querySelectorAll('.archive-item[data-scale]').forEach(el=>{
+  items = Array.from(document.querySelectorAll('.archive-item[data-scale]'));
+  items.forEach(el=>{
     el.style.position="absolute";
     el.style.left = (Math.random()*75+10) + "vw";
     el.style.top  = (Math.random()*450) + "vh";
@@ -77,9 +80,8 @@ function randomizePositions(){
 
 function applyScroll(){
   const y = window.scrollY;
-  
-  document.querySelectorAll('.archive-item[data-scale]').forEach(el=>{
-    if(el.dataset.scale=="1") return; // keep hero still
+  items.forEach(el=>{
+    if(el.dataset.scale=="1") return;
     const speed = parseFloat(el.dataset.speed);
     const factor = el.dataset.scale=="3" ? 1.4 : 0.9;
     el.style.transform = `translateY(${y * speed * factor}px)`;
@@ -87,19 +89,37 @@ function applyScroll(){
 }
 
 function init(){
-  if(!document.querySelector('.archive-item')) return setTimeout(init,200);
+  if(!document.querySelector('.archive-item')) {
+    setTimeout(init,200);
+    return;
+  }
   randomizePositions();
   applyScroll();
 }
 
 init();
-window.addEventListener("scroll",applyScroll);
+let ticking = false;
+let scrollStopTimer = null;
+
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    ticking = true;
+    requestAnimationFrame(() => {
+      applyScroll();
+      ticking = false;
+    });
+  }
+
+  clearTimeout(scrollStopTimer);
+  scrollStopTimer = setTimeout(applyScroll, 120);
+});
 
 document.getElementById("reset-archive").onclick = ()=>{
   randomizePositions();
   window.scrollTo({top:0,behavior:"smooth"});
 };
 </script>
+
 
 
 </body>

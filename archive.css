@@ -371,3 +371,6 @@ html,body {
     scroll-behavior: auto !important;
 }
 
+.archive-item { will-change: transform; }
+
+
