@@ -33,14 +33,6 @@ function weightedScale(original) {
   return original || 2;
 }
 
-const ASSET_BASE = "https://pub-2469350b5b7041f197fdcd97ef5af87d.r2.dev";
-function assetUrl(u) {
-  if (!u) return "";
-  if (u.startsWith("http")) return u;
-  return `${ASSET_BASE}/${u.replace(/^\/+/, "")}`;
-}
-
-
 // ------- data loading -------
 
 function fetchArchive() {

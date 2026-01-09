@@ -4,13 +4,6 @@ const SOUND_FILE = "data/sound_archive.json";
 const FADE = 5.0;
 const TARGET_VOL = 0.5;
 
-const ASSET_BASE = "https://pub-2469350b5b7041f197fdcd97ef5af87d.r2.dev";
-function assetUrl(u) {
-  if (!u) return "";
-  if (u.startsWith("http")) return u;
-  return `${ASSET_BASE}/${u.replace(/^\/+/, "")}`;
-}
-
 
 let audioCtx, masterGain, sounds = [];
 let isPlaying = false;
