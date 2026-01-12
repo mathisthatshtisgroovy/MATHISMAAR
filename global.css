@@ -246,9 +246,55 @@ body.theme-warm ::-webkit-scrollbar-thumb {
   }
 }
 
+/* Mobile nav enforcement (strong override) */
+@media (max-width: 768px) {
+  .menu-items { display: none !important; }
+  .mobile-menu-toggle { display: inline-flex !important; }
+  .mobile-menu { display: block !important; }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    left: 0;
+    width: 100%;
+    padding: 0 14px;
+    justify-content: space-between;
+  }
+}
 
 
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: transparent;
+    cursor: pointer;
+    z-index: 2100;
+  }
 
+  /* Three vertical bars */
+  .mobile-menu-toggle::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 18px;
+    background: #000; /* black bars */
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    box-shadow: -9px 0 0 #000, 9px 0 0 #000;
+  }
+
+  /* In warm mode, keep bars black (your request) */
+  body.theme-warm .mobile-menu-toggle::before {
+    background: #000;
+    box-shadow: -9px 0 0 #000, 9px 0 0 #000;
+  }
+}
 
 
 

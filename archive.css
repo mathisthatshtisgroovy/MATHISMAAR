@@ -215,7 +215,7 @@ body {
   right: 42px;
   width: 42px;
   height: 42px;
-  background:#r/db0000;
+  background:#db0000;
   border-radius: 50%;
   cursor: pointer;
   z-index: 9999;
@@ -228,7 +228,7 @@ body {
 }
 
 body.theme-warm {
-  background:#r/db0000!important;
+  background:#db0000!important;
   transition: background 0.5s ease;
 }
 
@@ -372,5 +372,47 @@ html,body {
 }
 
 .archive-item { will-change: transform; }
+
+/* ---------------- Mobile Radio Dock ---------------- */
+@media (max-width: 768px) {
+  .archive-button {
+    top: auto;
+    right: auto;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 52px;
+  }
+
+  .now-playing-wrap {
+    top: auto;
+    right: auto;
+    left: 50%;
+    bottom: 84px;
+    transform: translateX(-50%);
+    gap: 10px;
+  }
+
+  .now-playing-text {
+    display: none;
+  }
+
+  .skip-notice {
+    top: auto;
+    right: auto;
+    left: 50%;
+    bottom: 118px;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .reset-archive {
+    top: auto;
+    right: 18px;
+    bottom: 24px;
+  }
+}
+
 
 
