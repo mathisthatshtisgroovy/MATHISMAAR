@@ -1294,5 +1294,73 @@
     "description": "",
     "credits": "",
     "scale": 2
+  },
+  {
+    "id": "TAKEN_FOR_A_BAT_SPACE_LIVE_1",
+    "title": "TAKEN FOR A BAT SPACE",
+    "year": 2025,
+    "types": [
+      "group show",
+      "multimedia installation"
+    ],
+    "file_main": "/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_1 .webp",
+    "tags": [
+      "Live",
+      "Live"
+    ],
+    "description": "",
+    "credits": "",
+    "scale": 2
+  },
+  {
+    "id": "TAKEN_FOR_A_BAT_SPACE_LIVE_2",
+    "title": "TAKEN FOR A BAT SPACE",
+    "year": 2025,
+    "types": [
+      "group show",
+      "multimedia installation"
+    ],
+    "file_main": "/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_2 .webp",
+    "tags": [
+      "Live",
+      "Live"
+    ],
+    "description": "",
+    "credits": "",
+    "scale": 2
+  },
+  {
+    "id": "TAKEN_FOR_A_BAT_SPACE_LIVE_3",
+    "title": "TAKEN FOR A BAT SPACE",
+    "year": 2025,
+    "types": [
+      "group show",
+      "multimedia installation"
+    ],
+    "file_main": "/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_3 .webp",
+    "tags": [
+      "Live",
+      "Live"
+    ],
+    "description": "",
+    "credits": "",
+    "scale": 2
+  },
+  {
+    "id": "TAKEN_FOR_A_BAT_SPACE_LIVE_4",
+    "title": "TAKEN FOR A BAT SPACE",
+    "year": 2025,
+    "types": [
+      "group show",
+      "multimedia installation"
+    ],
+    "file_main": "/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_4 .webp",
+    "tags": [
+      "Live",
+      "Live"
+    ],
+    "description": "",
+    "credits": "",
+    "scale": 2
   }
 ]
