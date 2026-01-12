@@ -1,13 +1,9 @@
-// work.js — load project page from #id
-
 const id = location.hash.replace("#","").trim();
 fetch("data/works.json").then(r=>r.json()).then(list=>{
 
   const project = list.find(p=>p.id === id) || list[0];
   const el = document.getElementById("work-container");
 
-
-  // PAGE LAYOUT HTML
   el.innerHTML = `
     <div class="work-hero" style="background-image:url(${assetUrl(project.hero)})"></div>
     <div class="gallery" id="gallery"></div>
@@ -20,7 +16,6 @@ fetch("data/works.json").then(r=>r.json()).then(list=>{
     </section>
   `;
 
-  /* GALLERY BUILD */
   const galleryWrap = document.getElementById("gallery");
 
   if(project.gallery){
@@ -31,7 +26,6 @@ fetch("data/works.json").then(r=>r.json()).then(list=>{
     });
   }
 
-  /* ADD LEFT + RIGHT NAV BUTTONS */
   const prev=document.createElement("div");
   const next=document.createElement("div");
   prev.className="gallery-nav gallery-prev";

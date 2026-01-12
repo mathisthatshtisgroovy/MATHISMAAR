@@ -1,14 +1,11 @@
-/* default theme */
 body {
   background:#000;
   transition: background-color 0.7s ease; /* smooth fade */
 }
 
-/* when toggled */
 body.theme-warm {
   background:#e20b01;
 }
-
 
 :root {
   --bg: #000;
@@ -51,18 +48,16 @@ body {
 .archive-grid {
   position: relative;
   padding: 4rem 0 6rem;
-  min-height: 600vh;           /* big vertical canvas for chaos */
+  min-height: 600vh;          
   overflow: hidden;
 }
 
-/* each item is absolutely positioned in this "sky" */
 .archive-item {
   position: absolute;
   cursor: pointer;
   overflow: hidden;
 }
 
-/* base thumbnail behaviour */
 .archive-item img {
   width: 100%;
   height: auto;
@@ -76,8 +71,6 @@ body {
 }
 
 
-
-/* NEW CORRECTED MEANING
    scale=1 → background layer (largest, behind)
    scale=2 → midground
    scale=3 → foreground (small crisp details)
@@ -105,13 +98,11 @@ body {
 }
 
 
-/* Fallback for items without scale (treat as midground) */
 .archive-item:not([data-scale]) {
   z-index: 2;
   width: 24vw;
 }
 
-/* small screens: make sure things aren't microscopic */
 @media (max-width: 768px) {
   .archive-item[data-scale="3"] {
     width: 80vw;
@@ -131,7 +122,6 @@ body {
   }
 }
 
-/* Optional atmospheric movement */
 .archive-item[data-scale="1"] {
   animation: drift1 45s infinite alternate ease-in-out;
 }
@@ -155,7 +145,6 @@ body {
 @keyframes drift3 { from {transform:scale(1);} to {transform:scale(1.05);} }
 
 
-/* Overlay focus (unchanged) */
 .overlay {
   position: fixed;
   inset: 0;
@@ -245,37 +234,31 @@ body.theme-warm .archive-button {
   transition: opacity .6s ease;
 }
 
-
-/* Wrap = keeps skip dot attached to text dynamically */
 .now-playing-wrap {
   position: fixed;
   top: 32px;
   right: 110px;
   display: flex;
   align-items: center;
-  gap: 8px;               /* space between dot + text */
+  gap: 8px;               
   z-index: 99999;
-  pointer-events: none;   /* ensures layout doesn't block clicks elsewhere */
+  pointer-events: none;  
 }
 
-/* children restore pointer events */
 .now-playing-text,
 .skip-sound-btn {
   pointer-events: auto;
 }
 
-/* Small radio skip sphere */
 .skip-sound-btn {
   width:14px;
   height:14px;
   border-radius:50%;
-  background:#fff;        /* force visible for debugging */
+  background:#fff;        
   opacity:0;
   cursor:pointer;
-  z-index:999999;         /* ensure above header/images */
+  z-index:999999;        
 }
-
-/* when sound is ON: show text + dot */
 body.theme-warm .now-playing-text {
   opacity: 1;
   color:#fff;
@@ -290,7 +273,6 @@ body.theme-warm .skip-sound-btn {
   transform: scale(1.25);
 }
 
-/* ⚡ Skip feedback text */
 .skip-notice {
   position: fixed;
   top: 65px;
@@ -306,14 +288,11 @@ body.theme-warm .skip-sound-btn {
   opacity:1;
 }
 
-
-/* Fix big main button color when OFF */
 .archive-button {
   background:#e20b01; /* red as default instead of black */
 }
 body.theme-warm .archive-button { background:#fff !important; }
 
-/* ⵙ Reset archive button */
 .reset-archive {
   position: fixed;
   top: 72px;
@@ -326,8 +305,6 @@ body.theme-warm .archive-button { background:#fff !important; }
   z-index:9999;
 }
 
-/* only visible when sound ON (optional aesthetic) */
-/* Reset button visible always */
 .reset-archive {
   animation:pulse 3.6s ease-in-out infinite;
 }
@@ -336,29 +313,25 @@ body.theme-warm .archive-button { background:#fff !important; }
   50%{opacity:1;}
 }
 
-
-/* Warmer + brighter when sound ON */
 body.theme-warm .reset-archive {
   color:#fff;
   text-shadow:0 0 6px rgba(255,255,255,0.6);
 }
-
 
 .reset-archive:hover {
   color:#fff;
   transform:scale(1.1);
 }
 
-/* Improve scroll/transform smoothness */
 .archive-item {
     will-change: transform;
-    contain: layout paint style; /* isolates items → less reflow */
-    transform: translate3d(0,0,0); /* forces GPU layer */
+    contain: layout paint style; 
+    transform: translate3d(0,0,0); 
 }
 
 #archive-grid {
     contain: layout paint size;
-    perspective: 1000px; /* tiny perf gain for GPU transforms */
+    perspective: 1000px; 
 }
 
 .archive-grid, .archive-item {
@@ -373,7 +346,6 @@ html,body {
 
 .archive-item { will-change: transform; }
 
-/* ---------------- Mobile Radio Dock ---------------- */
 @media (max-width: 768px) {
   .archive-button {
     top: auto;

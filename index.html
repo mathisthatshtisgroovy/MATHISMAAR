@@ -9,7 +9,6 @@
     return window.ASSET_BASE + "/" + u.replace(/^\/+/, "");
   };
 
-  // ✅ make sure `assetUrl(...)` exists as a global name too
   var assetUrl = window.assetUrl;
 </script>
 
@@ -62,23 +61,15 @@
 </script>
 
 
-
-
-
-<!-- HERO IMAGE -->
 <div id="hero" class="hero"></div>
-
 <div class="archive-button" id="archive-button"></div>
 
-<!-- SOUND UI -->
 <div class="now-playing-wrap">
     <div id="skip-sound" class="skip-sound-btn"></div>
     <div id="now-playing" class="now-playing-text">Now Playing: —</div>
     <div id="skip-notice" class="skip-notice">skipped</div>
 </div>
 
-
-<!-- SCROLL reveals teaser -->
 <div class="scroll-indicator">scroll ↓</div>
 
 <section class="teaser">
@@ -94,11 +85,9 @@
 <script src="transition.js"></script>
 
 <script>
-  // HERO BACKGROUND ROTATION
   const heroImages = ["hero1.webp","hero2.webp","hero3.webp"];
   const hero = document.getElementById("hero");
 
-  // Load one random hero on page load
   function loadHero() {
     const img = heroImages[Math.floor(Math.random() * heroImages.length)];
     hero.style.backgroundImage = `url('${assetUrl(`assets/home/${img}`)}')`;
@@ -106,16 +95,13 @@
 
   loadHero();
 
-  // 1) Ensure audio only activates when warm mode toggles
   document.getElementById("archive-button").onclick = () => {
     document.body.classList.toggle("theme-warm");
     handleSoundState(); // starts audio
   };
 
-  // 2) Skip button on home
   document.getElementById("skip-sound").onclick = () => skipTrack();
 
-  // 3) When page loads, if warm mode was active → resume sound
   window.addEventListener("load", () => {
     if (document.body.classList.contains("theme-warm")) handleSoundState();
   });

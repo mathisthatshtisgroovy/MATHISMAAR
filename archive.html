@@ -9,7 +9,6 @@
     return window.ASSET_BASE + "/" + u.replace(/^\/+/, "");
   };
 
-  // ✅ make sure `assetUrl(...)` exists as a global name too
   var assetUrl = window.assetUrl;
 </script>
 
@@ -59,29 +58,16 @@
     });
 </script>
 
-
   <div class="archive-page">
-
-  
-
-    <!-- 🔴 Sound Toggle Button -->
     <div class="archive-button" id="archive-button"></div>
-
-    <!-- ⵙ Reset -->
     <div id="reset-archive" class="reset-archive">ⵙ</div>
-
-    <!-- NOW PLAYING + SKIP -->
     <div class="now-playing-wrap">
       <div id="skip-sound" class="skip-sound-btn"></div>
       <div id="now-playing" class="now-playing-text">Now Playing: —</div>
       <div id="skip-notice" class="skip-notice">skipped</div>
     </div>
-
-    <!-- GRID -->
     <main class="archive-grid" id="archive-grid"></main>
   </div>
-
- <!-- OVERLAY -->
   <div class="overlay" id="overlay">
     <div class="overlay-inner">
       <button class="overlay-close" id="overlay-close">×</button>
@@ -90,24 +76,19 @@
     </div>
   </div>
 
-<!-- Order matters: nav + sound first, then archive -->
 <script src="sound.js"></script>
 <script src="transition.js"></script>
 <script src="archive.js"></script>
-
 
 <script>
 document.getElementById("skip-sound").onclick = ()=> skipTrack();
 </script>
 
 <script>
-  // ensure keyboard scroll works (arrow keys / page up/down)
   window.addEventListener("keydown", (e) => {
     const keys = ["ArrowDown","ArrowUp","PageDown","PageUp","Home","End"," "];
     if (!keys.includes(e.key)) return;
-    // don't interfere with inputs
     if (["INPUT","TEXTAREA"].includes(document.activeElement?.tagName)) return;
-    // let browser scroll normally
   });
 </script>
 

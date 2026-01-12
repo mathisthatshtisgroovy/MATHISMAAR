@@ -12,19 +12,15 @@
   z-index:1500;
 }
 
-
-
-/* Global Typography + Smooth Fade Behavior */
-
 html, body{
   margin:0;
   color:#fff;
-  background:#000;        /* let load black first */
+  background:#000;        
   font-family:"Helvetica Neue", sans-serif;
   transition:opacity .35s ease;
 }
 body.transparent-bg{
-  background:transparent; /* we apply this to pages that need hero visible */
+  background:transparent; 
 }
 
 
@@ -32,7 +28,6 @@ body.fade-out{
   opacity:0;
 }
 
-/* Links unified feel */
 a{
   color:#fff;
   text-decoration:none;
@@ -90,9 +85,9 @@ body[data-page="archive"]a[href*='archive']::after{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  text-indent:-9999px; /* hides the circle text, keeps shape */
+  text-indent:-9999px; 
 }
-.home-link::after{display:none !important;} /* remove dot underline */
+.home-link::after{display:none !important;} 
 
 .nav-container{
   position:fixed;
@@ -104,23 +99,20 @@ body[data-page="archive"]a[href*='archive']::after{
   z-index:2000;
 }
 
-/* HOME ROUND BUTTON like red circle */
 .home-button{
   width:22px;
   height:22px;
   border-radius:50%;
-  border:2px solid #e30000;   /* later swap to red if desired */
+  border:2px solid #e30000;   
   display:block;
   margin-right:28px;
 }
 
-/* turns white when sound (theme-warm) is active */
 body.theme-warm .home-button{
   background:#fff;
   border-color:#fff;
 }
 
-/* MENU center independent */
 .menu-items{
   position:fixed;
   top:22px;
@@ -139,19 +131,18 @@ body.theme-warm .scroll-progress {
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }  /* invisible track */
+::-webkit-scrollbar-track { background: transparent; }  
 ::-webkit-scrollbar-thumb {
-    background: var(--accent);      /* red theme */
+    background: var(--accent);     
     border-radius: 10px;
 }
 
 body.theme-warm ::-webkit-scrollbar-thumb {
-    background: #fff;               /* white when sound ON */
+    background: #fff;              
 }
 
-html { scrollbar-gutter: stable; } /* prevents UI shift & keeps it visible */
+html { scrollbar-gutter: stable; }
 
-/* GLOBAL SCROLLBAR — unified across pages */
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -159,26 +150,23 @@ html { scrollbar-gutter: stable; } /* prevents UI shift & keeps it visible */
     background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-    background: #e20b01;       /* always red */
+    background: #e20b01;        
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #ff3d20;      /* optional subtle hover */
+    background: #ff3d20;     
 }
 body.theme-warm ::-webkit-scrollbar-thumb {
-    background: #fff;         /* turns white when sound mode active */
+    background: #fff;    
 }
 
-
-/* ---------------- Mobile Nav ---------------- */
 
 .mobile-menu-toggle,
 .mobile-menu {
-  display: none; /* desktop default */
+  display: none; 
 }
 
 @media (max-width: 768px) {
-  /* Hide the centered desktop links on phones */
   .menu-items {
     display: none;
   }
@@ -210,7 +198,6 @@ body.theme-warm ::-webkit-scrollbar-thumb {
     opacity: 1;
   }
 
-  /* Minimal floating panel */
   .mobile-menu {
     display: block;
     position: fixed;
@@ -236,7 +223,7 @@ body.theme-warm ::-webkit-scrollbar-thumb {
   body.menu-open .mobile-menu {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%); /* same as closed */
+  transform: translateX(-50%); 
 }
 
   .mobile-menu a {
@@ -250,7 +237,6 @@ body.theme-warm ::-webkit-scrollbar-thumb {
   }
 }
 
-/* Mobile nav enforcement (strong override) */
 @media (max-width: 768px) {
   .menu-items { display: none !important; }
   .mobile-menu-toggle { display: inline-flex !important; }
@@ -266,7 +252,6 @@ body.theme-warm ::-webkit-scrollbar-thumb {
   }
 }
 
-
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     position: relative;
@@ -279,7 +264,6 @@ body.theme-warm ::-webkit-scrollbar-thumb {
     z-index: 2100;
   }
 
-  /* Three vertical bars */
   .mobile-menu-toggle::before {
   content: "";
   position: absolute;
@@ -298,15 +282,12 @@ body.theme-warm .mobile-menu-toggle::before {
   box-shadow: -9px 0 0 #000, 9px 0 0 #000;
 }
 
-
-  /* In warm mode, keep bars black (your request) */
   body.theme-warm .mobile-menu-toggle::before {
     background: #000;
     box-shadow: -9px 0 0 #000, 9px 0 0 #000;
   }
 }
 
-/* Mobile radio dock - global enforcement (applies to home/works/archive/info) */
 @media (max-width: 768px) {
   .archive-button {
     top: auto !important;

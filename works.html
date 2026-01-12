@@ -10,10 +10,8 @@
     return window.ASSET_BASE + "/" + u.replace(/^\/+/, "");
   };
 
-  // ✅ make sure `assetUrl(...)` exists as a global name too
   var assetUrl = window.assetUrl;
 </script>
-
 
 <meta charset="UTF-8">
 <title>Selected Works – Mathis</title>
@@ -25,7 +23,6 @@
 
 <body data-page="works">
 
-<!-- GLOBAL NAV -->
 <div id="nav"></div>
 <script>
   fetch("nav.html")
@@ -63,8 +60,6 @@
     });
 </script>
 
-
-<!-- SOUND UI (same as archive) -->
 <div class="archive-button" id="archive-button"></div>
 <div class="now-playing-wrap">
   <div id="skip-sound" class="skip-sound-btn"></div>
@@ -89,7 +84,6 @@ fetch("data/works.json")
   .then(r=>r.json())
   .then(projects=>{
     
-    // DESKTOP cinematic layout
     if(isDesktop){
       const wrapper=document.createElement("div");
       wrapper.className="works-fullscreen";
@@ -117,13 +111,11 @@ fetch("data/works.json")
 
 ` 	    ;		
 	
-// ▼ triangle reveals info panel
 section.querySelector(".peek-info").onclick = (e)=>{
     e.stopPropagation();
     section.classList.toggle("show-info");
 };
 
-// click anywhere else opens project page
 section.addEventListener("click", ()=>{
     window.location=`work.html#${p.id}`;
 });
@@ -131,11 +123,10 @@ section.addEventListener("click", ()=>{
         wrapper.appendChild(section);
       });
 
-      return; // stop, prevent grid from rendering here
+      return; 
     }
 });
 </script>
-
 
 <script>
 fetch("data/works.json")
@@ -159,14 +150,12 @@ fetch("data/works.json")
         <div class="summary-tooltip">${p.summary || "— No summary yet —"}</div>
       `;
 
-      // click to open project detail page
       item.addEventListener("click", e=>{
         if(!e.target.classList.contains("summary-icon")){
           window.location=`work.html#${p.id}`;
         }
       });
 
-      // toggle summary tooltip
       item.querySelector(".summary-icon").onclick=(e)=>{
         e.stopPropagation();
         item.classList.toggle("show-summary");
@@ -176,7 +165,6 @@ fetch("data/works.json")
     });
 });
 </script>
-
 
 </body>
 </html>

@@ -13,8 +13,6 @@ let nextTimeout = null;
 let buffers = new Map();
 let playExtract = false;  // full by default, randomized per start/skip
 
-
-// -------------------- INIT --------------------
 async function initEngine(){
   if(engineReady) return;
 
@@ -30,7 +28,6 @@ async function initEngine(){
   engineReady = true;
 }
 
-// -------------------- LOAD BUFFER --------------------
 async function fetchBuffer(pathIn){
   let url = pathIn.replace(/\\/g,"/");
   if(!url.includes("/")) url = "assets/sound/"+url;
@@ -64,9 +61,7 @@ async function loadBuffer(sound){
   return buffer;
 }
 
-// -------------------- CORE PLAYBACK --------------------
 async function playRandomTrack(){
-  // ------------ Weighted selection by sound.random (1–5) ------------
 const weighted = [];
 sounds.forEach(s => {
   const w = s.random ? Number(s.random) : 1;
@@ -83,12 +78,9 @@ const sound = weighted[Math.floor(Math.random()*weighted.length)];
   src.connect(masterGain);
   currentSource = src;
 
-  // --- Decide mode on each track load ---
-// Correct logic: full by default, extract is the variation
 playExtract = Math.random() < 0.35;   // 35% extract, 65% full  (adjustable)
 
 
-// ---- Extract logic ----
 let offset, playDuration;
 if(playExtract){
   const slice = buffer.duration * 0.15;           // 15% extract
@@ -99,8 +91,6 @@ if(playExtract){
   src.start(0); // FULL TRACK playback
 }
 
-
-
   const now = audioCtx.currentTime;
   masterGain.gain.cancelScheduledValues(now);
   masterGain.gain.setValueAtTime(0,now);
@@ -108,7 +98,6 @@ if(playExtract){
 
   console.log("▶",sound.title,"@",offset.toFixed(1)+"s");
 
-// ---- Update Now Playing UI text ----
 const label = document.getElementById("now-playing");
 if(label){
   label.textContent = playExtract ?
@@ -117,8 +106,6 @@ if(label){
 
 }
 
-
-  // ---------- Playback Length Control ----------
 if(playExtract){
     // extract auto-fades at end of slice
     const slice = buffer.duration * 0.15;
@@ -131,29 +118,22 @@ if(playExtract){
     src.stop(stopTime + 0.1);
 
 } else {
-    // full track is played until natural end — no auto skip
     src.onended = ()=> {
         isPlaying && (masterGain.gain.value = 0); // reset gain when done
-        // do nothing – user must press skip manually
     };
 }
 }   
 
-
-// -------------------- SKIP / NEXT TRACK --------------------
 async function skipTrack(){
   if(!isPlaying) return;
   console.log("⏭ next sound");
 
-// --- skipped feedback UI ---
 const notice = document.getElementById("skip-notice");
 if(notice){
    notice.classList.add("show-skip");
    setTimeout(()=> notice.classList.remove("show-skip"), 4000);
 }
 
-
-  // fade current track out, then trigger new one
   const now = audioCtx.currentTime;
   masterGain.gain.cancelScheduledValues(now);
   masterGain.gain.setValueAtTime(masterGain.gain.value, now);
@@ -169,11 +149,8 @@ if(notice){
   setTimeout(()=>{ if(isPlaying) playRandomTrack(); }, FADE * 1000);
 }
 
-// expose for UI
 window.skipTrack = skipTrack;
 
-
-// -------------------- ON/OFF CONTROL --------------------
 async function startEngine(){
   if(!engineReady) await initEngine();
   if(audioCtx.state==="suspended") await audioCtx.resume();
@@ -206,7 +183,6 @@ function stopEngine(){
   }
 }
 
-// -------------------- PUBLIC INTERFACE --------------------
 window.handleSoundState = function(){
   if(document.body.classList.contains("theme-warm")){
     startEngine();

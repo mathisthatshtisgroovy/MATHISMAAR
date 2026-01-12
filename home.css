@@ -8,8 +8,6 @@
   z-index:0;             /* instead of -10 or -2 */
 }
 
-
-/* scroll indicator */
 .scroll-indicator{
   position:absolute;
   bottom:22vh;
@@ -17,7 +15,6 @@
   opacity:.7; font-size:.9rem;
 }
 
-/* teaser section */
 .teaser{
   margin-top:100vh;
   height:80vh;
@@ -26,7 +23,6 @@
 .teaser video{
   height:70vh; max-width:90vw; opacity:.9; border-radius:6px;
 }
-
 
 .archive-button{
   position:fixed;
@@ -68,7 +64,6 @@ body.theme-warm .archive-button{
   transition:.3s;
 }
 
-/* Unified Now Playing UI identical to archive */
 .now-playing-wrap{
   position:fixed;
   top:32px;                 /* SAME AS ARCHIVE */
@@ -99,7 +94,6 @@ body.theme-warm .now-playing-text{opacity:1;color:#fff;}
   cursor:pointer;
 }
 
-
 .menu-section{
   position:fixed;
   top:32px;
@@ -109,7 +103,6 @@ body.theme-warm .now-playing-text{opacity:1;color:#fff;}
   z-index:1000;
 }
 
-/* underline dot center */
 .menu-section a::after{
   content:"";
   width:6px;height:6px;
@@ -127,9 +120,6 @@ html, body {
     overflow-y: auto;
 }
 
-
-
-/* Mobile: align home radio UI with global dock */
 @media (max-width: 768px) {
   body[data-page="home"] .archive-button {
     top: auto !important;

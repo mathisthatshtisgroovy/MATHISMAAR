@@ -4,7 +4,6 @@ body[data-page="work"]{
   font-family:inherit;
 }
 
-/* HERO full screen */
 .work-hero{
   width:100vw;
   height:100vh;
@@ -13,7 +12,6 @@ body[data-page="work"]{
   background-repeat:no-repeat;
 }
 
-/* HORIZONTAL GALLERY */
 .gallery{
   width:100vw;
   overflow-x:auto;
@@ -27,8 +25,6 @@ body[data-page="work"]{
   scroll-snap-align:center;
   display:inline-block;
 }
-
-/* TEXT SECTION */
 .work-info{
   max-width:800px;
   margin:100px auto;
@@ -47,7 +43,6 @@ body[data-page="work"]{
   font-size:1.1rem;
 }
 
-/* MEDIA BLOCK */
 .media{
   width:90vw;
   margin:120px auto;
@@ -59,7 +54,6 @@ body[data-page="work"]{
   width:100%;
 }
 
-/* gallery nav arrows (sphere buttons) */
 .gallery-nav{
     position:fixed;
     top:50%;

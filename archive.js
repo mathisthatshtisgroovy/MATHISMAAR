@@ -11,8 +11,6 @@ const themeButton = document.getElementById('archive-button');
 
 let archiveItems = [];
 
-// ------- helpers -------
-
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -34,9 +32,8 @@ function weightedScale(original) {
   return original || 2;
 }
 
-// --- preload control (scroll = light, stop = burst) ---
-const PRELOAD_SCROLL_MARGIN = 300;   // small margin while scrolling
-const PRELOAD_STOP_MARGIN   = 2200;  // big margin after stop
+const PRELOAD_SCROLL_MARGIN = 300; 
+const PRELOAD_STOP_MARGIN   = 2200;  
 const PRELOAD_CONCURRENCY   = 4;
 
 let preloadQueue = [];
@@ -61,7 +58,6 @@ function pumpPreloadQueue() {
     delete img.dataset.src;
     delete img.dataset.queued;
 
-    // release slot after decode/settle
     const done = () => { activeLoads = Math.max(0, activeLoads - 1); pumpPreloadQueue(); };
     img.decode ? img.decode().then(done).catch(done) : setTimeout(done, 80);
   }
@@ -76,18 +72,14 @@ function preloadAroundViewport(marginPx) {
     const img = el.querySelector("img");
     if (!img) return;
 
-    // visual Y position = baseTop + transformOffset
     const factor = scale === 1 ? 0.02 : scale === 2 ? 0.2 : 0.3;
     const visualY = baseTop + scrollY * factor;
 
-    // load if within viewport +/- margin
     if (visualY > -200 && visualY < vh + marginPx) {
       enqueueImgLoad(img);
     }
   });
 }
-
-// ------- data loading -------
 
 function fetchArchive() {
   fetch("data/archive.json")
@@ -104,12 +96,10 @@ preloadAroundViewport(PRELOAD_SCROLL_MARGIN);
     .catch(err => console.error("Error fetching JSON:", err));
 }
 
-// ----- Smart preload for images near viewport -----
-
-const preloadMargin = 2400; // px above/below viewport to preload & keep decoded
+const preloadMargin = 2400; 
 let observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (!entry.isIntersecting) return;   // only when inside preload zone
+    if (!entry.isIntersecting) return;   
     const img = entry.target.querySelector("img");
     enqueueImgLoad(img);
   });
@@ -117,13 +107,9 @@ let observer = new IntersectionObserver((entries) => {
   rootMargin: `${preloadMargin}px 0px ${preloadMargin}px 0px`
 });
 
-
-
 function observeItems() {
   archiveItems.forEach(i => observer.observe(i.el));
 }
-
-// ------- render items -------
 
 function renderArchive(items) {
   if (!gridEl) return;
@@ -132,13 +118,11 @@ function renderArchive(items) {
 
   const shuffled = shuffle(items);
 
-  // apply weighted scale
   let processed = shuffled.map(item => ({
     ...item,
     scale: weightedScale(item.scale ?? 2)
   }));
 
-  // enforce at most 4 scale=1 backgrounds
   let bgCount = 0;
   processed = processed.map(item => {
     if (item.scale === 1) {
@@ -151,7 +135,6 @@ function renderArchive(items) {
     return item;
   });
 
-  // build DOM
   processed.forEach(item => {
     const div = document.createElement("div");
     div.classList.add("archive-item");
@@ -178,9 +161,6 @@ function renderArchive(items) {
  observeItems(); 
 }
 
-
-// ------- layout / parallax -------
-
 function positionItems() {
   if (!archiveItems.length) return;
   const viewportHeight = window.innerHeight || 800;
@@ -198,8 +178,8 @@ function positionItems() {
 
   archiveItems.forEach(item => {
     const { el, scale } = item;
-    let leftVW = randomInRange(-10, 95);         // more spread horizontally
-let topPX = randomInRange(0, totalHeight);   // much taller vertical canvas
+    let leftVW = randomInRange(-10, 95);         
+let topPX = randomInRange(0, totalHeight);   
 
 
     if (scale === 1) {
@@ -232,20 +212,15 @@ function onScroll() {
   archiveItems.forEach(item => {
     const { el, scale, baseTop } = item;
 
-    // item visibility skip based on known baseTop instead of layout query
-// (prevents browser reflow + keeps memory, no reload feeling)
 const itemScreenPos = baseTop - scrollY;    // no DOM read, just math
 if (itemScreenPos < -500 || itemScreenPos > window.innerHeight + 500) return;
  
-
-
-    // much slower + smoother movement
     const factor = scale === 1 ? 0.02 : scale === 2 ? 0.2 : 0.3;
     const offset = scrollY * factor;
 
 
 
-    el.style.transform = `translate3d(0, ${offset}px, 0)`; // better GPU acceleration
+    el.style.transform = `translate3d(0, ${offset}px, 0)`; // GPU accel
   });
 }
 
@@ -254,27 +229,21 @@ let archiveTicking = false;
 let scrollStopTimer = null;
 
 window.addEventListener("scroll", () => {
-  // 1) smooth transforms while scrolling
   if (!archiveTicking) {
     archiveTicking = true;
     requestAnimationFrame(() => {
       onScroll();
-      // light preload while scrolling (small margin)
       preloadAroundViewport(PRELOAD_SCROLL_MARGIN);
       archiveTicking = false;
     });
   }
-
-  // 2) burst preload when user stops scrolling
   clearTimeout(scrollStopTimer);
   scrollStopTimer = setTimeout(() => {
     preloadAroundViewport(PRELOAD_STOP_MARGIN);
-  }, 160); // <- "stop scrolling" threshold
+  }, 160); // stop scrolling
 });
 
 window.addEventListener("resize", positionItems);
-
-// ------- overlay -------
 
 function openOverlay(item) {
   if (!overlayEl) return;
@@ -303,9 +272,6 @@ document.addEventListener("keydown", e => {
   if (e.key === "Escape") closeOverlay();
 });
 
-
-// ------- buttons -------
-
 if (themeButton) {
   themeButton.addEventListener("click", () => {
     document.body.classList.toggle("theme-warm");
@@ -322,7 +288,6 @@ if (resetBtn) {
   });
 }
 
-// initial load
 fetchArchive();
 
 
