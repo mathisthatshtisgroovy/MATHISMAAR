@@ -23,9 +23,42 @@
 <body data-page="info">
 
  <div id="nav"></div>
-  <script> fetch("nav.html").then(r=>r.text()).then(d=>document.getElementById("nav").innerHTML=d); </script>
+  <script>
+  fetch("nav.html")
+    .then(r => r.text())
+    .then(d => {
+      nav.innerHTML = d;
 
- <script> fetch("nav.html").then(r=>r.text()).then(d=>document.getElementById("nav").innerHTML=d); </script>
+      const btn = nav.querySelector(".mobile-menu-toggle");
+      const panel = nav.querySelector("#mobile-menu");
+      if (!btn || !panel) return;
+
+      function closeMenu() {
+        btn.setAttribute("aria-expanded", "false");
+        panel.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("menu-open");
+      }
+
+      btn.addEventListener("click", () => {
+        const open = btn.getAttribute("aria-expanded") === "true";
+        if (open) closeMenu();
+        else {
+          btn.setAttribute("aria-expanded", "true");
+          panel.setAttribute("aria-hidden", "false");
+          document.body.classList.add("menu-open");
+        }
+      });
+
+      panel.addEventListener("click", (e) => {
+        if (e.target && e.target.tagName === "A") closeMenu();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+    });
+</script>
+
 
  <!-- SOUND UI (copied from archive, minus reset) -->
  <div class="archive-button" id="archive-button"></div>
@@ -44,8 +77,7 @@
   @mathis.maar <br/> 
 </div>
 <br/> 
-<ahref="https://pub-2469350b5b7041f197fdcd97ef5af87d.r2.dev/assets/cv.pdf" download class="download-btn">Download CV</a>
-
+<a href="https://pub-2469350b5b7041f197fdcd97ef5af87d.r2.dev/assets/cv.pdf" download class="download-btn">Download CV</a>
 
 <script src="transition.js"></script>
 <script src="sound.js"></script>

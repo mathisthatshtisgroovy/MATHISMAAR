@@ -42,3 +42,12 @@ body[data-page="info"] {
     max-width: calc(100vw - 80px);
 }
 
+@media (max-width: 768px) {
+  body[data-page="info"]{
+    padding: 12vh 7vw;
+    font-size: 1rem;
+  }
+  .info-inner{
+    max-width: 92vw;
+  }
+}

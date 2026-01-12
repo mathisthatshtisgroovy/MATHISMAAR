@@ -24,10 +24,41 @@
 
 <div id="nav"></div>
 <script>
-fetch("nav.html").then(r=>r.text()).then(html=>{
-  document.getElementById("nav").innerHTML = html;
-});
+  fetch("nav.html")
+    .then(r => r.text())
+    .then(d => {
+      nav.innerHTML = d;
+
+      const btn = nav.querySelector(".mobile-menu-toggle");
+      const panel = nav.querySelector("#mobile-menu");
+      if (!btn || !panel) return;
+
+      function closeMenu() {
+        btn.setAttribute("aria-expanded", "false");
+        panel.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("menu-open");
+      }
+
+      btn.addEventListener("click", () => {
+        const open = btn.getAttribute("aria-expanded") === "true";
+        if (open) closeMenu();
+        else {
+          btn.setAttribute("aria-expanded", "true");
+          panel.setAttribute("aria-hidden", "false");
+          document.body.classList.add("menu-open");
+        }
+      });
+
+      panel.addEventListener("click", (e) => {
+        if (e.target && e.target.tagName === "A") closeMenu();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+    });
 </script>
+
 
 <div id="work-container"></div>
 
