@@ -157,4 +157,15 @@ html, body {
   }
 }
 
+@media (max-width: 768px) {
+  /* ensure dock stays above hero */
+  .archive-button,
+  .now-playing-wrap,
+  .skip-notice {
+    z-index: 99999 !important;
+  }
+}
 
+@media (max-width: 768px) {
+  .hero { z-index: 0 !important; }
+}

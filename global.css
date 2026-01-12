@@ -215,9 +215,12 @@ body.theme-warm ::-webkit-scrollbar-thumb {
     display: block;
     position: fixed;
     top: 64px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(92vw, 360px);
+    left: 14px;
+    right: 14px;
+    margin: 0 auto;
+    max-width: 360px;
+    width: auto;
+    transform: none !important;
     padding: 14px 16px;
     border-radius: 18px;
     background: rgba(0,0,0,0.72);
@@ -227,7 +230,7 @@ body.theme-warm ::-webkit-scrollbar-thumb {
 
     opacity: 0;
     pointer-events: none;
-    transition: opacity .2s ease !important;
+    transition: opacity .2s ease ;
   }
 
   body.menu-open .mobile-menu {
