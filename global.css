@@ -227,7 +227,7 @@ body.theme-warm ::-webkit-scrollbar-thumb {
 
     opacity: 0;
     pointer-events: none;
-    transition: opacity .2s ease;
+    transition: opacity .2s ease !important;
   }
 
   body.menu-open .mobile-menu {
@@ -278,17 +278,23 @@ body.theme-warm ::-webkit-scrollbar-thumb {
 
   /* Three vertical bars */
   .mobile-menu-toggle::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 4px;
-    height: 18px;
-    background: #000; /* black bars */
-    transform: translate(-50%, -50%);
-    border-radius: 2px;
-    box-shadow: -9px 0 0 #000, 9px 0 0 #000;
-  }
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 18px;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+  box-shadow: -9px 0 0 #fff, 9px 0 0 #fff;
+}
+
+body.theme-warm .mobile-menu-toggle::before {
+  background: #000;
+  box-shadow: -9px 0 0 #000, 9px 0 0 #000;
+}
+
 
   /* In warm mode, keep bars black (your request) */
   body.theme-warm .mobile-menu-toggle::before {

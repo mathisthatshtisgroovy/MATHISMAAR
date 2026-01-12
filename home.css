@@ -129,5 +129,32 @@ html, body {
 
 
 
+/* Mobile: align home radio UI with global dock */
+@media (max-width: 768px) {
+  body[data-page="home"] .archive-button {
+    top: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    bottom: 18px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  body[data-page="home"] .now-playing-wrap {
+    top: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    bottom: 84px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  body[data-page="home"] .skip-notice {
+    top: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    bottom: 118px !important;
+    transform: translateX(-50%) !important;
+    text-align: center;
+  }
+}
 
 
