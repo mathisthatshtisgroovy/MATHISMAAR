@@ -231,9 +231,10 @@ body.theme-warm ::-webkit-scrollbar-thumb {
   }
 
   body.menu-open .mobile-menu {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%); /* same as closed */
+}
 
   .mobile-menu a {
     display: block;
@@ -293,6 +294,34 @@ body.theme-warm ::-webkit-scrollbar-thumb {
   body.theme-warm .mobile-menu-toggle::before {
     background: #000;
     box-shadow: -9px 0 0 #000, 9px 0 0 #000;
+  }
+}
+
+/* Mobile radio dock - global enforcement (applies to home/works/archive/info) */
+@media (max-width: 768px) {
+  .archive-button {
+    top: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    bottom: 18px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .now-playing-wrap {
+    top: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    bottom: 84px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .skip-notice {
+    top: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    bottom: 118px !important;
+    transform: translateX(-50%) !important;
+    text-align: center;
   }
 }
 

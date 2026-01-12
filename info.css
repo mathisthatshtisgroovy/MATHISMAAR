@@ -7,7 +7,7 @@ body[data-page="info"]{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 100vw;              /* fill full page width */
+    width: 100%;              /* fill full page width */
 }
 
 /* Inner container for text layout */
@@ -51,3 +51,5 @@ body[data-page="info"] {
     max-width: 92vw;
   }
 }
+
+
