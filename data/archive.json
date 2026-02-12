@@ -825,8 +825,8 @@
       "performance",
       "event curation"
     ],
-    "description": "Emil Rey Buchler playing cello",
-    "credits": "Emil Rey Buchler",
+    "description": "",
+    "credits": "performed with Emil Rey Buchler",
     "scale": 2
   },
   {
@@ -843,8 +843,8 @@
       "performance",
       "event curation"
     ],
-    "description": "Emil Rey Buchler playing cello",
-    "credits": "Emil Rey Buchler",
+    "description": "",
+    "credits": "performed with Emil Rey Buchler",
     "scale": 2
   },
   {
@@ -1228,6 +1228,23 @@
     "scale": 2
   },
   {
+    "id": "REGARDE_VISUAL_5",
+    "title": "Regarde",
+    "year": 2023,
+    "types": [
+      "ceramics",
+      "installation"
+    ],
+    "file_main": "/assets/img/REGARDE_VISUAL_5.webp",
+    "tags": [
+      "ceramic sculpture",
+      "ceramic sculpture"
+    ],
+    "description": "",
+    "credits": "",
+    "scale": null
+  },
+  {
     "id": "TAKEN_FOR_A_BAT_SPACE_VISUAL_1",
     "title": "TAKEN FOR A BAT SPACE",
     "year": 2025,
@@ -1240,8 +1257,8 @@
       "still from video",
       "still from video"
     ],
-    "description": "",
-    "credits": "",
+    "description": "Video",
+    "credits": "produced with Tymon Zaniewski, Sasha Nazarova\n",
     "scale": 2
   },
   {
@@ -1257,8 +1274,8 @@
       "still from video",
       "still from video"
     ],
-    "description": "",
-    "credits": "",
+    "description": "Video",
+    "credits": "produced with Tymon Zaniewski, Sasha Nazarova\n",
     "scale": 2
   },
   {
@@ -1274,8 +1291,8 @@
       "still from video",
       "still from video"
     ],
-    "description": "",
-    "credits": "",
+    "description": "Video",
+    "credits": "produced with Tymon Zaniewski, Sasha Nazarova\n",
     "scale": 1
   },
   {
@@ -1291,8 +1308,8 @@
       "photography",
       "photography"
     ],
-    "description": "",
-    "credits": "",
+    "description": "SHOW",
+    "credits": "produced with Tymon Zaniewski, Céleste Zion, Dora Heller-Russell, Gijs Motzelt. Photos by Anwyn Howarth",
     "scale": 2
   },
   {
@@ -1308,8 +1325,8 @@
       "Live",
       "Live"
     ],
-    "description": "",
-    "credits": "",
+    "description": "SHOW",
+    "credits": "produced with Tymon Zaniewski, Céleste Zion, Dora Heller-Russell, Gijs Motzelt. Photos by Anwyn Howarth",
     "scale": 2
   },
   {
@@ -1325,8 +1342,8 @@
       "Live",
       "Live"
     ],
-    "description": "",
-    "credits": "",
+    "description": "SHOW",
+    "credits": "produced with Tymon Zaniewski, Céleste Zion, Dora Heller-Russell, Gijs Motzelt photos by Anwyn Howarth",
     "scale": 2
   },
   {
@@ -1342,8 +1359,8 @@
       "Live",
       "Live"
     ],
-    "description": "",
-    "credits": "",
+    "description": "SHOW",
+    "credits": "produced with Tymon Zaniewski, Céleste Zion, Dora Heller-Russell, Gijs Motzelt. Photos by Anwyn Howarth",
     "scale": 2
   },
   {
@@ -1359,8 +1376,8 @@
       "Live",
       "Live"
     ],
-    "description": "",
-    "credits": "",
+    "description": "SHOW",
+    "credits": "produced with Tymon Zaniewski, Céleste Zion, Dora Heller-Russell, Gijs Motzelt. Photos by Anwyn Howarth",
     "scale": 2
   }
 ]

@@ -248,9 +248,32 @@ window.addEventListener("resize", positionItems);
 function openOverlay(item) {
   if (!overlayEl) return;
   overlayImg.src = assetUrl(item.file_main);
-  overlayMeta.textContent = [item.title, item.year, (item.types || []).join(" / ")]
-    .filter(Boolean)
+
+  // Build structured metadata HTML
+  const typesStr = (item.types || [])
+    .filter(t => t !== "visual") // "visual" is too generic, skip it
     .join(" · ");
+
+  const parts = [];
+
+  if (item.title) {
+    parts.push(`<p class="overlay-meta-title">${item.title}</p>`);
+  }
+
+  const subline = [item.year, typesStr].filter(Boolean).join(" — ");
+  if (subline) {
+    parts.push(`<p class="overlay-meta-sub">${subline}</p>`);
+  }
+
+  if (item.description && item.description.trim()) {
+    parts.push(`<p class="overlay-meta-desc">${item.description.trim()}</p>`);
+  }
+
+  if (item.credits && item.credits.trim()) {
+    parts.push(`<p class="overlay-meta-credits">${item.credits.trim()}</p>`);
+  }
+
+  overlayMeta.innerHTML = parts.join("");
   overlayEl.style.display = "flex";
 }
 
@@ -289,6 +312,3 @@ if (resetBtn) {
 }
 
 fetchArchive();
-
-
-

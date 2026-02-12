@@ -171,10 +171,45 @@ body {
 }
 
 .overlay-meta {
-  margin-top: 0.5rem;
-  padding: 0.4rem 0.8rem;
-  background: var(--meta-bg);
-  font-size: 0.8rem;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.2rem 0.2rem;
+  max-width: 90vw;
+}
+
+.overlay-meta p {
+  margin: 0;
+  padding: 0;
+}
+
+.overlay-meta-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0.35rem !important;
+}
+
+.overlay-meta-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+}
+
+.overlay-meta-desc {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.75);
+  font-style: italic;
+  margin-top: 0.45rem !important;
+  letter-spacing: 0.02em;
+}
+
+.overlay-meta-credits {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.04em;
+  margin-top: 0.35rem !important;
 }
 
 .overlay-close {
@@ -385,6 +420,3 @@ html,body {
     bottom: 24px;
   }
 }
-
-
-
