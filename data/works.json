@@ -6,8 +6,8 @@
     "type": "Multimedia show",
     "order": 1,
     "hero": "assets/works/TAKEN_FOR_A_BAT_SPACE_VISUAL_3.webp",
-    "summary": "",
-    "credits": "Dora Heller Russel/ Tymon Zaniewski/ C�leste Zion/ "
+    "summary": "TAKEN FOR A BAT SPACE is An experiment built by a collective of international designers reclaiming space together.\nThrough collective building, installations, and performances, it staged a cultural shelter to experience and discuss rewilding processes and beyond human spectrum sensing. It was activated during Dutch Design Week 2025 and hosted by ReWild Farm.",
+    "credits": "Dora Heller Russel, Tymon Zaniewski, Celeste Zion."
   },
   {
     "id": "BIRDS_AND_MACHINES_VISUAL_1",
@@ -16,7 +16,7 @@
     "type": "Video research",
     "order": 2,
     "hero": "assets/works/BIRDS_AND_MACHINES_VISUAL_1.webp",
-    "summary": "",
+    "summary": "BIRDS AND MACHINES is an ongoing visual research, film and installation project that follows the mi-\ngration traces of birds between Gibraltar and the Atlas Mountains,",
     "credits": ""
   },
   {
@@ -26,7 +26,7 @@
     "type": "Installation",
     "order": 3,
     "hero": "assets/works/BORDERS_OF_NEUTRALITY_VISUAL_8.webp",
-    "summary": "",
+    "summary": "BORDERS OF NEUTRALITY is a multimedia installation that reads the Alps as a shifting border archive, where melting glaciers redraw the\nlines of Swiss neutrality. A staged view from a mountain bench fractures under sonic disruptions and visual glitches.\nThe project traces how geological aesthetics are co-opted into policy as visual tools of authority.",
     "credits": "Aleksandra Nazarova"
   },
   {
@@ -36,7 +36,7 @@
     "type": "Sound Installation",
     "order": 4,
     "hero": "assets/works/ASML_VISUAL_1.webp",
-    "summary": "",
+    "summary": "I Thought ASML Slept on Sundays is a sonic infiltration of ASML, mapping what leaks from a sealed chip-making empire that powers computation, surveillance, warfare and daily life. It assembles field-recorded peripheries, encrypted patents and speculative sonic blueprints into a three-layer installation: porous noise at the edge, extracted discourse inside, and reverse?engineered machine imaginaries at the core. Where extreme precision seeks absolute silence, control hums on, even when unheard.",
     "credits": "Emma Zerial/ Aleksandra Nazarova"
   },
   {
@@ -46,7 +46,7 @@
     "type": "Video Installation",
     "order": 5,
     "hero": "assets/works/ULTRASONIC_SYSTEMS_VISUAL_3.webp",
-    "summary": "",
+    "summary": "ULTRASONIC SYSTEMS is a sonic and visual research on the communication systems beyond human hearing spectrum, hidden beneath the soil,\nbellow the bricks as well as within the sky : from agrocultural computional sensing to bats nesting in our old buildings. It bridges stories\nfrom housing crisis, land control, urban policies and bats� conservation.",
     "credits": ""
   },
   {
