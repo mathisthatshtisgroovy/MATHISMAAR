@@ -1,12 +1,15 @@
 [
   {
-    "id": "TAKEN_FOR_A_BAT_SPACE_VISUAL_3",
+    "id": "TAKEN_FOR_A_BAT_SPACE_LIVE_4",
     "title": "TAKEN FOR A BAT SPACE",
     "year": "2025",
     "type": "Multimedia show",
     "order": 1,
-    "hero": "assets/works/TAKEN_FOR_A_BAT_SPACE_VISUAL_3.webp",
-    "summary": "TAKEN FOR A BAT SPACE is An experiment built by a collective of international designers reclaiming space together.\nThrough collective building, installations, and performances, it staged a cultural shelter to experience and discuss rewilding processes and beyond human spectrum sensing. It was activated during Dutch Design Week 2025 and hosted by ReWild Farm.",
+    "hero": "assets/works/TAKEN_FOR_A_BAT_SPACE_LIVE_4.webp",
+    "summary": "TAKEN FOR A BAT SPACE is An experiment built by a collective of international designers reclaiming space together. Through collective building, installations, and performances, it staged a cultural shelter to experience and discuss rewilding processes and beyond human spectrum sensing. It was activated during Dutch Design Week 2025 and hosted by ReWild Farm.",
+    "description_long": "",
+    "gallery": "TAKEN_FOR_A_BAT_SPACE_LIVE_4.webp|TAKEN_FOR_A_BAT_SPACE_LIVE_3.webp|TAKEN_FOR_A_BAT_SPACE_LIVE_2.webp|TAKEN_FOR_A_BAT_SPACE_LIVE_1.webp|TAKEN_FOR_A_BAT_SPACE_VISUAL_1.webp|TAKEN_FOR_A_BAT_SPACE_VISUAL_2.webp|TAKEN_FOR_A_BAT_SPACE_VISUAL_4.webp",
+    "video": "",
     "credits": "Dora Heller Russel, Tymon Zaniewski, Celeste Zion."
   },
   {
@@ -16,7 +19,10 @@
     "type": "Video research",
     "order": 2,
     "hero": "assets/works/BIRDS_AND_MACHINES_VISUAL_1.webp",
-    "summary": "BIRDS AND MACHINES is an ongoing visual research, film and installation project that follows the mi-\ngration traces of birds between Gibraltar and the Atlas Mountains,",
+    "summary": "BIRDS AND MACHINES is an ongoing visual research, film and installation project that follows the migration traces of birds between Gibraltar and the Atlas Mountains.",
+    "description_long": "",
+    "gallery": "BIRDS_AND_MACHINES_VISUAL_1.webp|BIRDS_AND_MACHINES_VISUAL_2.webp|BIRDS_AND_MACHINES_VISUAL_3.webp|BIRDS_AND_MACHINES_VISUAL_4.webp|BIRDS_AND_MACHINES_VISUAL_5.webp",
+    "video": "",
     "credits": ""
   },
   {
@@ -26,7 +32,10 @@
     "type": "Installation",
     "order": 3,
     "hero": "assets/works/BORDERS_OF_NEUTRALITY_VISUAL_8.webp",
-    "summary": "BORDERS OF NEUTRALITY is a multimedia installation that reads the Alps as a shifting border archive, where melting glaciers redraw the\nlines of Swiss neutrality. A staged view from a mountain bench fractures under sonic disruptions and visual glitches.\nThe project traces how geological aesthetics are co-opted into policy as visual tools of authority.",
+    "summary": "BORDERS OF NEUTRALITY is a multimedia installation that reads the Alps as a shifting border archive, where melting glaciers redraw the lines of Swiss neutrality. A staged view from a mountain bench fractures under sonic disruptions and visual glitches. The project traces how geological aesthetics are co-opted into policy as visual tools of authority.",
+    "description_long": "",
+    "gallery": "BORDERS_OF_NEUTRALITY_VISUAL_1.webp|BORDERS_OF_NEUTRALITY_VISUAL_2.webp|BORDERS_OF_NEUTRALITY_VISUAL_3.webp|BORDERS_OF_NEUTRALITY_VISUAL_4.webp|BORDERS_OF_NEUTRALITY_VISUAL_5.webp|BORDERS_OF_NEUTRALITY_VISUAL_6.webp|BORDERS_OF_NEUTRALITY_VISUAL_7.webp|BORDERS_OF_NEUTRALITY_VISUAL_8.webp",
+    "video": "",
     "credits": "Aleksandra Nazarova"
   },
   {
@@ -36,7 +45,10 @@
     "type": "Sound Installation",
     "order": 4,
     "hero": "assets/works/ASML_VISUAL_1.webp",
-    "summary": "I Thought ASML Slept on Sundays is a sonic infiltration of ASML, mapping what leaks from a sealed chip-making empire that powers computation, surveillance, warfare and daily life. It assembles field-recorded peripheries, encrypted patents and speculative sonic blueprints into a three-layer installation: porous noise at the edge, extracted discourse inside, and reverse?engineered machine imaginaries at the core. Where extreme precision seeks absolute silence, control hums on, even when unheard.",
+    "summary": "I Thought ASML Slept on Sundays is a sonic infiltration of ASML, mapping what leaks from a sealed chip-making empire that powers computation, surveillance, warfare and daily life. It assembles field-recorded peripheries, encrypted patents and speculative sonic blueprints into a three-layer installation: porous noise at the edge, extracted discourse inside, and reverse-engineered machine imaginaries at the core. Where extreme precision seeks absolute silence, control hums on, even when unheard.",
+    "description_long": "",
+    "gallery": "ASML_VISUAL_1.webp|ASML_VISUAL_2.webp|ASML_VISUAL_3.webp",
+    "video": "",
     "credits": "Emma Zerial/ Aleksandra Nazarova"
   },
   {
@@ -46,7 +58,10 @@
     "type": "Video Installation",
     "order": 5,
     "hero": "assets/works/ULTRASONIC_SYSTEMS_VISUAL_3.webp",
-    "summary": "ULTRASONIC SYSTEMS is a sonic and visual research on the communication systems beyond human hearing spectrum, hidden beneath the soil,\nbellow the bricks as well as within the sky : from agrocultural computional sensing to bats nesting in our old buildings. It bridges stories\nfrom housing crisis, land control, urban policies and bats� conservation.",
+    "summary": "ULTRASONIC SYSTEMS is a sonic and visual research on the communication systems beyond human hearing spectrum, hidden beneath the soil, bellow the bricks as well as within the sky: from agrocultural computional sensing to bats nesting in our old buildings. It bridges stories from housing crisis, land control, urban policies and bats conservation.",
+    "description_long": "",
+    "gallery": "ULTRASONIC_SYSTEMS_VISUAL_1.webp|ULTRASONIC_SYSTEMS_VISUAL_2.webp|ULTRASONIC_SYSTEMS_VISUAL_3.webp|ULTRASONIC_SYSTEMS_VISUAL_4.webp|ULTRASONIC_SYSTEMS_VISUAL_5.webp|ULTRASONIC_SYSTEMS_VISUAL_6.webp|ULTRASONIC_SYSTEMS_VISUAL_7.webp|ULTRASONIC_SYSTEMS_VISUAL_8.webp|ULTRASONIC_SYSTEMS_VISUAL_9.webp|ULTRASONIC_SYSTEMS_VISUAL_10.webp",
+    "video": "",
     "credits": ""
   },
   {
@@ -57,6 +72,9 @@
     "order": 6,
     "hero": "assets/works/HARVEST_OF_NOISE_VISUAL_2.webp",
     "summary": "",
+    "description_long": "",
+    "gallery": "HARVEST_OF_NOISE_VISUAL_1.webp|HARVEST_OF_NOISE_VISUAL_2.webp|HARVEST_OF_NOISE_VISUAL_3.webp|HARVEST_OF_NOISE_VISUAL_4.webp|HARVEST_OF_NOISE_VISUAL_5.webp|HARVEST_OF_NOISE_VISUAL_6.webp",
+    "video": "",
     "credits": ""
   }
 ]
