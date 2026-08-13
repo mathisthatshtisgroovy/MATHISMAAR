@@ -3,6 +3,8 @@ console.log("🔊 Ambient Engine Loaded");
 const SOUND_FILE = "data/sound_archive.json";
 const FADE = 5.0;
 const TARGET_VOL = 0.5;
+const DARK_MODE_KEY = "mm-dark-mode";
+const RADIO_PLAYING_KEY = "mm-radio-playing";
 
 
 let audioCtx, masterGain, sounds = [];
@@ -158,6 +160,7 @@ async function startEngine(){
 
   console.log("🌑 Engine ON");
   isPlaying = true;
+  localStorage.setItem(RADIO_PLAYING_KEY, "1");
   playRandomTrack();
 }
 
@@ -166,6 +169,7 @@ function stopEngine(){
 
   console.log("🌑 Engine OFF");
   isPlaying = false;
+  localStorage.setItem(RADIO_PLAYING_KEY, "0");
 
   if(nextTimeout) clearTimeout(nextTimeout);
 
@@ -188,5 +192,24 @@ window.handleSoundState = function(){
     startEngine();
   }else{
     stopEngine();
+  }
+};
+
+// dark mode + radio state persist across page navigation via localStorage.
+// the class itself is restored earlier (inline, before this script loads)
+// to avoid a flash of the wrong theme — this just wires up the toggle
+// button and resumes audio if it was playing when the user left.
+window.toggleDarkMode = function(){
+  document.body.classList.toggle("dark-mode");
+  localStorage.setItem(DARK_MODE_KEY, document.body.classList.contains("dark-mode") ? "1" : "0");
+  handleSoundState();
+};
+
+window.resumeSoundIfNeeded = function(){
+  const wasPlaying = localStorage.getItem(RADIO_PLAYING_KEY) === "1";
+  if(document.body.classList.contains("dark-mode") && wasPlaying){
+    // browsers may block this without a fresh user gesture — that's expected,
+    // the dot still reflects the right (dark) state either way
+    startEngine();
   }
 };

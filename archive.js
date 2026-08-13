@@ -5,7 +5,6 @@ const filtersEl = document.getElementById('archive-filters');
 const overlayEl = document.getElementById('overlay');
 const overlayImg = document.getElementById('overlay-image');
 const overlayMeta = document.getElementById('overlay-meta');
-const overlayClose = document.getElementById('overlay-close');
 const resetBtn = document.getElementById('reset-archive');
 const themeButton = document.getElementById('archive-button');
 
@@ -120,25 +119,20 @@ function closeOverlay() {
   overlayImg.src = "";
 }
 
-if (overlayClose) {
-  overlayClose.addEventListener("click", closeOverlay);
-}
 if (overlayEl) {
-  overlayEl.addEventListener("click", e => {
-    if (e.target === overlayEl) closeOverlay();
-  });
+  // tap anywhere — backdrop or image — to close. No close button needed,
+  // and it's the easiest possible exit on a phone.
+  overlayEl.addEventListener("click", closeOverlay);
 }
 document.addEventListener("keydown", e => {
   if (e.key === "Escape") closeOverlay();
 });
 
 if (themeButton) {
-  themeButton.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    if (typeof handleSoundState === "function") {
-      handleSoundState();
-    }
-  });
+  themeButton.addEventListener("click", () => toggleDarkMode());
+}
+if (typeof resumeSoundIfNeeded === "function") {
+  resumeSoundIfNeeded();
 }
 
 if (resetBtn) {

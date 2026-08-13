@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="info.css">
 </head>
 <body data-page="info">
+<script>if(localStorage.getItem("mm-dark-mode")==="1")document.body.classList.add("dark-mode");</script>
 
  <div id="nav"></div>
   <script>
@@ -80,11 +81,9 @@
 <script src="transition.js"></script>
 <script src="sound.js"></script>
 <script>
-document.getElementById("archive-button").onclick = ()=>{
-  document.body.classList.toggle("dark-mode");
-  handleSoundState();
-};
+document.getElementById("archive-button").onclick = ()=> toggleDarkMode();
 document.getElementById("skip-sound").onclick = ()=> skipTrack();
+resumeSoundIfNeeded();
 </script>
 
 </body>
