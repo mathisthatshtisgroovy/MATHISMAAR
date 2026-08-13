@@ -1,6 +1,7 @@
 console.log("Loading archive.json...");
 
 const gridEl = document.getElementById('archive-grid');
+const filtersEl = document.getElementById('archive-filters');
 const overlayEl = document.getElementById('overlay');
 const overlayImg = document.getElementById('overlay-image');
 const overlayMeta = document.getElementById('overlay-meta');
@@ -8,248 +9,84 @@ const overlayClose = document.getElementById('overlay-close');
 const resetBtn = document.getElementById('reset-archive');
 const themeButton = document.getElementById('archive-button');
 
-
-let archiveItems = [];
-
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function randomInRange(min, max) {
-  return min + Math.random() * (max - min);
-}
-
-function weightedScale(original) {
-  const r = Math.random();
-  if (original === 1) { if (r < 0.80) return 1; if (r < 0.95) return 2; return 3; }
-  if (original === 2) { if (r < 0.70) return 2; if (r < 0.90) return 1; return 3; }
-  if (original === 3) { if (r < 0.75) return 3; if (r < 0.90) return 2; return 1; }
-  return original || 2;
-}
-
-const PRELOAD_SCROLL_MARGIN = 300; 
-const PRELOAD_STOP_MARGIN   = 2200;  
-const PRELOAD_CONCURRENCY   = 4;
-
-let preloadQueue = [];
-let activeLoads = 0;
-
-function enqueueImgLoad(imgEl) {
-  if (!imgEl || !imgEl.dataset || !imgEl.dataset.src) return;
-  if (imgEl.dataset.queued === "1") return;
-  imgEl.dataset.queued = "1";
-  preloadQueue.push(imgEl);
-  pumpPreloadQueue();
-}
-
-function pumpPreloadQueue() {
-  while (activeLoads < PRELOAD_CONCURRENCY && preloadQueue.length) {
-    const img = preloadQueue.shift();
-    if (!img || !img.dataset || !img.dataset.src) continue;
-
-    activeLoads++;
-    const src = img.dataset.src;
-    img.src = src;
-    delete img.dataset.src;
-    delete img.dataset.queued;
-
-    const done = () => { activeLoads = Math.max(0, activeLoads - 1); pumpPreloadQueue(); };
-    img.decode ? img.decode().then(done).catch(done) : setTimeout(done, 80);
-  }
-}
-
-function preloadAroundViewport(marginPx) {
-  const scrollY = window.scrollY || 0;
-  const vh = window.innerHeight || 0;
-
-  archiveItems.forEach(item => {
-    const { el, baseTop, scale } = item;
-    const img = el.querySelector("img");
-    if (!img) return;
-
-    const factor = scale === 1 ? 0.02 : scale === 2 ? 0.2 : 0.3;
-    const visualY = baseTop + scrollY * factor;
-
-    if (visualY > -200 && visualY < vh + marginPx) {
-      enqueueImgLoad(img);
-    }
-  });
-}
+let allItems = [];
+let projectTitles = [];
+let activeFilter = "All";
 
 function fetchArchive() {
   fetch("data/archive.json")
-    .then(res => {
-      console.log("Fetch status:", res.status);
-      return res.json();
-    })
+    .then(res => res.json())
     .then(data => {
       console.log("Loaded items from JSON:", data.length);
-      renderArchive(data);
-preloadAroundViewport(PRELOAD_SCROLL_MARGIN);
-
+      // newest year first; stable sort keeps each project's images grouped together
+      allItems = data.slice().sort((a, b) => (b.year || 0) - (a.year || 0));
+      projectTitles = [...new Set(allItems.map(i => i.title).filter(Boolean))];
+      buildFilters();
+      renderArchive();
     })
-    .catch(err => console.error("Error fetching JSON:", err));
+    .catch(err => console.error("Error fetching archive JSON:", err));
 }
 
-const preloadMargin = 2400; 
-let observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;   
-    const img = entry.target.querySelector("img");
-    enqueueImgLoad(img);
+function buildFilters() {
+  if (!filtersEl) return;
+  filtersEl.innerHTML = "";
+
+  const makeChip = (label, value) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "filter-chip";
+    btn.textContent = label;
+    btn.setAttribute("aria-pressed", value === activeFilter ? "true" : "false");
+    btn.onclick = () => {
+      activeFilter = value;
+      renderArchive();
+      syncChips();
+    };
+    return btn;
+  };
+
+  filtersEl.appendChild(makeChip("All", "All"));
+  projectTitles.forEach(title => filtersEl.appendChild(makeChip(title, title)));
+  syncChips();
+}
+
+function syncChips() {
+  if (!filtersEl) return;
+  filtersEl.querySelectorAll(".filter-chip").forEach(chip => {
+    const isActive = chip.textContent === activeFilter;
+    chip.classList.toggle("active", isActive);
+    chip.setAttribute("aria-pressed", isActive ? "true" : "false");
   });
-}, {
-  rootMargin: `${preloadMargin}px 0px ${preloadMargin}px 0px`
-});
-
-function observeItems() {
-  archiveItems.forEach(i => observer.observe(i.el));
 }
 
-function renderArchive(items) {
+function renderArchive() {
   if (!gridEl) return;
   gridEl.innerHTML = "";
-  archiveItems = [];
 
-  const shuffled = shuffle(items);
+  const items = activeFilter === "All"
+    ? allItems
+    : allItems.filter(item => item.title === activeFilter);
 
-  let processed = shuffled.map(item => ({
-    ...item,
-    scale: weightedScale(item.scale ?? 2)
-  }));
-
-  let bgCount = 0;
-  processed = processed.map(item => {
-    if (item.scale === 1) {
-      if (bgCount < 4) {
-        bgCount++;
-        return item;
-      }
-      return { ...item, scale: 2 };
-    }
-    return item;
-  });
-
-  processed.forEach(item => {
-    const div = document.createElement("div");
-    div.classList.add("archive-item");
-    div.dataset.scale = item.scale;
+  items.forEach(item => {
+    const fig = document.createElement("figure");
+    fig.className = "archive-item";
 
     const img = document.createElement("img");
-    img.dataset.src = assetUrl(item.file_main);
-    img.decoding = "async"; 
+    img.src = assetUrl(item.file_main);
+    img.loading = "lazy";
+    img.decoding = "async";
     img.alt = item.title || item.id || "";
-    div.appendChild(img);
+    fig.appendChild(img);
 
-    div.addEventListener("click", () => openOverlay(item));
-    gridEl.appendChild(div);
-
-    archiveItems.push({
-      el: div,
-      scale: item.scale,
-      baseTop: 0,
-      dir: Math.random() < 0.5 ? -1 : 1
-    });
-  });
-
-  positionItems();
- observeItems(); 
-}
-
-function positionItems() {
-  if (!archiveItems.length) return;
-  const viewportHeight = window.innerHeight || 800;
-  const totalHeight = viewportHeight * 10;
-
-  gridEl.style.minHeight = totalHeight + "px";
-
-  const bgSlots = [
-    totalHeight * 0.10,
-    totalHeight * 0.30,
-    totalHeight * 0.55,
-    totalHeight * 0.80
-  ];
-  let bgIndex = 0;
-
-  archiveItems.forEach(item => {
-    const { el, scale } = item;
-    let leftVW = randomInRange(-10, 95);         
-let topPX = randomInRange(0, totalHeight);   
-
-
-    if (scale === 1) {
-      if (bgIndex < bgSlots.length) {
-        topPX = bgSlots[bgIndex] + randomInRange(-200, 150);
-        bgIndex++;
-      }
-      if (Math.random() < 0.85) {
-        leftVW = 50;
-      } else {
-        leftVW = randomInRange(-10, 110);
-      }
-    }
-
-    if (Math.random() < 0.15) {
-      leftVW = Math.random() < 0.5 ? -5 : 105;
-    }
-
-    el.style.left = leftVW + "vw";
-    item.baseTop = topPX;
-    el.style.top = topPX + "px";
-  });
-
-  onScroll();
-}
-
-function onScroll() {
-  const scrollY = window.scrollY || 0;
-
-  archiveItems.forEach(item => {
-    const { el, scale, baseTop } = item;
-
-const itemScreenPos = baseTop - scrollY;    // no DOM read, just math
-if (itemScreenPos < -500 || itemScreenPos > window.innerHeight + 500) return;
- 
-    const factor = scale === 1 ? 0.02 : scale === 2 ? 0.2 : 0.3;
-    const offset = scrollY * factor;
-
-
-
-    el.style.transform = `translate3d(0, ${offset}px, 0)`; // GPU accel
+    fig.addEventListener("click", () => openOverlay(item));
+    gridEl.appendChild(fig);
   });
 }
-
-
-let archiveTicking = false;
-let scrollStopTimer = null;
-
-window.addEventListener("scroll", () => {
-  if (!archiveTicking) {
-    archiveTicking = true;
-    requestAnimationFrame(() => {
-      onScroll();
-      preloadAroundViewport(PRELOAD_SCROLL_MARGIN);
-      archiveTicking = false;
-    });
-  }
-  clearTimeout(scrollStopTimer);
-  scrollStopTimer = setTimeout(() => {
-    preloadAroundViewport(PRELOAD_STOP_MARGIN);
-  }, 160); // stop scrolling
-});
-
-window.addEventListener("resize", positionItems);
 
 function openOverlay(item) {
   if (!overlayEl) return;
   overlayImg.src = assetUrl(item.file_main);
 
-  // Build structured metadata HTML
   const typesStr = (item.types || [])
     .filter(t => t !== "visual") // "visual" is too generic, skip it
     .join(" · ");
@@ -306,7 +143,9 @@ if (themeButton) {
 
 if (resetBtn) {
   resetBtn.addEventListener("click", () => {
-    fetchArchive();
+    activeFilter = "All";
+    renderArchive();
+    syncChips();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }

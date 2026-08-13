@@ -27,16 +27,56 @@ body {
   text-transform: uppercase;
 }
 
-/* FLOATY SPACE INSTEAD OF GRID */
-.archive-grid {
-  position: relative;
-  padding: 4rem 0 6rem;
-  min-height: 600vh;          
-  overflow: hidden;
+.archive-filters {
+  position: sticky;
+  top: 100px;
+  z-index: 50;
+  margin-top: 130px;
+  display: flex;
+  gap: .5rem;
+  overflow-x: auto;
+  padding: 8px clamp(16px, 4vw, 40px) 14px;
+  background: var(--bg);
+  scrollbar-width: none;
+}
+.archive-filters::-webkit-scrollbar { display: none; }
+
+.filter-chip {
+  flex: none;
+  padding: 6px 14px;
+  border: 1px solid var(--fg-faint);
+  border-radius: 999px;
+  background: none;
+  color: var(--fg-mute);
+  font: inherit;
+  font-size: .72rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.filter-chip:hover {
+  color: var(--fg);
+  border-color: var(--fg-mute);
+}
+.filter-chip.active {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
 }
 
+.archive-grid {
+  column-count: 2;
+  column-gap: 12px;
+  padding: 1.5rem clamp(16px, 4vw, 40px) 8rem;
+}
+@media (min-width: 640px)  { .archive-grid { column-count: 3; } }
+@media (min-width: 1000px) { .archive-grid { column-count: 4; column-gap: 16px; } }
+@media (min-width: 1440px) { .archive-grid { column-count: 5; } }
+
 .archive-item {
-  position: absolute;
+  break-inside: avoid;
+  margin: 0 0 12px;
   cursor: pointer;
   overflow: hidden;
 }
@@ -44,88 +84,14 @@ body {
 .archive-item img {
   width: 100%;
   height: auto;
-  object-fit: cover;
   display: block;
-  transition: transform 0.3s ease-out;
+  transition: transform .35s ease, opacity .35s ease;
 }
 
 .archive-item:hover img {
-  transform: scale(1.03);
+  transform: scale(1.025);
+  opacity: .92;
 }
-
-
-   scale=1 → background layer (largest, behind)
-   scale=2 → midground
-   scale=3 → foreground (small crisp details)
-*/
-
-.archive-item[data-scale="1"] {
-  position: absolute;
-  left: 50vw !important;
-  transform: translateX(-50%) !important;
-  width: 95vw;
-  opacity: 0.95;
-}
-
-
-.archive-item[data-scale="2"] {
-  z-index: 2;
-  width: 26vw;
-  opacity: 0.8;
-}
-
-.archive-item[data-scale="3"] {
-  z-index: 3;
-  width: 18vw;         /* crisp sharp detail */
-  opacity: 1;
-}
-
-
-.archive-item:not([data-scale]) {
-  z-index: 2;
-  width: 24vw;
-}
-
-@media (max-width: 768px) {
-  .archive-item[data-scale="3"] {
-    width: 80vw;
-  }
-  .archive-item[data-scale="2"] {
-    width: 60vw;
-  }
-  .archive-item[data-scale="1"] {
-    width: 50vw;
-  }
-  .archive-item:not([data-scale]) {
-    width: 55vw;
-  }
-
-  .archive-grid {
-    min-height: 220vh;
-  }
-}
-
-.archive-item[data-scale="1"] {
-  animation: drift1 45s infinite alternate ease-in-out;
-}
-
-.archive-item[data-scale="2"] {
-  animation: drift2 30s infinite alternate ease-in-out;
-}
-
-.archive-item[data-scale="3"] {
-  animation: drift3 20s infinite alternate ease-in-out;
-}
-
-@keyframes drift1 {
-  from { margin-top:-2vh; }
-  to   { margin-top:2vh; }
-}
-@keyframes drift2 {
-  from { margin-left:-1vw; }
-  to   { margin-left:1vw; }
-}
-@keyframes drift3 { from {transform:scale(1);} to {transform:scale(1.05);} }
 
 
 .overlay {
@@ -208,12 +174,6 @@ body {
   cursor: pointer;
   font-size: 1.1rem;
   line-height: 1.75rem;
-}
-
-:root { --scroll-offset: 0px; }
-
-.archive-item {
-    transform: translateY(var(--scroll-offset));
 }
 
 .archive-button {
@@ -320,30 +280,14 @@ body.dark-mode .skip-sound-btn {
   transform:scale(1.1);
 }
 
-.archive-item {
-    will-change: transform;
-    contain: layout paint style; 
-    transform: translate3d(0,0,0); 
-}
-
-#archive-grid {
-    contain: layout paint size;
-    perspective: 1000px; 
-}
-
-.archive-grid, .archive-item {
-    backface-visibility: hidden;
-}
-
-
-html,body {
-    overscroll-behavior: none;
-    scroll-behavior: auto !important;
-}
-
-.archive-item { will-change: transform; }
-
 @media (max-width: 768px) {
+  /* the dock (theme/sound/reset) relocates to the bottom on mobile,
+     so the filters only need to clear the top nav, not the dock too */
+  .archive-filters {
+    top: 64px;
+    margin-top: 74px;
+  }
+
   .archive-button {
     top: auto;
     right: auto;
