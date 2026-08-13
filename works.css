@@ -114,11 +114,6 @@ body[data-page="works"] {
 .work-card.open .summary{display:block;}
 .work-card.open .toggle{transform:rotate(180deg);}
 
-body[data-page="works"]{
-    background:#000;         
-    color:#fff;              
-}
-
 .works-grid{
     width:90vw;
     margin:120px auto 200px;
@@ -199,7 +194,13 @@ body[data-page="works"]{
 
     body[data-page="works"]{
         overflow-y:scroll;
-        scroll-snap-type:y mandatory; 
+    }
+
+    /* only start mandatory snapping once the sections actually exist —
+       enabling it before the JS builds .work-full sections can freeze
+       scroll input while the browser waits for a snap target that isn't there yet */
+    body[data-page="works"].snap-ready{
+        scroll-snap-type:y mandatory;
     }
 
     .work-full .work-info{

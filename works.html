@@ -71,7 +71,7 @@
 <script src="transition.js"></script>
 <script>
 document.getElementById("archive-button").onclick = ()=>{
-  document.body.classList.toggle("theme-warm");
+  document.body.classList.toggle("dark-mode");
   handleSoundState();
 };
 document.getElementById("skip-sound").onclick = ()=> skipTrack();
@@ -123,7 +123,8 @@ section.addEventListener("click", ()=>{
         wrapper.appendChild(section);
       });
 
-      return; 
+      document.body.classList.add("snap-ready");
+      return;
     }
 });
 </script>

@@ -297,7 +297,7 @@ document.addEventListener("keydown", e => {
 
 if (themeButton) {
   themeButton.addEventListener("click", () => {
-    document.body.classList.toggle("theme-warm");
+    document.body.classList.toggle("dark-mode");
     if (typeof handleSoundState === "function") {
       handleSoundState();
     }

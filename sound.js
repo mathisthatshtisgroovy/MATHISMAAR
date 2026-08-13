@@ -184,7 +184,7 @@ function stopEngine(){
 }
 
 window.handleSoundState = function(){
-  if(document.body.classList.contains("theme-warm")){
+  if(document.body.classList.contains("dark-mode")){
     startEngine();
   }else{
     stopEngine();
