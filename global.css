@@ -150,12 +150,14 @@ body[data-page="home"].dark-mode .home-button{
   gap:2.8rem;
   z-index:2000;
 }
-/* explicit size so nav links can't inherit whatever font-size a given
-   page's body happens to set (info.css sets a larger one for body copy,
-   which was leaking into the nav since it had no size of its own) */
+/* explicit size/line-height so nav links can't inherit whatever a given
+   page's body happens to set (info.css sets font-size and line-height
+   for body copy, both of which were leaking into the nav — the second
+   one shows up as the nav sitting visibly lower on the Info page) */
 .menu-items a,
 .mobile-menu a{
   font-size:1rem;
+  line-height:1.2;
 }
 
 .menu-items a::after{
@@ -179,6 +181,17 @@ body[data-page="archive"] .menu-items a[href*="archive"]::after{
 body[data-page="home"] .menu-items a,
 body[data-page="home"] .mobile-menu a{
   color:#fff;
+}
+
+/* the Works desktop view is a stack of full-bleed photo sections, same
+   deal as the home hero — nav needs a fixed light color + shadow so it
+   reads over any image regardless of the light/dark toggle */
+body[data-page="works"] .menu-items a{
+  color:#fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 1px 10px rgba(0,0,0,.6);
+}
+body[data-page="works"] .menu-items a::after{
+  background:#fff;
 }
 
 body.dark-mode .scroll-progress {
