@@ -25,6 +25,10 @@ body[data-page="works"] {
     left:20px;
     bottom:20px;
     pointer-events:none;
+    /* always light-on-photo regardless of site light/dark mode, with a soft
+       dark halo standing in for an outline so it stays legible over any image */
+    color:#fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 1px 10px rgba(0,0,0,.6);
 }
 .work-meta h2{
     font-size:1.4rem;
