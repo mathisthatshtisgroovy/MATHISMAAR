@@ -1388,7 +1388,7 @@
       "visual",
       "installation"
     ],
-    "file_main": "/assets/img/SYRINX_VISUAL_1.jpg",
+    "file_main": "/assets/img/SYRINX_VISUAL_1.webp",
     "tags": [
       "sound;sculpture;installation",
       "sound",
@@ -1407,7 +1407,7 @@
       "visual",
       "installation"
     ],
-    "file_main": "/assets/img/SYRINX_VISUAL_2.jpg",
+    "file_main": "/assets/img/SYRINX_VISUAL_2.webp",
     "tags": [
       "sound;sculpture;installation",
       "sound",
@@ -1426,7 +1426,7 @@
       "visual",
       "installation"
     ],
-    "file_main": "/assets/img/SYRINX_VISUAL_3.jpg",
+    "file_main": "/assets/img/SYRINX_VISUAL_3.webp",
     "tags": [
       "sound;sculpture;installation",
       "sound",
@@ -1445,7 +1445,7 @@
       "visual",
       "installation"
     ],
-    "file_main": "/assets/img/SYRINX_VISUAL_4.jpg",
+    "file_main": "/assets/img/SYRINX_VISUAL_4.webp",
     "tags": [
       "sound;sculpture;installation",
       "sound",
@@ -1464,7 +1464,26 @@
       "visual",
       "installation"
     ],
-    "file_main": "/assets/img/SYRINX_VISUAL_5.jpg",
+    "file_main": "/assets/img/SYRINX_VISUAL_5.webp",
+    "tags": [
+      "sound;sculpture;installation",
+      "sound",
+      "sculpture",
+      "installation"
+    ],
+    "description": "Installation view",
+    "credits": "",
+    "scale": 2
+  },
+  {
+    "id": "SYRINX_VISUAL_6",
+    "title": "SYRINXES",
+    "year": 2026,
+    "types": [
+      "visual",
+      "installation"
+    ],
+    "file_main": "/assets/img/SYRINX_VISUAL_6.webp",
     "tags": [
       "sound;sculpture;installation",
       "sound",
@@ -1483,7 +1502,7 @@
       "performance",
       "installation"
     ],
-    "file_main": "/assets/img/SYRINX_PERFORMANCE_1.jpg",
+    "file_main": "/assets/img/SYRINX_PERFORMANCE_1.webp",
     "tags": [
       "performance;sound;installation",
       "performance",
@@ -1502,7 +1521,7 @@
       "performance",
       "installation"
     ],
-    "file_main": "/assets/img/SYRINX_PERFORMANCE_2.jpg",
+    "file_main": "/assets/img/SYRINX_PERFORMANCE_2.webp",
     "tags": [
       "performance;sound;installation",
       "performance",
