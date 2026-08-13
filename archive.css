@@ -27,11 +27,18 @@ body {
   text-transform: uppercase;
 }
 
+.archive-page {
+  /* padding, not margin, here: a margin-top on the sticky filter bar below
+     (its first in-flow child, since the dock above it is all position:fixed)
+     collapses through body's own top edge, letting the un-themed html
+     background show through above body in dark mode */
+  padding-top: 130px;
+}
+
 .archive-filters {
   position: sticky;
   top: 100px;
   z-index: 50;
-  margin-top: 130px;
   display: flex;
   gap: .5rem;
   overflow-x: auto;
@@ -272,9 +279,11 @@ body.dark-mode .skip-sound-btn {
 @media (max-width: 768px) {
   /* the dock (theme/sound/reset) relocates to the bottom on mobile,
      so the filters only need to clear the top nav, not the dock too */
+  .archive-page {
+    padding-top: 74px;
+  }
   .archive-filters {
     top: 64px;
-    margin-top: 74px;
   }
 
   .archive-button {
