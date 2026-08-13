@@ -11,9 +11,20 @@ body[data-page="info"]{
 
 /* Inner container for text layout */
 .info-inner {
-    max-width: 800px;         
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.info-title{
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 0.8em;
+}
+@media (max-width: 768px){
+  .info-title{ font-size: 1.4rem; }
 }
 
 body[data-page="info"] {
