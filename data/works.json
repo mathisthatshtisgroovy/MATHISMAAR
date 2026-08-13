@@ -76,5 +76,18 @@
     "gallery": "HARVEST_OF_NOISE_VISUAL_1.webp|HARVEST_OF_NOISE_VISUAL_2.webp|HARVEST_OF_NOISE_VISUAL_3.webp|HARVEST_OF_NOISE_VISUAL_4.webp|HARVEST_OF_NOISE_VISUAL_5.webp|HARVEST_OF_NOISE_VISUAL_6.webp",
     "video": "",
     "credits": ""
+  },
+  {
+    "id": "SYRINX_VISUAL_1",
+    "title": "SYRINXES",
+    "year": "2026",
+    "type": "Multimedia Installation",
+    "order": 0,
+    "hero": "assets/works/SYRINX_VISUAL_1.jpg",
+    "summary": "A chance encounter between a singing chaffinch, a factory worker's whistle and the electromagnetic emissions surrounding ASML led Mathis Dabbarh Marsepoil to explore how culture is transmitted across human, technological and more-than-human worlds. Following migratory bird routes from southern Morocco, where his roots lie, to his current home in the Netherlands, the designer spent five months recording birdsong, radio transmissions, electromagnetic fields and spoken language; meeting conservationists, scientists, musicians and craftspeople; and searching archival collections and digital memory systems.",
+    "description_long": "These materials form an immersive installation in which networked signals pass between sculptural bird bodies, sound and electronics, generating an open-ended performance through which visitors move. Bringing together biological, technological and cultural systems of transmission, the installation traces how migration, language and territory carry memory and belonging. It reflects on how colonial legacies in contemporary technology shape what is preserved, what is lost through standardisation or left beyond the archive's reach.",
+    "gallery": "SYRINX_VISUAL_1.jpg|SYRINX_VISUAL_2.jpg|SYRINX_VISUAL_3.jpg|SYRINX_VISUAL_4.jpg|SYRINX_VISUAL_5.jpg|SYRINX_PERFORMANCE_1.jpg|SYRINX_PERFORMANCE_2.jpg",
+    "video": "",
+    "credits": "Text: Nadine Botha. Photography (Visuals): Petr Kroschinsky. Photography (Activation): Celine Caly. Exhibited at Dutch Design Week 2026, MA Geo-Design Graduation Show, Microstad, Eindhoven, NL."
   }
 ]

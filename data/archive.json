@@ -1379,5 +1379,138 @@
     "description": "SHOW",
     "credits": "produced with Tymon Zaniewski, Céleste Zion, Dora Heller-Russell, Gijs Motzelt. Photos by Anwyn Howarth",
     "scale": 2
+  },
+  {
+    "id": "SYRINX_VISUAL_1",
+    "title": "SYRINXES",
+    "year": 2026,
+    "types": [
+      "visual",
+      "installation"
+    ],
+    "file_main": "/assets/img/SYRINX_VISUAL_1.jpg",
+    "tags": [
+      "sound;sculpture;installation",
+      "sound",
+      "sculpture",
+      "installation"
+    ],
+    "description": "Installation view",
+    "credits": "Photo: Petr Kroschinsky",
+    "scale": 2
+  },
+  {
+    "id": "SYRINX_VISUAL_2",
+    "title": "SYRINXES",
+    "year": 2026,
+    "types": [
+      "visual",
+      "installation"
+    ],
+    "file_main": "/assets/img/SYRINX_VISUAL_2.jpg",
+    "tags": [
+      "sound;sculpture;installation",
+      "sound",
+      "sculpture",
+      "installation"
+    ],
+    "description": "Installation view",
+    "credits": "Photo: Petr Kroschinsky",
+    "scale": 2
+  },
+  {
+    "id": "SYRINX_VISUAL_3",
+    "title": "SYRINXES",
+    "year": 2026,
+    "types": [
+      "visual",
+      "installation"
+    ],
+    "file_main": "/assets/img/SYRINX_VISUAL_3.jpg",
+    "tags": [
+      "sound;sculpture;installation",
+      "sound",
+      "sculpture",
+      "installation"
+    ],
+    "description": "Installation view",
+    "credits": "Photo: Petr Kroschinsky",
+    "scale": 2
+  },
+  {
+    "id": "SYRINX_VISUAL_4",
+    "title": "SYRINXES",
+    "year": 2026,
+    "types": [
+      "visual",
+      "installation"
+    ],
+    "file_main": "/assets/img/SYRINX_VISUAL_4.jpg",
+    "tags": [
+      "sound;sculpture;installation",
+      "sound",
+      "sculpture",
+      "installation"
+    ],
+    "description": "Installation view",
+    "credits": "Photo: Petr Kroschinsky",
+    "scale": 2
+  },
+  {
+    "id": "SYRINX_VISUAL_5",
+    "title": "SYRINXES",
+    "year": 2026,
+    "types": [
+      "visual",
+      "installation"
+    ],
+    "file_main": "/assets/img/SYRINX_VISUAL_5.jpg",
+    "tags": [
+      "sound;sculpture;installation",
+      "sound",
+      "sculpture",
+      "installation"
+    ],
+    "description": "Installation view",
+    "credits": "",
+    "scale": 2
+  },
+  {
+    "id": "SYRINX_PERFORMANCE_1",
+    "title": "SYRINXES",
+    "year": 2026,
+    "types": [
+      "performance",
+      "installation"
+    ],
+    "file_main": "/assets/img/SYRINX_PERFORMANCE_1.jpg",
+    "tags": [
+      "performance;sound;installation",
+      "performance",
+      "sound",
+      "installation"
+    ],
+    "description": "Activation",
+    "credits": "Photo: Céline Caly",
+    "scale": 2
+  },
+  {
+    "id": "SYRINX_PERFORMANCE_2",
+    "title": "SYRINXES",
+    "year": 2026,
+    "types": [
+      "performance",
+      "installation"
+    ],
+    "file_main": "/assets/img/SYRINX_PERFORMANCE_2.jpg",
+    "tags": [
+      "performance;sound;installation",
+      "performance",
+      "sound",
+      "installation"
+    ],
+    "description": "Activation",
+    "credits": "Photo: Céline Caly",
+    "scale": 2
   }
 ]
