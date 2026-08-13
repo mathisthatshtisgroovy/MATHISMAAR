@@ -12,7 +12,7 @@ let allItems = [];
 let activeFilter = "All";
 
 // preferred display order — only categories that actually have items show up
-const CATEGORY_ORDER = ["Sound", "Video", "Object", "Performance", "Publication", "Research"];
+const CATEGORY_ORDER = ["Sound", "Video", "Object", "Performance", "Publication", "Fieldwork"];
 
 function categorize(item) {
   const types = (item.types || []).map(t => t.toLowerCase());
@@ -23,8 +23,10 @@ function categorize(item) {
   if (has(types, "publication")) return "Publication";
   if (types.includes("object") || has(types, "ceramics", "prototype", "instrument", "interactive object", "lamp")) return "Object";
   if (has(types, "performance", "curation")) return "Performance";
-  if (!isInstallation && has(types, "process", "material", "research")) return "Research";
-  if (!isInstallation && has(types, "moving image", "video", "stil", "still", "shot", "process narration")) return "Video";
+  // a still is a frame taken from video, so it belongs under Video regardless
+  // of whether the underlying piece is also an installation
+  if (has(types, "moving image", "video", "stil", "still") || has(tags, "still from video", "moving image")) return "Video";
+  if (has(types, "process", "material", "research")) return "Fieldwork";
   if (has(tags, "sonic", "sound") || isInstallation) return "Sound";
   return "Video";
 }

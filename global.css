@@ -150,6 +150,13 @@ body[data-page="home"].dark-mode .home-button{
   gap:2.8rem;
   z-index:2000;
 }
+/* explicit size so nav links can't inherit whatever font-size a given
+   page's body happens to set (info.css sets a larger one for body copy,
+   which was leaking into the nav since it had no size of its own) */
+.menu-items a,
+.mobile-menu a{
+  font-size:1rem;
+}
 
 .menu-items a::after{
   content:"";
