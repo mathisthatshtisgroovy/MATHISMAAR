@@ -825,26 +825,8 @@
       "performance",
       "event curation"
     ],
-    "description": "",
-    "credits": "performed with Emil Rey Buchler",
-    "scale": 2
-  },
-  {
-    "id": "575_CLOSING_DDW_VISUAL_4",
-    "title": "575 Closing DDW",
-    "year": 2024,
-    "types": [
-      "performance",
-      "curation"
-    ],
-    "file_main": "/assets/img/575_CLOSING_DDW_VISUAL_4.webp",
-    "tags": [
-      "performance;event curation",
-      "performance",
-      "event curation"
-    ],
-    "description": "",
-    "credits": "performed with Emil Rey Buchler",
+    "description": "Emil Rey Buchler playing cello",
+    "credits": "Emil Rey Buchler",
     "scale": 2
   },
   {
@@ -962,7 +944,7 @@
     "scale": 2
   },
   {
-    "id": "BIRDS_AND_MACHINES_VISUAL_3",
+    "id": "BIRDS_AND_MACHINES_VISUAL_2",
     "title": "Birds And Machines",
     "year": 2024,
     "types": [
@@ -1257,8 +1239,8 @@
       "still from video",
       "still from video"
     ],
-    "description": "Video",
-    "credits": "produced with Tymon Zaniewski, Sasha Nazarova\n",
+    "description": "",
+    "credits": "",
     "scale": 2
   },
   {
@@ -1274,8 +1256,8 @@
       "still from video",
       "still from video"
     ],
-    "description": "Video",
-    "credits": "produced with Tymon Zaniewski, Sasha Nazarova\n",
+    "description": "",
+    "credits": "",
     "scale": 2
   },
   {
@@ -1291,8 +1273,8 @@
       "still from video",
       "still from video"
     ],
-    "description": "Video",
-    "credits": "produced with Tymon Zaniewski, Sasha Nazarova\n",
+    "description": "",
+    "credits": "",
     "scale": 1
   },
   {
@@ -1308,8 +1290,8 @@
       "photography",
       "photography"
     ],
-    "description": "SHOW",
-    "credits": "produced with Tymon Zaniewski, Céleste Zion, Dora Heller-Russell, Gijs Motzelt. Photos by Anwyn Howarth",
+    "description": "",
+    "credits": "",
     "scale": 2
   },
   {
@@ -1354,7 +1336,7 @@
       "group show",
       "multimedia installation"
     ],
-    "file_main": "/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_3 .webp",
+    "file_main": "/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_3.webp",
     "tags": [
       "Live",
       "Live"

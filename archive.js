@@ -9,8 +9,25 @@ const resetBtn = document.getElementById('reset-archive');
 const themeButton = document.getElementById('archive-button');
 
 let allItems = [];
-let projectTitles = [];
 let activeFilter = "All";
+
+// preferred display order — only categories that actually have items show up
+const CATEGORY_ORDER = ["Sound", "Video", "Object", "Performance", "Publication", "Research"];
+
+function categorize(item) {
+  const types = (item.types || []).map(t => t.toLowerCase());
+  const tags = (item.tags || []).map(t => t.toLowerCase());
+  const has = (list, ...needles) => needles.some(n => list.some(x => x.includes(n)));
+  const isInstallation = has(types, "installation", "multimedia installation", "group show");
+
+  if (has(types, "publication")) return "Publication";
+  if (types.includes("object") || has(types, "ceramics", "prototype", "instrument", "interactive object", "lamp")) return "Object";
+  if (has(types, "performance", "curation")) return "Performance";
+  if (!isInstallation && has(types, "process", "material", "research")) return "Research";
+  if (!isInstallation && has(types, "moving image", "video", "stil", "still", "shot", "process narration")) return "Video";
+  if (has(tags, "sonic", "sound") || isInstallation) return "Sound";
+  return "Video";
+}
 
 function fetchArchive() {
   fetch("data/archive.json")
@@ -18,8 +35,9 @@ function fetchArchive() {
     .then(data => {
       console.log("Loaded items from JSON:", data.length);
       // newest year first; stable sort keeps each project's images grouped together
-      allItems = data.slice().sort((a, b) => (b.year || 0) - (a.year || 0));
-      projectTitles = [...new Set(allItems.map(i => i.title).filter(Boolean))];
+      allItems = data.slice()
+        .sort((a, b) => (b.year || 0) - (a.year || 0))
+        .map(item => ({ ...item, category: categorize(item) }));
       buildFilters();
       renderArchive();
     })
@@ -30,6 +48,9 @@ function buildFilters() {
   if (!filtersEl) return;
   filtersEl.innerHTML = "";
 
+  const present = new Set(allItems.map(i => i.category));
+  const categories = CATEGORY_ORDER.filter(c => present.has(c));
+
   const makeChip = (label, value) => {
     const btn = document.createElement("button");
     btn.type = "button";
@@ -38,14 +59,14 @@ function buildFilters() {
     btn.setAttribute("aria-pressed", value === activeFilter ? "true" : "false");
     btn.onclick = () => {
       activeFilter = value;
-      renderArchive();
+      applyFilter();
       syncChips();
     };
     return btn;
   };
 
   filtersEl.appendChild(makeChip("All", "All"));
-  projectTitles.forEach(title => filtersEl.appendChild(makeChip(title, title)));
+  categories.forEach(cat => filtersEl.appendChild(makeChip(cat, cat)));
   syncChips();
 }
 
@@ -58,17 +79,17 @@ function syncChips() {
   });
 }
 
+// build every item's DOM node exactly once — filtering just toggles visibility
+// afterwards, so already-loaded/decoded images never get torn down and
+// re-fetched (which was showing as a "reload" every time you switched filters)
 function renderArchive() {
   if (!gridEl) return;
   gridEl.innerHTML = "";
 
-  const items = activeFilter === "All"
-    ? allItems
-    : allItems.filter(item => item.title === activeFilter);
-
-  items.forEach(item => {
+  allItems.forEach(item => {
     const fig = document.createElement("figure");
     fig.className = "archive-item";
+    fig.dataset.category = item.category;
 
     const img = document.createElement("img");
     img.src = assetUrl(item.file_main);
@@ -79,6 +100,16 @@ function renderArchive() {
 
     fig.addEventListener("click", () => openOverlay(item));
     gridEl.appendChild(fig);
+  });
+
+  applyFilter();
+}
+
+function applyFilter() {
+  if (!gridEl) return;
+  gridEl.querySelectorAll(".archive-item").forEach(fig => {
+    const show = activeFilter === "All" || fig.dataset.category === activeFilter;
+    fig.classList.toggle("hidden", !show);
   });
 }
 
@@ -138,7 +169,7 @@ if (typeof resumeSoundIfNeeded === "function") {
 if (resetBtn) {
   resetBtn.addEventListener("click", () => {
     activeFilter = "All";
-    renderArchive();
+    applyFilter();
     syncChips();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });

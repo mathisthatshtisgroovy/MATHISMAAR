@@ -81,6 +81,10 @@ body {
   overflow: hidden;
 }
 
+.archive-item.hidden {
+  display: none;
+}
+
 .archive-item img {
   width: 100%;
   height: auto;
