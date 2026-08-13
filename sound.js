@@ -200,6 +200,7 @@ window.handleSoundState = function(){
 // to avoid a flash of the wrong theme — this just wires up the toggle
 // button and resumes audio if it was playing when the user left.
 window.toggleDarkMode = function(){
+  document.body.classList.add("theme-transition"); // animate this change only, not the initial load
   document.body.classList.toggle("dark-mode");
   localStorage.setItem(DARK_MODE_KEY, document.body.classList.contains("dark-mode") ? "1" : "0");
   handleSoundState();

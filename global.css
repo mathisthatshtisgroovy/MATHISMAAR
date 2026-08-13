@@ -37,6 +37,12 @@ html, body{
   color:var(--fg);
   background:var(--bg);
   font-family:"Helvetica Neue", sans-serif;
+  transition:opacity .35s ease;
+}
+/* only animate the dark-mode swap when the user actually clicks the toggle —
+   applying this by default made the very first paint on a stored dark-mode
+   visit fade in from white over 0.5s instead of just being black right away */
+body.theme-transition{
   transition:background-color .5s ease, color .5s ease, opacity .35s ease;
 }
 body.transparent-bg{
