@@ -76,56 +76,108 @@ body[data-page="work"] {
   border: none;
 }
 
-/* INFO */
-.work-info {
-  max-width: 680px;
-  margin: 100px auto 160px;
-  padding: 0 40px;
-  line-height: 1.6;
+/* COVER — full-bleed hero, title/meta on the left, description on the
+   right. Experimental per Mathis's classmate reference; kept as its own
+   section so it's easy to revert if it doesn't hold up. */
+.work-cover {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 120px 60px 100px;
+  box-sizing: border-box;
 }
-.work-info h1 {
-  font-size: 2.2rem;
+.work-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.1) 35%, rgba(0,0,0,.15) 65%, rgba(0,0,0,.5));
+  pointer-events: none;
+}
+.work-cover-left,
+.work-cover-right,
+.work-cover-scroll {
+  position: relative;
+  z-index: 1;
+}
+.work-cover-left {
+  max-width: 460px;
+}
+.work-cover-left h1 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
   font-weight: 400;
+  line-height: 1.08;
   letter-spacing: 0.01em;
-  margin-bottom: 10px;
+  margin: 0 0 14px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 1px 14px rgba(0,0,0,.6);
 }
-.work-meta {
-  font-size: 0.85rem;
+.work-cover-meta {
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.45;
-  margin-bottom: 40px;
+  opacity: 0.75;
+  text-shadow: 0 1px 3px rgba(0,0,0,.9);
 }
-.work-summary {
-  font-size: 1.05rem;
-  opacity: 0.85;
-  line-height: 1.7;
-  margin-bottom: 40px;
-}
-.work-description {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 40px;
-}
-.work-description p {
+.work-cover-right {
+  max-width: 420px;
   font-size: 0.95rem;
-  opacity: 0.65;
-  line-height: 1.8;
-  margin-bottom: 1.2em;
+  line-height: 1.75;
+  opacity: 0.88;
+  text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 1px 14px rgba(0,0,0,.6);
 }
+.work-cover-right p {
+  margin: 0 0 1.3em;
+}
+.work-cover-right p:last-child {
+  margin-bottom: 0;
+}
+.work-cover-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  opacity: 0.6;
+  text-shadow: 0 1px 3px rgba(0,0,0,.9);
+}
+
+/* CREDITS — standalone, after the gallery */
 .work-credits {
+  max-width: 680px;
+  margin: 60px auto 120px;
+  padding: 20px 40px 0;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
   opacity: 0.3;
   text-transform: uppercase;
-  margin-top: 60px;
   border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 20px;
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
   .gallery-slide img { max-width: 96vw; max-height: 78vh; }
-  .work-info { margin: 40px auto 100px; padding: 0 24px; }
-  .work-info h1 { font-size: 1.5rem; }
+
+  .work-cover {
+    padding: 90px 24px 70px;
+    gap: 28px;
+  }
+  .work-cover-left,
+  .work-cover-right {
+    max-width: 100%;
+  }
+  .work-cover-left h1 { font-size: 1.8rem; }
+  .work-cover-right {
+    font-size: 0.85rem;
+    line-height: 1.65;
+  }
+
+  .work-credits { margin: 40px auto 100px; padding: 20px 24px 0; }
   .work-video { width: 100vw; margin: 60px 0; }
 }

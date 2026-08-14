@@ -5,20 +5,35 @@ fetch("/data/works.json").then(r=>r.json()).then(list=>{
   const project = list.find(p=>p.id === id) || list[0];
   const el = document.getElementById("work-container");
 
-  // --- GALLERY (hero first, then gallery images) ---
-  const images = [];
-  
-  // Add hero as first image
+  // --- COVER — full-bleed hero with title/meta on the left, description on the right ---
+  const cover = document.createElement("section");
+  cover.className = "work-cover";
   if (project.hero) {
-    images.push(project.hero);
+    cover.style.backgroundImage = `url(${assetUrl(project.hero)})`;
   }
-  
-  // Add gallery images
-  if (project.gallery && project.gallery.trim()) {
-    project.gallery.split("|").map(s => s.trim()).filter(Boolean).forEach(src => {
-      images.push(`assets/works/${src}`);
-    });
-  }
+
+  const bodyParas = [project.summary, project.description_long]
+    .filter(t => t && t.trim())
+    .flatMap(t => t.split(/\n+/).map(p => p.trim()).filter(Boolean));
+
+  cover.innerHTML = `
+    <div class="work-cover-left">
+      <h1>${project.title}</h1>
+      <div class="work-cover-meta">${project.year}${project.type ? " · " + project.type : ""}</div>
+    </div>
+    <div class="work-cover-right">
+      ${bodyParas.map(p => `<p>${p}</p>`).join("")}
+    </div>
+    <div class="work-cover-scroll">scroll ↓</div>
+  `;
+  el.appendChild(cover);
+
+  // --- GALLERY (gallery images only — hero already shown in the cover) ---
+  const images = (project.gallery || "")
+    .split("|")
+    .map(s => s.trim())
+    .filter(Boolean)
+    .map(src => `assets/works/${src}`);
 
   if (images.length > 0) {
     const galleryWrap = document.createElement("div");
@@ -92,34 +107,11 @@ fetch("/data/works.json").then(r=>r.json()).then(list=>{
     el.appendChild(mediaBlock);
   }
 
-  // --- INFO BLOCK ---
-  const info = document.createElement("section");
-  info.className = "work-info";
-
-  info.innerHTML = `
-    <h1>${project.title}</h1>
-    <div class="work-meta">${project.year}${project.type ? " · " + project.type : ""}</div>
-    ${project.summary ? `<p class="work-summary">${project.summary}</p>` : ""}
-  `;
-
-  if (project.description_long && project.description_long.trim()) {
-    const desc = document.createElement("div");
-    desc.className = "work-description";
-    desc.innerHTML = project.description_long
-      .split(/\n+/)
-      .map(p => p.trim())
-      .filter(Boolean)
-      .map(p => `<p>${p}</p>`)
-      .join("");
-    info.appendChild(desc);
-  }
-
+  // --- CREDITS ---
   if (project.credits && project.credits.trim()) {
     const credits = document.createElement("p");
     credits.className = "work-credits";
     credits.textContent = project.credits;
-    info.appendChild(credits);
+    el.appendChild(credits);
   }
-
-  el.appendChild(info);
 });
