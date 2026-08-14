@@ -41,6 +41,7 @@ body {
 }
 
 .filter-chip {
+  position: relative;
   flex: none;
   padding: 4px 0 7px;
   border: none;
@@ -54,10 +55,20 @@ body {
   cursor: pointer;
   transition: color .2s, border-color .2s;
 }
+/* divider lives in the gap, as its own element — not padding on the
+   chip itself, which used to widen the chip's own box and made the
+   active underline extend under empty space instead of just the word */
 .filter-chip + .filter-chip {
   margin-left: 1.1rem;
-  padding-left: 1.1rem;
-  border-left: 1px solid var(--fg-faint);
+}
+.filter-chip + .filter-chip::before {
+  content: "";
+  position: absolute;
+  left: -0.65rem;
+  top: 4px;
+  bottom: 7px;
+  width: 1px;
+  background: var(--fg-faint);
 }
 .filter-chip:hover {
   color: var(--fg);

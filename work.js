@@ -24,7 +24,6 @@ fetch("/data/works.json").then(r=>r.json()).then(list=>{
     <div class="work-cover-right">
       ${bodyParas.map(p => `<p>${p}</p>`).join("")}
     </div>
-    <div class="work-cover-scroll">scroll ↓</div>
   `;
   el.appendChild(cover);
 
