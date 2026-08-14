@@ -35,6 +35,24 @@ body[data-page="works"] {
   font-variant-numeric: tabular-nums;
 }
 
+.work-row-thumb {
+  flex: none;
+  width: 88px;
+  height: 64px;
+  overflow: hidden;
+  background: var(--fg-faint);
+}
+.work-row-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .3s ease;
+}
+.work-row:hover .work-row-thumb img {
+  transform: scale(1.04);
+}
+
 .work-row-title {
   flex: 1 1 auto;
   min-width: 0;
@@ -61,53 +79,33 @@ body[data-page="works"] {
   opacity: .5;
 }
 
-/* floating preview image that follows the cursor — desktop only */
-.hover-preview {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 280px;
-  height: 200px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .2s ease;
-  z-index: 500;
-  overflow: hidden;
-  border: 1px solid var(--fg-faint);
-  background: var(--bg);
-}
-.hover-preview.show {
-  opacity: 1;
-}
-.hover-preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 @media (max-width: 900px) {
-  .hover-preview {
-    display: none;
-  }
   .works-index {
-    padding: 72px 20px 60px;
+    /* bottom clearance for the fixed theme dot, which relocates to the
+       bottom of the screen on mobile — matters once the list is tall
+       enough to scroll (thumbnails made rows taller) */
+    padding: 40px 20px 110px;
   }
   .work-row {
     flex-wrap: wrap;
     gap: 2px 16px;
-    padding: 12px 0;
+    padding: 4px 0;
   }
   .work-row-num {
     order: 0;
   }
-  .work-row-title {
+  .work-row-thumb {
     order: 1;
+    width: 52px;
+    height: 36px;
+  }
+  .work-row-title {
+    order: 2;
     flex-basis: 100%;
     font-size: 1.3rem;
   }
   .work-row-meta {
-    order: 2;
+    order: 3;
     gap: 14px;
     font-size: .7rem;
   }

@@ -56,45 +56,11 @@ body[data-page="work"] {
   font-variant-numeric: tabular-nums;
 }
 
-/* NAV — sharp outline buttons, not filled circles */
-.gallery-nav {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 0;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.3);
+/* no visible nav buttons — click left/right half of the image to step
+   through, arrow keys work too */
+.gallery.clickable {
   cursor: pointer;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color .25s, background .25s;
-  color: #fff;
-  font-size: 0;
 }
-.gallery-nav::before {
-  content: "";
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-top: 1.5px solid #fff;
-  border-right: 1.5px solid #fff;
-}
-.gallery-prev::before {
-  transform: rotate(-135deg) translate(-2px, 2px);
-}
-.gallery-next::before {
-  transform: rotate(45deg) translate(-2px, 2px);
-}
-.gallery-nav:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,.08);
-}
-.gallery-prev { left: 22px; }
-.gallery-next { right: 22px; }
 
 /* VIDEO */
 .work-video {
@@ -119,9 +85,8 @@ body[data-page="work"] {
 }
 .work-info h1 {
   font-size: 2.2rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.01em;
   margin-bottom: 10px;
 }
 .work-meta {
@@ -160,7 +125,6 @@ body[data-page="work"] {
 /* MOBILE */
 @media (max-width: 768px) {
   .gallery-slide img { max-width: 96vw; max-height: 78vh; }
-  .gallery-nav { display: none; }
   .work-info { margin: 40px auto 100px; padding: 0 24px; }
   .work-info h1 { font-size: 1.5rem; }
   .work-video { width: 100vw; margin: 60px 0; }

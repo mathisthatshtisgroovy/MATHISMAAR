@@ -34,7 +34,6 @@ body {
   top: 100px;
   z-index: 50;
   display: flex;
-  gap: .5rem;
   overflow-x: auto;
   padding: 8px clamp(16px, 4vw, 40px) 14px;
   background: var(--bg);
@@ -44,9 +43,9 @@ body {
 
 .filter-chip {
   flex: none;
-  padding: 6px 14px;
-  border: 1px solid var(--fg-faint);
-  border-radius: 0;
+  padding: 4px 0 7px;
+  border: none;
+  border-bottom: 1px solid transparent;
   background: none;
   color: var(--fg-mute);
   font: inherit;
@@ -54,16 +53,19 @@ body {
   letter-spacing: .04em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: color .2s, border-color .2s, background .2s;
+  transition: color .2s, border-color .2s;
+}
+.filter-chip + .filter-chip {
+  margin-left: 1.1rem;
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--fg-faint);
 }
 .filter-chip:hover {
   color: var(--fg);
-  border-color: var(--fg-mute);
 }
 .filter-chip.active {
-  background: var(--fg);
-  color: var(--bg);
-  border-color: var(--fg);
+  color: var(--fg);
+  border-bottom-color: var(--fg);
 }
 
 .archive-grid {

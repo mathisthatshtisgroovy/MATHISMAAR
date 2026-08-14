@@ -15,11 +15,13 @@
   <meta charset="UTF-8">
   <title>Work</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="global.css?v=20260813-6">
-  <link rel="stylesheet" href="work.css?v=20260813-6">
+  <link rel="stylesheet" href="global.css?v=20260813-10">
+  <link rel="stylesheet" href="archive.css?v=20260813-10">
+  <link rel="stylesheet" href="work.css?v=20260813-10">
 </head>
 
 <body data-page="work">
+<script>if(localStorage.getItem("mm-dark-mode")==="1")document.body.classList.add("dark-mode");</script>
 
 <div id="nav"></div>
 <script>
@@ -59,10 +61,22 @@
 </script>
 
 
+<div class="archive-button" id="archive-button"></div>
+<div class="now-playing-wrap">
+  <div id="skip-sound" class="skip-sound-btn"></div>
+  <div id="now-playing" class="now-playing-text">Now Playing: —</div>
+  <div id="skip-notice" class="skip-notice">skipped</div>
+</div>
+
 <div id="work-container"></div>
 
-<script src="work.js?v=20260813-6"></script>
-<script src="sound.js?v=20260813-6"></script>
-<script src="transition.js?v=20260813-6"></script>
+<script src="work.js?v=20260813-10"></script>
+<script src="sound.js?v=20260813-10"></script>
+<script src="transition.js?v=20260813-10"></script>
+<script>
+document.getElementById("archive-button").onclick = ()=> toggleDarkMode();
+document.getElementById("skip-sound").onclick = ()=> skipTrack();
+resumeSoundIfNeeded();
+</script>
 </body>
 </html>
