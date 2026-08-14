@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .page-title {
   position:fixed;
   top:22px;
@@ -183,15 +189,24 @@ body[data-page="home"] .mobile-menu a{
   color:#fff;
 }
 
-/* the Works desktop view is a stack of full-bleed photo sections, same
-   deal as the home hero — nav needs a fixed light color + shadow so it
-   reads over any image regardless of the light/dark toggle */
-body[data-page="works"] .menu-items a{
+/* the individual work page is a permanently-dark gallery viewer (never
+   gets the dark-mode class toggled, since there's no toggle on it) —
+   nav needs a fixed light color so it doesn't inherit the light-mode
+   default black and disappear against the black background */
+body[data-page="work"] .menu-items a,
+body[data-page="work"] .mobile-menu a{
   color:#fff;
   text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 1px 10px rgba(0,0,0,.6);
 }
-body[data-page="works"] .menu-items a::after{
+body[data-page="work"] .menu-items a::after{
   background:#fff;
+}
+body[data-page="work"] .home-button{
+  border-color:#fff;
+}
+body[data-page="work"] .mobile-menu-toggle{
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
 }
 
 body.dark-mode .scroll-progress {
@@ -204,7 +219,7 @@ html { scrollbar-gutter: stable; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
     background: rgba(128,128,128,.6);
-    border-radius: 10px;
+    border-radius: 0;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(128,128,128,.85);
@@ -234,7 +249,7 @@ html { scrollbar-gutter: stable; }
     justify-content: center;
     width: 42px;
     height: 42px;
-    border-radius: 999px;
+    border-radius: 0;
     border: 1px solid var(--fg-faint);
     background: transparent;
     color: var(--fg);
@@ -263,7 +278,7 @@ html { scrollbar-gutter: stable; }
     width: auto;
     transform: none !important;
     padding: 14px 16px;
-    border-radius: 18px;
+    border-radius: 0;
     background: var(--overlay-bg);
     backdrop-filter: blur(8px);
     border: 1px solid var(--fg-faint);
@@ -324,7 +339,7 @@ html { scrollbar-gutter: stable; }
     position: relative;
     width: 42px;
     height: 42px;
-    border-radius: 999px;
+    border-radius: 0;
     background: transparent;
     cursor: pointer;
     z-index: 2100;
@@ -339,7 +354,7 @@ html { scrollbar-gutter: stable; }
     height: 18px;
     background: var(--fg);
     transform: translate(-50%, -50%);
-    border-radius: 2px;
+    border-radius: 0;
     box-shadow: -9px 0 0 var(--fg), 9px 0 0 var(--fg);
   }
 
