@@ -23,7 +23,7 @@ async function initEngine(){
   masterGain.gain.value = 0;
   masterGain.connect(audioCtx.destination);
 
-  const res = await fetch(SOUND_FILE);
+  const res = await fetch(SOUND_FILE, { cache: "no-store" });
   sounds = await res.json();
   console.log("Loaded", sounds.length, "sound files");
 

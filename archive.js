@@ -32,7 +32,7 @@ function categorize(item) {
 }
 
 function fetchArchive() {
-  fetch("data/archive.json")
+  fetch("data/archive.json", { cache: "no-store" })
     .then(res => res.json())
     .then(data => {
       console.log("Loaded items from JSON:", data.length);

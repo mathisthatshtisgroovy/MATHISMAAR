@@ -1,6 +1,6 @@
 const id = location.hash.replace("#","").trim();
 
-fetch("/data/works.json").then(r=>r.json()).then(list=>{
+fetch("/data/works.json", { cache: "no-store" }).then(r=>r.json()).then(list=>{
 
   const project = list.find(p=>p.id === id) || list[0];
   const el = document.getElementById("work-container");
@@ -28,11 +28,13 @@ fetch("/data/works.json").then(r=>r.json()).then(list=>{
   el.appendChild(cover);
 
   // --- GALLERY (gallery images only — hero already shown in the cover) ---
+  // assets/works/ = the selected-work main/hero image only.
+  // assets/work/  = the rest of the gallery images. Different folders on purpose.
   const images = (project.gallery || "")
     .split("|")
     .map(s => s.trim())
     .filter(Boolean)
-    .map(src => `assets/works/${src}`);
+    .map(src => `assets/work/${src}`);
 
   if (images.length > 0) {
     const galleryWrap = document.createElement("div");
