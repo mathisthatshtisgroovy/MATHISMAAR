@@ -16,9 +16,9 @@
 <meta charset="UTF-8">
 <title>Selected Works – Mathis</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="global.css?v=20260813-14">
-<link rel="stylesheet" href="archive.css?v=20260813-14">
-<link rel="stylesheet" href="works.css?v=20260813-14">
+<link rel="stylesheet" href="global.css?v=20260814-2">
+<link rel="stylesheet" href="archive.css?v=20260814-2">
+<link rel="stylesheet" href="works.css?v=20260814-2">
 </head>
 
 <body data-page="works">
@@ -70,8 +70,8 @@
 
 <main class="works-index" id="works-index"></main>
 
-<script src="sound.js?v=20260813-14"></script>
-<script src="transition.js?v=20260813-14"></script>
+<script src="sound.js?v=20260814-2"></script>
+<script src="transition.js?v=20260814-2"></script>
 <script>
 document.getElementById("archive-button").onclick = ()=> toggleDarkMode();
 document.getElementById("skip-sound").onclick = ()=> skipTrack();
@@ -90,13 +90,15 @@ fetch("data/works.json", { cache: "no-store" })
       row.href = `work.html#${p.id}`;
 
       row.innerHTML = `
-        <span class="work-row-num">${String(i+1).padStart(2,"0")}</span>
-        <span class="work-row-thumb"><img src="${assetUrl(p.hero)}" alt="" loading="lazy"></span>
-        <span class="work-row-title">${p.title}</span>
-        <span class="work-row-meta">
-          <span class="work-row-type">${p.type || ""}</span>
-          <span class="work-row-year">${p.year}</span>
+        <span class="work-row-head">
+          <span class="work-row-num">${String(i+1).padStart(2,"0")}</span>
+          <span class="work-row-title">${p.title}</span>
+          <span class="work-row-meta">
+            <span class="work-row-type">${p.type || ""}</span>
+            <span class="work-row-year">${p.year}</span>
+          </span>
         </span>
+        <span class="work-row-thumb"><img src="${assetUrl(p.hero)}" alt="" loading="lazy"></span>
       `;
 
       list.appendChild(row);

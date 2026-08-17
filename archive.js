@@ -70,7 +70,29 @@ function buildFilters() {
   filtersEl.appendChild(makeChip("All", "All"));
   categories.forEach(cat => filtersEl.appendChild(makeChip(cat, cat)));
   syncChips();
+  syncGridOffset();
 }
+
+// .archive-filters is position:fixed (see archive.css), so it no longer
+// takes up space in the document flow — push .archive-grid down by
+// exactly the filter bar's rendered height so content doesn't start
+// underneath it. Re-measured on resize since the chips wrap onto more
+// lines (and grow taller) on narrow viewports.
+function syncGridOffset() {
+  if (!filtersEl || !gridEl) return;
+  const page = document.querySelector(".archive-page");
+  if (!page) return;
+  const gridBoxTop = page.getBoundingClientRect().top + parseFloat(getComputedStyle(page).paddingTop || 0);
+  const filtersBottom = filtersEl.getBoundingClientRect().bottom;
+  const gap = 24;
+  gridEl.style.paddingTop = Math.max(filtersBottom - gridBoxTop + gap, 8) + "px";
+}
+
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(syncGridOffset, 120);
+});
 
 function syncChips() {
   if (!filtersEl) return;

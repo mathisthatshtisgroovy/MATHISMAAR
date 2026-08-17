@@ -30,10 +30,14 @@ fetch("/data/works.json", { cache: "no-store" }).then(r=>r.json()).then(list=>{
   // --- GALLERY (gallery images only — hero already shown in the cover) ---
   // assets/works/ = the selected-work main/hero image only.
   // assets/work/  = the rest of the gallery images. Different folders on purpose.
+  // Some data rows also list the hero filename as the first gallery image
+  // (copy-paste from the CSV) — drop it so the hero doesn't show twice.
+  const heroName = (project.hero || "").split("/").pop().replace(/\s+/g, "").toLowerCase();
   const images = (project.gallery || "")
     .split("|")
     .map(s => s.trim())
     .filter(Boolean)
+    .filter(s => s.replace(/\s+/g, "").toLowerCase() !== heroName)
     .map(src => `assets/work/${src}`);
 
   if (images.length > 0) {

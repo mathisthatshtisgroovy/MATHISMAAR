@@ -30,8 +30,15 @@ body {
 }
 
 .archive-filters {
-  position: sticky;
+  /* fixed, not sticky — same technique as the nav/dock elsewhere on the
+     site. Sticky here was intermittently scrolling away with the grid
+     instead of holding its position; fixed removes the ambiguity.
+     archive.js measures its rendered height and pads .archive-grid to
+     match, since fixed takes it out of document flow. */
+  position: fixed;
   top: 100px;
+  left: 0;
+  right: 0;
   z-index: 50;
   display: flex;
   flex-wrap: wrap;
