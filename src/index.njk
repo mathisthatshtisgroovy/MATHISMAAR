@@ -1,0 +1,28 @@
+---
+pageKey: home
+pageTitle: Mathis Dabbarh Marsepoil
+---
+{% extends "base.njk" %}
+
+{% block head %}
+<link rel="stylesheet" href="/home.css">
+{% endblock %}
+
+{% block content %}
+<div id="hero" class="hero"></div>
+<div class="scroll-indicator">scroll ↓</div>
+
+<script>
+  var heroImages = ["hero1.webp","hero2.webp","hero3.webp"];
+  var hero = document.getElementById("hero");
+  var img = heroImages[Math.floor(Math.random() * heroImages.length)];
+  hero.style.backgroundImage = "url('" + assetUrl("assets/home/" + img) + "')";
+</script>
+
+<main class="scroll-index" id="works">
+  {% for work in collections.works %}
+    {% set linked = true %}
+    {% include "work-block.njk" %}
+  {% endfor %}
+</main>
+{% endblock %}

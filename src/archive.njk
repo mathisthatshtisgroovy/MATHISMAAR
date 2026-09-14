@@ -1,0 +1,59 @@
+---
+permalink: /archive/index.html
+---
+{# the archive is carried over from the old archive.html as-is — same markup,
+   same archive.css, same archive.js, same behaviour. it doesn't extend
+   base.njk because it brings its own dock and overlay; the only change is the
+   shared nav include in place of the old fetch("nav.html"). #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  window.ASSET_BASE = "https://mathismaar.b-cdn.net";
+  window.assetUrl = function (u) {
+    if (!u) return "";
+    if (u.startsWith("http")) return u;
+    return window.ASSET_BASE + "/" + u.replace(/^\/+/, "");
+  };
+  var assetUrl = window.assetUrl;
+</script>
+
+  <meta charset="UTF-8">
+  <title>Archive — Mathis Dabbarh Marsepoil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/global.css">
+  <link rel="stylesheet" href="/archive.css">
+  <link rel="stylesheet" href="/new.css">
+</head>
+<body data-page="archive">
+<script>if(localStorage.getItem("mm-dark-mode")!=="0")document.body.classList.add("dark-mode");</script>
+
+{% include "nav.njk" %}
+
+  <div class="archive-page">
+    <div class="archive-button" id="archive-button"></div>
+    <div id="reset-archive" class="reset-archive">ⵙ</div>
+    <div class="now-playing-wrap">
+      <div id="skip-sound" class="skip-sound-btn"></div>
+      <div id="now-playing" class="now-playing-text">Now Playing: —</div>
+      <div id="skip-notice" class="skip-notice">skipped</div>
+    </div>
+    <nav class="archive-filters" id="archive-filters"></nav>
+    <main class="archive-grid" id="archive-grid"></main>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="overlay-inner">
+      <img id="overlay-image" alt="">
+      <div class="overlay-meta" id="overlay-meta"></div>
+    </div>
+  </div>
+
+<script src="/sound.js"></script>
+<script src="/transition.js"></script>
+<script src="/archive.js"></script>
+<script>
+document.getElementById("skip-sound").onclick = ()=> skipTrack();
+</script>
+</body>
+</html>

@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  window.ASSET_BASE = "https://mathismaar.b-cdn.net";
+  window.assetUrl = function (u) {
+    if (!u) return "";
+    if (u.startsWith("http")) return u;
+    return window.ASSET_BASE + "/" + u.replace(/^\/+/, "");
+  };
+  var assetUrl = window.assetUrl;
+</script>
+
+<meta charset="UTF-8">
+<title>Mathis Dabbarh Marsepoil</title>
+<meta name="description" content="Mathis Dabbarh Marsepoil — sonic researcher and artist. Transmission of memory and culture, instruments, installations, field recording, spatial sound.">
+
+<meta property="og:title" content="Mathis Dabbarh Marsepoil">
+<meta property="og:description" content="Sonic researcher and artist — MA Geo-Design, Design Academy Eindhoven.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/global.css">
+<link rel="stylesheet" href="/archive.css">
+<link rel="stylesheet" href="/new.css">
+
+<link rel="stylesheet" href="/home.css">
+
+</head>
+
+<body data-page="home" class="transparent-bg">
+
+<script>if(localStorage.getItem("mm-dark-mode")!=="0")document.body.classList.add("dark-mode");</script>
+
+<div class="nav-container">
+  <a href="/" class="home-button" aria-label="Home"></a>
+
+  <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"></button>
+
+  <div class="menu-items" aria-label="Primary">
+    <a href="/#works">Works</a>
+    <a href="/info">Info</a>
+    <a href="/archive">Archive</a>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="/#works">Works</a>
+    <a href="/info">Info</a>
+    <a href="/archive">Archive</a>
+  </div>
+</div>
+<script>
+(function(){
+  var nav = document.currentScript.previousElementSibling.parentElement || document.querySelector(".nav-container");
+  var btn = document.querySelector(".mobile-menu-toggle");
+  var panel = document.getElementById("mobile-menu");
+  if (!btn || !panel) return;
+
+  function closeMenu() {
+    btn.setAttribute("aria-expanded", "false");
+    panel.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("menu-open");
+  }
+
+  btn.addEventListener("click", function () {
+    var open = btn.getAttribute("aria-expanded") === "true";
+    if (open) closeMenu();
+    else {
+      btn.setAttribute("aria-expanded", "true");
+      panel.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
+    }
+  });
+
+  panel.addEventListener("click", function (e) {
+    if (e.target && e.target.tagName === "A") closeMenu();
+  });
+
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeMenu();
+  });
+})();
+</script>
+
+
+<div class="archive-button" id="archive-button"></div>
+<div class="now-playing-wrap">
+  <div id="skip-sound" class="skip-sound-btn"></div>
+  <div id="now-playing" class="now-playing-text">Now Playing: —</div>
+  <div id="skip-notice" class="skip-notice">skipped</div>
+</div>
+
+
+<div id="hero" class="hero"></div>
+<div class="scroll-indicator">scroll ↓</div>
+
+<script>
+  var heroImages = ["hero1.webp","hero2.webp","hero3.webp"];
+  var hero = document.getElementById("hero");
+  var img = heroImages[Math.floor(Math.random() * heroImages.length)];
+  hero.style.backgroundImage = "url('" + assetUrl("assets/home/" + img) + "')";
+</script>
+
+<main class="scroll-index" id="works">
+  
+    
+    
+
+<section class="wb" id="syrinxes">
+
+  
+  <div class="wb-text wb-band">
+    <div class="wb-col wb-col--meta">
+      <span class="wb-year">2026</span>
+      <span class="wb-medium">Multimedia Installation</span>
+      
+    </div>
+
+    <div class="wb-col wb-col--main">
+      <a class="wb-title" href="/works/syrinxes/">SYRINXES</a>
+      
+      <p class="wb-abstract">A chance encounter between a singing chaffinch, a factory worker&#39;s whistle and the electromagnetic emissions surrounding ASML led Mathis Dabbarh Marsepoil to explore how culture is transmitted across human, technological and more-than-human worlds. Following migratory bird routes from southern Morocco, where his roots lie, to his current home in the Netherlands, the designer spent five months recording birdsong, radio transmissions, electromagnetic fields and spoken language; meeting conservationists, scientists, musicians and craftspeople; and searching archival collections and digital memory systems.</p>
+    </div>
+
+    <div class="wb-col wb-col--side">
+      
+      <span class="wb-credit">Text: Nadine Botha</span>
+      
+      <span class="wb-credit">Photography (Visuals): Petr Kroschinsky</span>
+      
+      <span class="wb-credit">Photography (Activation): Celine Caly</span>
+      
+      
+      <span class="wb-credit wb-shown">2026 Dutch Design Week — MA Geo-Design Graduation Show, Microstad, Eindhoven</span>
+      
+      
+    </div>
+  </div>
+
+  
+  <div class="wb-seq">
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/SYRINX_VISUAL_3.webp" alt="SYRINXES installation view"
+               width="6000" height="4000"
+               fetchpriority="high" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/SYRINX_VISUAL_1.webp" alt="SYRINXES installation view"
+               width="4290" height="2860"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/SYRINX_VISUAL_2.webp" alt="SYRINXES installation view"
+               width="5000" height="3333"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/SYRINX_VISUAL_4.webp" alt="SYRINXES installation view"
+               width="5479" height="3652"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/SYRINX_VISUAL_5.webp" alt="SYRINXES installation view"
+               width="2124" height="1179"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/SYRINX_VISUAL_6.webp" alt="SYRINXES installation view"
+               width="4096" height="2160"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/SYRINX_PERFORMANCE_1.webp" alt="SYRINXES activation"
+               width="4096" height="2160"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/SYRINX_PERFORMANCE_2.webp" alt="SYRINXES activation"
+               width="4096" height="2160"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+  </div>
+  
+
+</section>
+
+  
+    
+    
+
+<section class="wb" id="techno-ventriloquist">
+
+  
+  <div class="wb-text wb-band">
+    <div class="wb-col wb-col--meta">
+      <span class="wb-year">2026</span>
+      <span class="wb-medium">Publication</span>
+      <span class="wb-details">MA Geo-Design Thesis, Design Academy Eindhoven</span>
+    </div>
+
+    <div class="wb-col wb-col--main">
+      <a class="wb-title" href="/works/techno-ventriloquist/">TECHNO-VENTRILOQUIST</a>
+      
+      <p class="wb-abstract">A digital migration of bird&#39;s vocalizations.</p>
+    </div>
+
+    <div class="wb-col wb-col--side">
+      
+      <span class="wb-credit">Images: Sabina Scorţanu</span>
+      
+      <span class="wb-credit">Research in collaboration with: MNHN; British Library Sound Archive; Bird Life Morocco (GREPOM) GOHNS; Dr. Olga Feher; Real Instituto y Observatorio de la Armada</span>
+      
+      
+      
+      <a class="wb-credit wb-link" href="https://abodyholdsabody.github.io/a-body-holds-a-body-holds-a-body/credits.html" target="_blank" rel="noopener">A body holds a body ↗</a>
+      
+    </div>
+  </div>
+
+  
+  <div class="wb-seq">
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TECHNO_VENTRILOQUIST_VISUAL_1.jpg" alt="Techno-Ventriloquist publication"
+               width="6000" height="4000"
+               fetchpriority="high" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TECHNO_VENTRILOQUIST_VISUAL_2.png" alt="Techno-Ventriloquist publication"
+               width="3000" height="2000"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TECHNO_VENTRILOQUIST_VISUAL_3.png" alt="Techno-Ventriloquist publication"
+               width="2999" height="2000"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TECHNO_VENTRILOQUIST_VISUAL_4.png" alt="Techno-Ventriloquist publication"
+               width="2462" height="1641"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+  </div>
+  
+
+</section>
+
+  
+    
+    
+
+<section class="wb" id="taken-for-a-bat-space" style="--seam-color: #ff2200">
+
+  
+  <div class="wb-text wb-band">
+    <div class="wb-col wb-col--meta">
+      <span class="wb-year">2025</span>
+      <span class="wb-medium">Multimedia show</span>
+      
+    </div>
+
+    <div class="wb-col wb-col--main">
+      <a class="wb-title" href="/works/taken-for-a-bat-space/">TAKEN FOR A BAT SPACE</a>
+      
+      <p class="wb-abstract">TAKEN FOR A BAT SPACE is An experiment built by a collective of  international designers reclaiming space together. Through collective  building, installations, and performances, it staged a cultural shelter to  experience and discuss rewilding processes and beyond human spectrum  sensing. It was activated during Dutch Design Week 2025 and hosted by ReWild  Farm.</p>
+    </div>
+
+    <div class="wb-col wb-col--side">
+      
+      <span class="wb-credit">With: Dora Heller Russel, Tymon Zaniewski, Celeste Zion</span>
+      
+      
+      
+    </div>
+  </div>
+
+  
+  <div class="wb-seq">
+    
+    
+    
+    
+    <div class="wb-row wb-row--lead">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_1 .webp" alt="TAKEN FOR A BAT SPACE installation view"
+               width="4708" height="3139"
+               fetchpriority="high" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TAKEN_FOR_A_BAT_SPACE_VISUAL_1.webp" alt="TAKEN FOR A BAT SPACE installation view"
+               width="1920" height="1080"
+               fetchpriority="high" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TAKEN_FOR_A_BAT_SPACE_VISUAL_2.webp" alt="TAKEN FOR A BAT SPACE installation view"
+               width="2440" height="1600"
+               fetchpriority="high" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 2 / 3">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_4 .webp" alt="TAKEN FOR A BAT SPACE installation view"
+               width="3840" height="5760"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 2 / 3">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_3.webp" alt="TAKEN FOR A BAT SPACE installation view"
+               width="3402" height="5103"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 2 / 3">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TAKEN_FOR_A_BAT_SPACE_LIVE_2 .webp" alt="TAKEN FOR A BAT SPACE installation view"
+               width="3327" height="4991"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 2 / 3">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/TAKEN_FOR_A_BAT_SPACE_VISUAL_4.webp" alt="TAKEN FOR A BAT SPACE installation view"
+               width="3376" height="6000"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+  </div>
+  
+
+</section>
+
+  
+    
+    
+
+<section class="wb" id="birds-and-machines">
+
+  
+  <div class="wb-text wb-band">
+    <div class="wb-col wb-col--meta">
+      <span class="wb-year">2025</span>
+      <span class="wb-medium">Video research</span>
+      
+    </div>
+
+    <div class="wb-col wb-col--main">
+      <a class="wb-title" href="/works/birds-and-machines/">BIRDS AND MACHINES</a>
+      
+      <p class="wb-abstract">BIRDS AND MACHINES is an ongoing visual research, film and installation  project that follows the migration traces of birds between Gibraltar and the  Atlas Mountains.</p>
+    </div>
+
+    <div class="wb-col wb-col--side">
+      
+      
+      
+    </div>
+  </div>
+
+  
+  <div class="wb-seq">
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 1280 / 407">
+        <span class="wb-shot">
+          
+          
+          <video src="https://mathismaar.b-cdn.net/assets/home/teaser.mp4" muted loop playsinline
+                 preload="none" aria-label="BIRDS AND MACHINES animation"
+                 width="1280" height="407"></video>
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BIRDS_AND_MACHINES_VISUAL_1.webp" alt="BIRDS AND MACHINES installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BIRDS_AND_MACHINES_VISUAL_2.webp" alt="BIRDS AND MACHINES installation view"
+               width="6000" height="4000"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BIRDS_AND_MACHINES_VISUAL_3.webp" alt="BIRDS AND MACHINES installation view"
+               width="6000" height="4000"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BIRDS_AND_MACHINES_VISUAL_4.webp" alt="BIRDS AND MACHINES installation view"
+               width="6000" height="4000"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BIRDS_AND_MACHINES_VISUAL_5.webp" alt="BIRDS AND MACHINES installation view"
+               width="6000" height="4000"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+  </div>
+  
+
+</section>
+
+  
+    
+    
+
+<section class="wb" id="borders-of-neutrality">
+
+  
+  <div class="wb-text wb-band">
+    <div class="wb-col wb-col--meta">
+      <span class="wb-year">2024</span>
+      <span class="wb-medium">Installation</span>
+      
+    </div>
+
+    <div class="wb-col wb-col--main">
+      <a class="wb-title" href="/works/borders-of-neutrality/">BORDERS OF NEUTRALITY</a>
+      
+      <p class="wb-abstract">BORDERS OF NEUTRALITY is a multimedia installation that reads the Alps as a  shifting border archive, where melting glaciers redraw the lines of Swiss  neutrality. A staged view from a mountain bench fractures under sonic  disruptions and visual glitches. The project traces how geological  aesthetics are co-opted into policy as visual tools of authority.</p>
+    </div>
+
+    <div class="wb-col wb-col--side">
+      
+      <span class="wb-credit">With: Aleksandra Nazarova</span>
+      
+      
+      
+    </div>
+  </div>
+
+  
+  <div class="wb-seq">
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BORDERS_OF_NEUTRALITY_VISUAL_8.webp" alt="BORDERS OF NEUTRALITY installation view"
+               width="4961" height="3508"
+               fetchpriority="high" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BORDERS_OF_NEUTRALITY_VISUAL_3.webp" alt="BORDERS OF NEUTRALITY installation view"
+               width="5120" height="3608"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BORDERS_OF_NEUTRALITY_VISUAL_4.webp" alt="BORDERS OF NEUTRALITY installation view"
+               width="4961" height="3508"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BORDERS_OF_NEUTRALITY_VISUAL_6.webp" alt="BORDERS OF NEUTRALITY installation view"
+               width="3884" height="2188"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--solo" style="--w: 25%">
+      
+      
+      <figure class="wb-frame" style="--r: 2 / 3">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BORDERS_OF_NEUTRALITY_VISUAL_1.webp" alt="BORDERS OF NEUTRALITY, slate detail"
+               width="3413" height="5120"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      
+      <div class="wb-aside"></div>
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 4 / 5">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BORDERS_OF_NEUTRALITY_PROCESSL_9.webp" alt="BORDERS OF NEUTRALITY, process"
+               width="1000" height="1250"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/BORDERS_OF_NEUTRALITY_VISUAL_5.webp" alt="BORDERS OF NEUTRALITY, slate bench"
+               width="4961" height="3508"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+  </div>
+  
+
+</section>
+
+  
+    
+    
+
+<section class="wb" id="i-thought-asml-slept-on-sundays">
+
+  
+  <div class="wb-text wb-band">
+    <div class="wb-col wb-col--meta">
+      <span class="wb-year">2024</span>
+      <span class="wb-medium">Sound Installation</span>
+      
+    </div>
+
+    <div class="wb-col wb-col--main">
+      <a class="wb-title" href="/works/i-thought-asml-slept-on-sundays/">I thought ASML slept on Sundays</a>
+      
+      <p class="wb-abstract">I Thought ASML Slept on Sundays is a sonic infiltration of ASML, mapping  what leaks from a sealed chip-making empire that powers computation,  surveillance, warfare and daily life. It assembles field-recorded  peripheries, encrypted patents and speculative sonic blueprints into a  three-layer installation: porous noise at the edge, extracted discourse  inside, and reverse-engineered machine imaginaries at the core. Where  extreme precision seeks absolute silence, control hums on, even when  unheard.</p>
+    </div>
+
+    <div class="wb-col wb-col--side">
+      
+      <span class="wb-credit">With: Emma Zerial, Aleksandra Nazarova</span>
+      
+      
+      
+    </div>
+  </div>
+
+  
+  <div class="wb-seq">
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ASML_VISUAL_1.webp" alt="I thought ASML slept on Sundays installation view"
+               width="1920" height="1200"
+               fetchpriority="high" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ASML_VISUAL_2.webp" alt="I thought ASML slept on Sundays installation view"
+               width="1280" height="800"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ASML_VISUAL_3.webp" alt="I thought ASML slept on Sundays installation view"
+               width="1920" height="1200"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+  </div>
+  
+
+</section>
+
+  
+    
+    
+
+<section class="wb" id="ultrasonic-systems" style="--seam-color: #ff2200">
+
+  
+  <div class="wb-text wb-band">
+    <div class="wb-col wb-col--meta">
+      <span class="wb-year">2024</span>
+      <span class="wb-medium">Video Installation</span>
+      
+    </div>
+
+    <div class="wb-col wb-col--main">
+      <a class="wb-title" href="/works/ultrasonic-systems/">ULTRASONIC SYSTEMS</a>
+      
+      <p class="wb-abstract">ULTRASONIC SYSTEMS is a sonic and visual research on the communication  systems beyond human hearing spectrum, hidden beneath the soil, bellow the  bricks as well as within the sky: from agrocultural computional sensing to  bats nesting in our old buildings. It bridges stories from housing crisis,  land control, urban policies and bats conservation.</p>
+    </div>
+
+    <div class="wb-col wb-col--side">
+      
+      
+      
+    </div>
+  </div>
+
+  
+  <div class="wb-seq">
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ULTRASONIC_SYSTEMS_VISUAL_3.webp" alt="ULTRASONIC SYSTEMS installation view"
+               width="1920" height="1080"
+               fetchpriority="high" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ULTRASONIC_SYSTEMS_VISUAL_1.webp" alt="ULTRASONIC SYSTEMS installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ULTRASONIC_SYSTEMS_VISUAL_2.webp" alt="ULTRASONIC SYSTEMS installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ULTRASONIC_SYSTEMS_VISUAL_4.webp" alt="ULTRASONIC SYSTEMS installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ULTRASONIC_SYSTEMS_VISUAL_5.webp" alt="ULTRASONIC SYSTEMS installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ULTRASONIC_SYSTEMS_VISUAL_7.webp" alt="ULTRASONIC SYSTEMS installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ULTRASONIC_SYSTEMS_VISUAL_8.webp" alt="ULTRASONIC SYSTEMS installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--solo" style="--w: 50%">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ULTRASONIC_SYSTEMS_VISUAL_9.webp" alt="ULTRASONIC SYSTEMS installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      
+      <div class="wb-aside"></div>
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--solo" style="--w: 25%">
+      
+      
+      <figure class="wb-frame" style="--r: 2 / 3">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/ULTRASONIC_SYSTEMS_VISUAL_10.webp" alt="ULTRASONIC SYSTEMS installation view"
+               width="4000" height="6000"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      
+      <div class="wb-aside"></div>
+      
+    </div>
+    
+  </div>
+  
+
+</section>
+
+  
+    
+    
+
+<section class="wb" id="a-harvest-of-noise">
+
+  
+  <div class="wb-text wb-band">
+    <div class="wb-col wb-col--meta">
+      <span class="wb-year">2024</span>
+      <span class="wb-medium">Sound Installation</span>
+      
+    </div>
+
+    <div class="wb-col wb-col--main">
+      <a class="wb-title" href="/works/a-harvest-of-noise/">A HARVEST OF NOISE</a>
+      
+      <p class="wb-abstract"></p>
+    </div>
+
+    <div class="wb-col wb-col--side">
+      
+      
+      
+    </div>
+  </div>
+
+  
+  <div class="wb-seq">
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/HARVEST_OF_NOISE_VISUAL_2.webp" alt="A HARVEST OF NOISE installation view"
+               width="1920" height="1080"
+               fetchpriority="high" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/HARVEST_OF_NOISE_VISUAL_1.webp" alt="A HARVEST OF NOISE installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/HARVEST_OF_NOISE_VISUAL_3.webp" alt="A HARVEST OF NOISE installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--2">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/HARVEST_OF_NOISE_VISUAL_4.webp" alt="A HARVEST OF NOISE installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/HARVEST_OF_NOISE_VISUAL_5.webp" alt="A HARVEST OF NOISE installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+    
+    
+    
+    <div class="wb-row wb-row--1">
+      
+      
+      <figure class="wb-frame" style="--r: 3 / 2">
+        <span class="wb-shot">
+          
+          
+          <img src="https://mathismaar.b-cdn.net/assets/img/HARVEST_OF_NOISE_VISUAL_6.webp" alt="A HARVEST OF NOISE installation view"
+               width="1920" height="1080"
+               loading="lazy" decoding="async">
+          
+        </span>
+        
+      </figure>
+      
+      
+    </div>
+    
+  </div>
+  
+
+</section>
+
+  
+</main>
+
+
+<script src="/sound.js"></script>
+<script src="/transition.js"></script>
+<script>
+document.getElementById("archive-button").onclick = ()=> toggleDarkMode();
+document.getElementById("skip-sound").onclick = ()=> skipTrack();
+resumeSoundIfNeeded();
+
+// pages with a full-bleed photo hero (home, worksingle) force the nav
+// white for legibility over the image; once scrolled past it into the
+// plain --bg content below, .past-hero hands the nav back to the normal
+// theme-aware color (see new.css / work-single.css)
+(function () {
+  function update() {
+    document.body.classList.toggle("past-hero", window.scrollY > window.innerHeight * 0.8);
+  }
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+})();
+
+// sequence videos are silent animations: don't fetch them until they're near
+// the viewport, play while on screen, pause once past. keeps a 27MB file off
+// the initial load.
+(function () {
+  var vids = document.querySelectorAll(".wb-shot video");
+  if (!vids.length || !("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (v.preload === "none") v.preload = "auto";
+        v.play().catch(function () {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { rootMargin: "200px" });
+  vids.forEach(function (v) { io.observe(v); });
+})();
+</script>
+
+</body>
+</html>

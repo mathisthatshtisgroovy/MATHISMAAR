@@ -1,0 +1,68 @@
+{# expects: work (collection item), linked (bool — title links to the work page) #}
+{# `accent` in the frontmatter colours the 2px seams for this work only #}
+<section class="wb" id="{{ work.data.slug }}"{% if work.data.accent %} style="--seam-color: {{ work.data.accent }}"{% endif %}>
+
+  {# three-column info band: facts left, title + text centre, credits right #}
+  <div class="wb-text wb-band">
+    <div class="wb-col wb-col--meta">
+      <span class="wb-year">{{ work.data.year }}</span>
+      <span class="wb-medium">{{ work.data.medium }}</span>
+      {% if work.data.details %}<span class="wb-details">{{ work.data.details }}</span>{% endif %}
+    </div>
+
+    <div class="wb-col wb-col--main">
+      {% if linked %}<a class="wb-title" href="/works/{{ work.data.slug }}/">{{ work.data.title }}</a>
+      {% else %}<h1 class="wb-title">{{ work.data.title }}</h1>{% endif %}
+      <p class="wb-abstract">{{ work.data.abstract }}</p>
+    </div>
+
+    <div class="wb-col wb-col--side">
+      {% for c in work.data.credits %}
+      <span class="wb-credit">{{ c.role }}: {{ c.name }}</span>
+      {% endfor %}
+      {% for e in work.data.exhibitions %}
+      <span class="wb-credit wb-shown">{{ e.year }} {{ e.title }}{% if e.venue %}, {{ e.venue }}{% endif %}{% if e.city %}, {{ e.city }}{% endif %}</span>
+      {% endfor %}
+      {% for l in work.data.links %}
+      <a class="wb-credit wb-link" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }} ↗</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if work.data.images and work.data.images.length %}
+  <div class="wb-seq">
+    {% for row in work.data.images | galleryRows %}
+    {% set firstRow = loop.first %}
+    {% set isLead = row[0].layout == "lead" %}
+    {% set isSolo = row[0].layout == "solo" %}
+    <div class="wb-row {% if isLead %}wb-row--lead{% elif isSolo %}wb-row--solo{% else %}wb-row--{{ row.length }}{% endif %}"{% if isSolo %} style="--w: {{ row[0].width or 50 }}%"{% endif %}>
+      {% for img in row %}
+      {% set folder = img.folder or "assets/img/" %}
+      <figure class="wb-frame" style="--r: {{ img | frameRatio }}">
+        <span class="wb-shot">
+          {% if img.src | isVideo %}
+          {# silent animation — nothing preloads until it's scrolled to, then
+             base.njk plays it while it's on screen and pauses it after #}
+          <video src="{{ img.src | assetPath(folder) }}" muted loop playsinline
+                 preload="none" aria-label="{{ img.alt }}"
+                 {% if img.w %}width="{{ img.w }}" height="{{ img.h }}"{% endif %}></video>
+          {% else %}
+          {# the opening frame is usually the LCP element — never lazy-load it #}
+          <img src="{{ img.src | assetPath(folder) }}" alt="{{ img.alt }}"
+               {% if img.w %}width="{{ img.w }}" height="{{ img.h }}"{% endif %}
+               {% if firstRow %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+          {% endif %}
+        </span>
+        {% if img.caption %}<figcaption>{{ img.caption }}</figcaption>{% endif %}
+      </figure>
+      {% endfor %}
+      {% if isSolo %}
+      {# holds the rest of the row open for copy — set `note` on the image #}
+      <div class="wb-aside">{% if row[0].note %}<p>{{ row[0].note }}</p>{% endif %}</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+</section>

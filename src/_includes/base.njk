@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  window.ASSET_BASE = "https://mathismaar.b-cdn.net";
+  window.assetUrl = function (u) {
+    if (!u) return "";
+    if (u.startsWith("http")) return u;
+    return window.ASSET_BASE + "/" + u.replace(/^\/+/, "");
+  };
+  var assetUrl = window.assetUrl;
+</script>
+
+<meta charset="UTF-8">
+<title>{{ pageTitle or "Mathis Dabbarh Marsepoil" }}</title>
+<meta name="description" content="{{ pageDescription or 'Mathis Dabbarh Marsepoil — sonic researcher and artist. Transmission of memory and culture, instruments, installations, field recording, spatial sound.' }}">
+{% if ogImage %}<meta property="og:image" content="{{ ogImage }}">{% endif %}
+<meta property="og:title" content="{{ pageTitle or 'Mathis Dabbarh Marsepoil' }}">
+<meta property="og:description" content="{{ pageDescription or 'Sonic researcher and artist — MA Geo-Design, Design Academy Eindhoven.' }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/global.css">
+<link rel="stylesheet" href="/archive.css">
+<link rel="stylesheet" href="/new.css">
+{% block head %}{% endblock %}
+</head>
+
+<body data-page="{{ pageKey }}"{% if pageKey == 'home' %} class="transparent-bg"{% endif %}>
+{# dark is the default now — only an explicit "0" (user toggled to light) opts out #}
+<script>if(localStorage.getItem("mm-dark-mode")!=="0")document.body.classList.add("dark-mode");</script>
+
+{% include "nav.njk" %}
+
+<div class="archive-button" id="archive-button"></div>
+<div class="now-playing-wrap">
+  <div id="skip-sound" class="skip-sound-btn"></div>
+  <div id="now-playing" class="now-playing-text">Now Playing: —</div>
+  <div id="skip-notice" class="skip-notice">skipped</div>
+</div>
+
+{% block content %}{% endblock %}
+
+<script src="/sound.js"></script>
+<script src="/transition.js"></script>
+<script>
+document.getElementById("archive-button").onclick = ()=> toggleDarkMode();
+document.getElementById("skip-sound").onclick = ()=> skipTrack();
+resumeSoundIfNeeded();
+
+// pages with a full-bleed photo hero (home, worksingle) force the nav
+// white for legibility over the image; once scrolled past it into the
+// plain --bg content below, .past-hero hands the nav back to the normal
+// theme-aware color (see new.css / work-single.css)
+(function () {
+  function update() {
+    document.body.classList.toggle("past-hero", window.scrollY > window.innerHeight * 0.8);
+  }
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+})();
+
+// sequence videos are silent animations: don't fetch them until they're near
+// the viewport, play while on screen, pause once past. keeps a 27MB file off
+// the initial load.
+(function () {
+  var vids = document.querySelectorAll(".wb-shot video");
+  if (!vids.length || !("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (v.preload === "none") v.preload = "auto";
+        v.play().catch(function () {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { rootMargin: "200px" });
+  vids.forEach(function (v) { io.observe(v); });
+})();
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

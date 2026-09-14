@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "5500"],
       "port": 5500
+    },
+    {
+      "name": "eleventy-preview",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5501", "-d", "_site"],
+      "port": 5501
     }
   ]
 }

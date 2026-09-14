@@ -1,0 +1,50 @@
+---
+pagination:
+  data: collections.works
+  size: 1
+  alias: work
+permalink: "/works/{{ work.data.slug }}/"
+pageKey: worksingle
+eleventyComputed:
+  pageTitle: "{{ work.data.title }} — Mathis Dabbarh Marsepoil"
+  pageDescription: "{{ work.data.abstract }}"
+  # the opening frame doubles as the share image — always a file we know exists
+  ogImage: "{{ work.data.images[0].src | assetPath('assets/img/') }}"
+---
+{% extends "base.njk" %}
+
+{% block content %}
+{% set neighbors = collections.works | workNeighbors(work.data.slug) %}
+<article class="scroll-index">
+
+  {% set linked = false %}
+  {% include "work-block.njk" %}
+
+  {# the long text gets the full width as a spread — columns rather than one
+     endless line, so it reads like a page rather than a caption #}
+  {% if work.templateContent %}
+  <div class="wb-spread">
+    {{ work.templateContent | markdown | safe }}
+  </div>
+  {% endif %}
+
+  {% if work.data.exhibitions and work.data.exhibitions.length %}
+  <div class="wb-text wb-tail">
+    <div class="wb-col wb-col--meta"><span class="wb-label">Exhibitions</span></div>
+    <div class="wb-col wb-col--main">
+      {% for e in work.data.exhibitions %}
+      <span class="wb-exh-row"><span class="wb-exh-year">{{ e.year }}</span>{{ e.title }}{% if e.venue %}, {{ e.venue }}{% endif %}{% if e.city %}, {{ e.city }}{% endif %}</span>
+      {% endfor %}
+    </div>
+    <div class="wb-col wb-col--side"></div>
+  </div>
+  {% endif %}
+
+  <nav class="wb-text wb-nav">
+    <div class="wb-col wb-col--meta"><a href="/works/{{ neighbors.prev.data.slug }}/">← {{ neighbors.prev.data.title }}</a></div>
+    <div class="wb-col wb-col--main"><a href="/#works">Index</a></div>
+    <div class="wb-col wb-col--side"><a href="/works/{{ neighbors.next.data.slug }}/">{{ neighbors.next.data.title }} →</a></div>
+  </nav>
+
+</article>
+{% endblock %}

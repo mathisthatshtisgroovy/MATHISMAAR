@@ -1,0 +1,344 @@
+/* ---------------------------------------------------------------
+   zero-margin full-bleed system, measured off tatjanastuermer.de:
+   no container, no max-width, no centering. images run to the screen
+   edges; the only separation is a 2px line so two frames never read
+   as one. text bands run the full width in tight type.
+   --------------------------------------------------------------- */
+
+:root {
+  --font-serif: Georgia, "Times New Roman", Times, serif;
+  /* the only separation between image frames */
+  --seam: 2px;
+  /* images stay edge-to-edge; type gets just enough room not to sit on the
+     glass, the way the right-hand column does on the Monteverde reference */
+  --text-inset: clamp(12px, 1.2vw, 28px);
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+/* the hero and the scroll below it ------------------------------- */
+
+/* home.css pins the hero with position:fixed, which paints it above the
+   content scrolling under it and shows through any gap that content
+   doesn't cover. image and rotation unchanged — it just sits in flow. */
+body[data-page="home"] .hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+body[data-page="home"],
+body[data-page="worksingle"] {
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+.scroll-index {
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
+  width: 100%;
+}
+
+/* WORK BLOCK ----------------------------------------------------- */
+
+.wb {
+  display: block;
+}
+
+/* the description sits in an enclosed box — the rule runs from the image
+   above to the image below and out to both edges, same 2px as the seam
+   between frames so it reads as one system */
+.wb-band {
+  border: var(--seam) solid var(--fg);
+}
+
+/* three-column info band — facts left, title + text centre, credits right */
+.wb-text {
+  display: grid;
+  grid-template-columns: 22% minmax(0, 1fr) 20%;
+  column-gap: clamp(16px, 2.5vw, 48px);
+  padding: 9vh var(--text-inset) 7vh;
+  font-family: var(--font-serif);
+  align-items: start;
+}
+
+.wb-col > * {
+  display: block;
+}
+.wb-col--side {
+  text-align: right;
+}
+
+.wb-title {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin: 0 0 .5em;
+  color: var(--fg);
+  opacity: 1;
+}
+a.wb-title:hover {
+  opacity: .55;
+}
+
+.wb-year,
+.wb-medium,
+.wb-details,
+.wb-credit,
+.wb-label {
+  font-size: .9rem;
+  line-height: 1.3;
+  opacity: .55;
+}
+
+/* exhibition lines and outbound links sit under the credits, separated by a
+   blank line rather than a rule */
+.wb-shown:first-of-type,
+.wb-link:first-of-type {
+  margin-top: .9em;
+}
+a.wb-link {
+  opacity: .55;
+}
+a.wb-link:hover {
+  opacity: 1;
+}
+
+.wb-abstract {
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.35;
+}
+
+/* IMAGE SEQUENCE ------------------------------------------------- */
+
+/* the gaps show the container behind the frames, so colouring the container
+   colours the seams. --seam-color comes from a work's `accent` field. */
+.wb-seq {
+  display: flex;
+  flex-direction: column;
+  gap: var(--seam);
+  width: 100%;
+  background: var(--seam-color, transparent);
+}
+
+.wb-row {
+  display: flex;
+  gap: var(--seam);
+  width: 100%;
+  background: var(--seam-color, transparent);
+}
+
+/* one image at a set fraction of the width, left, the rest held open for
+   copy — the aside paints over the seam colour so only the 2px shows */
+.wb-row--solo > .wb-frame {
+  flex: 0 0 var(--w, 50%);
+}
+.wb-aside {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--bg);
+  font-family: var(--font-serif);
+  font-size: .95rem;
+  line-height: 1.45;
+  padding: 0 var(--text-inset);
+}
+.wb-aside p {
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* every frame is cropped to a house ratio (--r, set per image at build time)
+   so a row never ends up with frames of different heights and odd source
+   files can't introduce their own letterboxing */
+.wb-frame {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+}
+
+/* the crop box — every shot is cropped to a house ratio (--r, set per image
+   at build time) so a row never ends up with frames of different heights and
+   odd source files can't bring their own letterboxing */
+.wb-shot {
+  display: block;
+  aspect-ratio: var(--r, 3 / 2);
+  overflow: hidden;
+  background: var(--fg-faint);
+}
+
+.wb-shot img,
+.wb-shot video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* big left, two stacked right — one row's height for three images, for
+   works that shouldn't take a full screen each */
+.wb-row--lead {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--seam);
+}
+.wb-row--lead > .wb-frame {
+  min-height: 0;
+}
+.wb-row--lead > .wb-frame:first-child {
+  grid-row: 1 / span 2;
+}
+/* the lead sets the row height; the stacked pair just fills its half */
+.wb-row--lead > .wb-frame:not(:first-child) .wb-shot {
+  aspect-ratio: auto;
+  height: 100%;
+}
+.wb-row--lead > .wb-frame:not(:first-child) {
+  display: flex;
+}
+.wb-row--lead > .wb-frame:not(:first-child) .wb-shot {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.wb-frame figcaption {
+  font-family: var(--font-serif);
+  font-size: .8rem;
+  line-height: 1.3;
+  opacity: .5;
+  padding: 6px var(--seam) 0;
+}
+
+/* ARCHIVE --------------------------------------------------------- */
+
+/* the overlay text runs uppercase. scoped here rather than in archive.css so
+   that file stays exactly as the old site left it. */
+body[data-page="archive"] .overlay-meta {
+  text-transform: uppercase;
+}
+
+/* INFO ----------------------------------------------------------- */
+
+/* fills the viewport rather than sitting as a short band with dead space
+   under it — there's only one block on this page */
+.info-page {
+  min-height: 100vh;
+}
+.info-page .wb-text {
+  min-height: 100vh;
+  align-content: center;
+}
+.info-page .wb-abstract em {
+  font-style: italic;
+}
+
+/* PROJECT PAGE EXTRAS -------------------------------------------- */
+
+/* the spread: long text across the full width in columns, so it reads as
+   a page rather than one endless line. columns are at least 34ch, up to 3. */
+.wb-spread {
+  padding: 8vh var(--text-inset) 8vh;
+  font-family: var(--font-serif);
+  font-size: .95rem;
+  line-height: 1.5;
+  columns: 34ch 3;
+  column-gap: clamp(24px, 4vw, 80px);
+  column-rule: 1px solid var(--fg-faint);
+}
+.wb-spread p {
+  margin: 0 0 1.1em;
+  break-inside: avoid-column;
+}
+.wb-spread p:last-child {
+  margin-bottom: 0;
+}
+
+.wb-tail {
+  padding-top: 0;
+  padding-bottom: 4vh;
+  font-size: .9rem;
+  line-height: 1.35;
+}
+
+.wb-exh-row {
+  display: block;
+  opacity: .55;
+}
+.wb-exh-year {
+  display: inline-block;
+  min-width: 4em;
+  font-variant-numeric: tabular-nums;
+}
+
+.wb-nav {
+  padding-top: 4vh;
+  padding-bottom: 12vh;
+  font-size: .9rem;
+  border-top: 1px solid var(--fg-faint);
+}
+.wb-nav a {
+  font-family: var(--font-serif);
+}
+
+/* NAV LEGIBILITY ------------------------------------------------- */
+
+/* both pages open on a photo the nav sits over, then scroll into plain
+   --bg. base.njk toggles .past-hero; these hand the nav back. */
+body[data-page="home"].past-hero .menu-items a,
+body[data-page="home"].past-hero .mobile-menu a,
+body[data-page="home"].past-hero .mobile-menu-toggle,
+body[data-page="worksingle"].past-hero .menu-items a,
+body[data-page="worksingle"].past-hero .mobile-menu a,
+body[data-page="worksingle"].past-hero .mobile-menu-toggle {
+  color: var(--fg) !important;
+  text-shadow: none !important;
+}
+body[data-page="home"].past-hero .home-button,
+body[data-page="worksingle"].past-hero .home-button {
+  border-color: var(--fg) !important;
+  background: none !important;
+}
+body.dark-mode[data-page="home"].past-hero .home-button,
+body.dark-mode[data-page="worksingle"].past-hero .home-button {
+  background: var(--fg) !important;
+}
+body[data-page="home"].past-hero .menu-items a::after,
+body[data-page="worksingle"].past-hero .menu-items a::after {
+  background: var(--fg) !important;
+}
+
+/* MOBILE --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  /* three columns squeeze to nothing — stack them, facts first */
+  .wb-text {
+    grid-template-columns: 1fr;
+    row-gap: 1.2em;
+  }
+  .wb-col--side {
+    text-align: left;
+  }
+  .wb-spread {
+    columns: 1;
+    column-rule: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .wb-text {
+    padding: 7vh var(--text-inset) 5vh;
+  }
+  /* side-by-side frames get too small to read below this — stack them,
+     keeping the same seam so the rhythm doesn't change */
+  .wb-row {
+    flex-direction: column;
+  }
+}

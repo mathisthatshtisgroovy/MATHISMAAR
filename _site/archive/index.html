@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  window.ASSET_BASE = "https://mathismaar.b-cdn.net";
+  window.assetUrl = function (u) {
+    if (!u) return "";
+    if (u.startsWith("http")) return u;
+    return window.ASSET_BASE + "/" + u.replace(/^\/+/, "");
+  };
+  var assetUrl = window.assetUrl;
+</script>
+
+  <meta charset="UTF-8">
+  <title>Archive — Mathis Dabbarh Marsepoil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/global.css">
+  <link rel="stylesheet" href="/archive.css">
+  <link rel="stylesheet" href="/new.css">
+</head>
+<body data-page="archive">
+<script>if(localStorage.getItem("mm-dark-mode")!=="0")document.body.classList.add("dark-mode");</script>
+
+<div class="nav-container">
+  <a href="/" class="home-button" aria-label="Home"></a>
+
+  <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"></button>
+
+  <div class="menu-items" aria-label="Primary">
+    <a href="/#works">Works</a>
+    <a href="/info">Info</a>
+    <a href="/archive">Archive</a>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="/#works">Works</a>
+    <a href="/info">Info</a>
+    <a href="/archive">Archive</a>
+  </div>
+</div>
+<script>
+(function(){
+  var nav = document.currentScript.previousElementSibling.parentElement || document.querySelector(".nav-container");
+  var btn = document.querySelector(".mobile-menu-toggle");
+  var panel = document.getElementById("mobile-menu");
+  if (!btn || !panel) return;
+
+  function closeMenu() {
+    btn.setAttribute("aria-expanded", "false");
+    panel.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("menu-open");
+  }
+
+  btn.addEventListener("click", function () {
+    var open = btn.getAttribute("aria-expanded") === "true";
+    if (open) closeMenu();
+    else {
+      btn.setAttribute("aria-expanded", "true");
+      panel.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
+    }
+  });
+
+  panel.addEventListener("click", function (e) {
+    if (e.target && e.target.tagName === "A") closeMenu();
+  });
+
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeMenu();
+  });
+})();
+</script>
+
+
+  <div class="archive-page">
+    <div class="archive-button" id="archive-button"></div>
+    <div id="reset-archive" class="reset-archive">ⵙ</div>
+    <div class="now-playing-wrap">
+      <div id="skip-sound" class="skip-sound-btn"></div>
+      <div id="now-playing" class="now-playing-text">Now Playing: —</div>
+      <div id="skip-notice" class="skip-notice">skipped</div>
+    </div>
+    <nav class="archive-filters" id="archive-filters"></nav>
+    <main class="archive-grid" id="archive-grid"></main>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="overlay-inner">
+      <img id="overlay-image" alt="">
+      <div class="overlay-meta" id="overlay-meta"></div>
+    </div>
+  </div>
+
+<script src="/sound.js"></script>
+<script src="/transition.js"></script>
+<script src="/archive.js"></script>
+<script>
+document.getElementById("skip-sound").onclick = ()=> skipTrack();
+</script>
+</body>
+</html>
