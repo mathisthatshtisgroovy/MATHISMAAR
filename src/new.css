@@ -262,63 +262,54 @@ body[data-page="archive"] .archive-grid {
 
 /* PROJECT PAGE EXTRAS -------------------------------------------- */
 
-/* long body text: two columns, the gutter sitting exactly on the page's
-   centre line thanks to the symmetric padding */
-.wb-spread {
-  --gutter: clamp(32px, 5vw, 96px);
-  padding: 9vh var(--text-inset) 10vh;
-  font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 1.3vw, 1.4rem);
-  line-height: 1.5;
-  column-count: 2;
-  column-gap: var(--gutter);
-  column-rule: 1px solid var(--fg-faint);
-}
-.wb-spread .wb-label {
-  column-span: all;
-  margin: 0 0 1.4em;
-}
-
-/* a work's long text as a spread before its images: text centred on the left
-   half, one of its images filling the right half, a 2px line between (the
-   work's accent colour, else the foreground colour). at least one screen tall;
-   when the text runs longer the image holds in view (sticky) while the text
-   scrolls beside it, instead of stretching into a huge crop. */
+/* a work's long text as a spread of two portrait pages, each half the width
+   and √2 as tall (A-series, the proportion of the InDesign layout). every size
+   inside is in vw, so text that fits the left page at one screen width fits
+   at all of them — which lets the build decide once (spreadMode in
+   .eleventy.js):
+   - fits the left page: text there, one of the work's images cropped to fill
+     the right page, a 2px line between (accent colour, else foreground).
+   - doesn't: two balanced columns starting on the left page and running onto
+     the right, the same centre line, no image. */
 .wb-lede {
+  --page-pad-y: 4.5vw;
+  --page-pad-x: 3vw;
+  --line-color: var(--seam-color, var(--fg));
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
+  min-height: 70.7vw;
   gap: var(--seam);
-  background: var(--seam-color, var(--fg));
+  background: var(--line-color);
 }
 .wb-lede-text {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10vh clamp(24px, 3vw, 56px);
+  padding: var(--page-pad-y) var(--page-pad-x);
   background: var(--bg);
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 1.65vw, 1.9rem);
+  font-size: 1.65vw;
   line-height: 1.35;
   text-align: center;
   hyphens: auto;
 }
 .wb-lede-inner {
-  max-width: 34em;
+  width: 100%;
 }
 .wb-lede-text p {
   margin: 0 0 1.35em;
+  orphans: 3;
+  widows: 3;
 }
 .wb-lede-text p:last-child {
   margin-bottom: 0;
 }
-/* "### Text by …" in a work's markdown: a small credit line. a second one
-   (a second author) gets clear space above it. */
+/* "### Text by …" in a work's markdown: a small credit line */
 .wb-lede-text h3 {
   margin: 0 0 2em;
-  font-size: .9rem;
+  font-size: .55em;
   font-weight: 400;
-  letter-spacing: .06em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   opacity: .55;
 }
@@ -332,50 +323,67 @@ body[data-page="archive"] .archive-grid {
   font-weight: 400;
   font-style: italic;
 }
+/* a heading never ends a column — it stays with the paragraph after it */
+.wb-lede-text h3,
+.wb-lede-text h4 {
+  break-after: avoid;
+  break-inside: avoid;
+}
 .wb-lede-text strong {
   font-weight: 400;
   letter-spacing: .04em;
   text-transform: uppercase;
 }
 .wb-lede-image {
+  position: relative;
   min-width: 0;
   margin: 0;
   background: var(--bg);
 }
 .wb-lede-image img {
-  position: sticky;
-  top: 0;
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.wb-lede--columns {
+  grid-template-columns: 1fr;
+}
+/* the centre line runs the full page height like the image spread's seam,
+   which column-rule wouldn't (it only spans the text) */
+.wb-lede--columns .wb-lede-text {
+  background:
+    linear-gradient(to right,
+      transparent calc(50% - 1px), var(--line-color) calc(50% - 1px),
+      var(--line-color) calc(50% + 1px), transparent calc(50% + 1px)),
+    var(--bg);
+}
+.wb-lede--columns .wb-lede-inner {
+  column-count: 2;
+  column-gap: calc(var(--page-pad-x) * 2);
 }
 
 @media (max-width: 900px) {
-  .wb-spread {
-    column-count: 1;
-    column-rule: none;
-  }
   .wb-lede {
     grid-template-columns: 1fr;
     min-height: 0;
   }
+  .wb-lede-text {
+    padding: 8vh var(--text-inset);
+    font-size: 1.15rem;
+  }
+  .wb-lede--columns .wb-lede-text {
+    background: var(--bg);
+  }
+  .wb-lede--columns .wb-lede-inner {
+    column-count: 1;
+  }
   .wb-lede-image {
-    position: relative;
     aspect-ratio: 4 / 5;
   }
-  .wb-lede-image img {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-  }
-}
-.wb-spread p {
-  margin: 0 0 1.1em;
-  break-inside: avoid-column;
-}
-.wb-spread p:last-child {
-  margin-bottom: 0;
 }
 
 .wb-tail {

@@ -60,6 +60,35 @@ module.exports = function (eleventyConfig) {
     (images || []).filter((i) => i.src !== src)
   );
 
+  // does a work's long text fit the left page of the spread ("image": its image
+  // takes the right page) or does it need both pages as two columns
+  // ("columns")? every size in the spread is in vw, so the answer holds at any
+  // desktop width — estimated from characters per line and lines per page,
+  // calibrated against the rendered spread: ~51 characters a line and ~27
+  // lines a page. a subheading, or a credit line after text, takes about 3
+  // lines with its spacing; a credit line opening the text about 1.5. texts
+  // within a line or so of the limit should be pinned with `spread:`.
+  const SPREAD_CHARS_PER_LINE = 51;
+  const SPREAD_LINES_PER_PAGE = 27;
+  eleventyConfig.addFilter("spreadMode", (body, override) => {
+    if (override === "image" || override === "columns") return override;
+    let lines = 0;
+    for (const block of String(body || "").split(/\n\s*\n/)) {
+      const b = block.trim();
+      if (!b) continue;
+      if (b.startsWith("#")) {
+        lines += b.startsWith("####") || lines > 0 ? 3 : 1.5;
+        continue;
+      }
+      for (const row of b.split("\n")) {
+        const text = row.replace(/[*_]/g, "").trim();
+        lines += Math.max(1, Math.ceil(text.length / SPREAD_CHARS_PER_LINE));
+      }
+      lines += 1;
+    }
+    return lines - 1 <= SPREAD_LINES_PER_PAGE ? "image" : "columns";
+  });
+
   // mirrors the client-side assetUrl() bootstrap in base.njk, for building
   // absolute CDN urls server-side (og:image, srcset, etc.)
   eleventyConfig.addFilter("assetPath", function (filename, folder) {
