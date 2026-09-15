@@ -49,10 +49,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("stripComments", (s) =>
     String(s || "").replace(/<!--[\s\S]*?-->/g, "")
   );
-  eleventyConfig.addFilter("wordCount", (s) =>
-    (String(s || "").match(/\S+/g) || []).length
-  );
-
   // the portrait shown beside a work's body text: `textImage` names a file
   // from images[], otherwise it's the work's second image
   eleventyConfig.addFilter("textImage", (data) => {
@@ -68,9 +64,14 @@ module.exports = function (eleventyConfig) {
   // absolute CDN urls server-side (og:image, srcset, etc.)
   eleventyConfig.addFilter("assetPath", function (filename, folder) {
     if (!filename) return "";
-    if (filename.startsWith("http")) return filename;
+    // a leading slash means the file ships with the site rather than the CDN
+    if (filename.startsWith("http") || filename.startsWith("/")) return filename;
     return "https://mathismaar.b-cdn.net/" + (folder || "") + filename;
   });
+
+  // not on the CDN, so served from the repo until it's uploaded to assets/img/.
+  // this is an 1800px-tall copy (179KB) — the original is 9.3MB.
+  eleventyConfig.addPassthroughCopy("assets/works/SYRINX_VISUAL_7-1800.webp");
 
   eleventyConfig.addFilter("findWork", function (works, slug) {
     return (works || []).find((w) => w.data.slug === slug);

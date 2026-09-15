@@ -16,6 +16,8 @@ featured: true
 order: 6
 tags: []
 hero: "ULTRASONIC_SYSTEMS_VISUAL_3.webp"
+# the image beside the text on the project page
+textImage: "ULTRASONIC_SYSTEMS_VISUAL_10.webp"
 # the 2px seams run red on this work
 accent: "#ff2200"
 links: []

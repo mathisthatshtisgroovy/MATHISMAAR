@@ -10,7 +10,7 @@
   <div class="wb-col wb-col--main">
     {% if linked %}<a class="wb-title" href="/works/{{ work.data.slug }}/">{{ work.data.title }}</a>
     {% else %}<h1 class="wb-title">{{ work.data.title }}</h1>{% endif %}
-    <p class="wb-abstract">{{ work.data.abstract }}</p>
+    {% if work.data.abstract %}<p class="wb-abstract">{{ work.data.abstract }}</p>{% endif %}
   </div>
 
   <div class="wb-col wb-col--side">

@@ -5,7 +5,10 @@
   {% for row in seqImages | galleryRows %}
   {% set firstRow = loop.first %}
   {% set isLead = row[0].layout == "lead" %}
-  {% set isSolo = row[0].layout == "solo" %}
+  {# a pair that lost its partner (moved up beside the text on the project
+     page) keeps half width and holds the rest of the row open, rather than
+     blowing up full-bleed #}
+  {% set isSolo = row[0].layout == "solo" or (row.length == 1 and row[0].layout == "half") %}
   <div class="wb-row {% if isLead %}wb-row--lead{% elif isSolo %}wb-row--solo{% else %}wb-row--{{ row.length }}{% endif %}"{% if isSolo %} style="--w: {{ row[0].width or 50 }}%"{% endif %}>
     {% for img in row %}
     {% set folder = img.folder or "assets/img/" %}

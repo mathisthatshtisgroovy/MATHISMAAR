@@ -16,6 +16,9 @@ featured: true
 order: 4
 tags: []
 hero: "BORDERS_OF_NEUTRALITY_VISUAL_8.webp"
+# the image beside the text on the project page — V8 rather than the slate
+# detail, so the V1 + process pair below stays together
+textImage: "BORDERS_OF_NEUTRALITY_VISUAL_8.webp"
 links: []
 images:
   - { src: "BORDERS_OF_NEUTRALITY_VISUAL_8.webp", alt: "BORDERS OF NEUTRALITY installation view", layout: full, w: 4961, h: 3508 }
@@ -31,3 +34,10 @@ credits:
   - { role: "With", name: "Aleksandra Nazarova" }
 exhibitions: []
 ---
+Switzerland’s neutrality has long been understood as a geological fact as much as a political one. The Alps are immovable, eternal, fortress-like and have served as both physical barrier and ideological bedrock for a nation that has put itself as Europe’s untouchable center. But what happens when the mountains themselves begin to move exponentially?
+
+In 2023, Italy and Switzerland announced they would redraw sections of their shared Alpine border. The reason: glaciers that had defined the frontier were melting. The Theodul Glacier near the Matterhorn has been retreating at an accelerating rate. New rock is exposed and shifting the watershed that legally determines where one nation ends and another begins. The border is in motion. Switzerland has witnessed an intensification of rockslides and landslides in recent years, permafrost thaw and glacial destabilization, eroding, fracturing, collapsing. This presents a speculation regarding Swiss neutrality, which has historically relied on the Alps as natural defense: unchanging, impassable, a fortress.
+
+During World War II, Switzerland’s “Réduit national”, a strategy retreat into the mountains if an invasion would arise, has transformed the Alps into a spatialized neutrality: the mountains made it possible. But if the fortress is crumbling, what becomes of the ideology it supposedly guarantees? Can neutrality remain stable when its foundation is in flux? The work positions the audience on in front of a slate bench, sedimentary record, fragile and marked with man-made chalk traces, redefining borders on the slate. Silent subtitles narrate, sonic loud glitching interrupts, hypnotises, puts in motion.
+
+The Alps are moving. The question is whether political neutrality moves with them, or collapses.

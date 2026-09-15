@@ -19,34 +19,31 @@ eleventyComputed:
 
   {% set linked = false %}
   {% set body = work.templateContent | stripComments | trim %}
-  {% set useLede = body and (body | wordCount) <= 220 %}
   {% set lede = work.data | textImage %}
+  {% set useLede = body and lede %}
   {% set seqImages = (work.data.images | withoutSrc(lede.src)) if useLede else work.data.images %}
 
   <section class="wb" id="{{ work.data.slug }}"{% if work.data.accent %} style="--seam-color: {{ work.data.accent }}"{% endif %}>
     {% include "work-band.njk" %}
 
-    {# body text comes before the images. short enough for half the page: a
-       portrait from the work on the left, the text on the right (that image
-       is then left out of the sequence below). longer: two columns. no body
-       text: nothing. #}
+    {# only a work with long text (its markdown body) gets the spread, before
+       its images: text centred on the left half, one of its images on the
+       right (left out of the sequence below if it's in there). no long text:
+       nothing — the abstract in the band is never reused here. #}
     {% if useLede %}
     <div class="wb-lede">
-      <figure class="wb-frame">
-        <span class="wb-shot" style="--r: 2 / 3">
-          <img src="{{ lede.src | assetPath(lede.folder or 'assets/img/') }}" alt="{{ lede.alt }}"
-               {% if lede.w %}width="{{ lede.w }}" height="{{ lede.h }}"{% endif %}
-               fetchpriority="high" decoding="async">
-        </span>
-      </figure>
       <div class="wb-lede-text">
-        {% if work.data.textCredit %}<p class="wb-label">Text: {{ work.data.textCredit }}</p>{% endif %}
-        {{ body | markdown | safe }}
+        <div class="wb-lede-inner">
+          {{ body | markdown | safe }}
+        </div>
       </div>
+      <figure class="wb-lede-image">
+        <img src="{{ lede.src | assetPath(lede.folder or 'assets/img/') }}" alt="{{ lede.alt or work.data.title }}"
+             fetchpriority="high" decoding="async">
+      </figure>
     </div>
     {% elif body %}
     <div class="wb-spread">
-      {% if work.data.textCredit %}<p class="wb-label">Text: {{ work.data.textCredit }}</p>{% endif %}
       {{ body | markdown | safe }}
     </div>
     {% endif %}

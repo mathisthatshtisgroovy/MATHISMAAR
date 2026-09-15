@@ -279,33 +279,76 @@ body[data-page="archive"] .archive-grid {
   margin: 0 0 1.4em;
 }
 
-/* shorter body text: a portrait from the work on the left half, the text on
-   the right. the seam between them takes the work's accent colour. */
+/* a work's long text as a spread before its images: text centred on the left
+   half, one of its images filling the right half, a 2px line between (the
+   work's accent colour, else the foreground colour). at least one screen tall;
+   when the text runs longer the image holds in view (sticky) while the text
+   scrolls beside it, instead of stretching into a huge crop. */
 .wb-lede {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
   gap: var(--seam);
-  background: var(--seam-color, transparent);
-}
-.wb-lede > .wb-frame {
-  min-width: 0;
+  background: var(--seam-color, var(--fg));
 }
 .wb-lede-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10vh clamp(24px, 3vw, 56px);
   background: var(--bg);
-  padding: 9vh var(--text-inset);
   font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 1.3vw, 1.4rem);
-  line-height: 1.5;
+  font-size: clamp(1.1rem, 1.65vw, 1.9rem);
+  line-height: 1.35;
+  text-align: center;
+  hyphens: auto;
+}
+.wb-lede-inner {
+  max-width: 34em;
 }
 .wb-lede-text p {
-  margin: 0 0 1.1em;
-  max-width: 62ch;
+  margin: 0 0 1.35em;
 }
 .wb-lede-text p:last-child {
   margin-bottom: 0;
 }
-.wb-lede-text .wb-label {
-  margin-bottom: 1.4em;
+/* "### Text by …" in a work's markdown: a small credit line. a second one
+   (a second author) gets clear space above it. */
+.wb-lede-text h3 {
+  margin: 0 0 2em;
+  font-size: .9rem;
+  font-weight: 400;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  opacity: .55;
+}
+.wb-lede-text * + h3 {
+  margin-top: 4em;
+}
+/* "#### subheading" in a work's markdown */
+.wb-lede-text h4 {
+  margin: 2em 0 .7em;
+  font-size: 1em;
+  font-weight: 400;
+  font-style: italic;
+}
+.wb-lede-text strong {
+  font-weight: 400;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.wb-lede-image {
+  min-width: 0;
+  margin: 0;
+  background: var(--bg);
+}
+.wb-lede-image img {
+  position: sticky;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
 }
 
 @media (max-width: 900px) {
@@ -315,6 +358,16 @@ body[data-page="archive"] .archive-grid {
   }
   .wb-lede {
     grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .wb-lede-image {
+    position: relative;
+    aspect-ratio: 4 / 5;
+  }
+  .wb-lede-image img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
   }
 }
 .wb-spread p {
@@ -326,7 +379,7 @@ body[data-page="archive"] .archive-grid {
 }
 
 .wb-tail {
-  padding-top: 0;
+  padding-top: 5vh;
   padding-bottom: 4vh;
   font-size: .9rem;
   line-height: 1.35;

@@ -14,6 +14,8 @@ featured: true
 order: 3
 tags: []
 hero: "BIRDS_AND_MACHINES_VISUAL_1.webp"
+# the image beside the text on the project page
+textImage: "BIRDS_AND_MACHINES_VISUAL_1.webp"
 links: []
 images:
   # the animation that used to sit on the home page — it came from this work.
