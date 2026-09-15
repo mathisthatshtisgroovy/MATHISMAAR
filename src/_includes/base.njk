@@ -1,3 +1,4 @@
+{# © Mathis Dabbarh Marsepoil. All rights reserved. See LICENSE. #}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +19,8 @@
 <meta property="og:title" content="{{ pageTitle or 'Mathis Dabbarh Marsepoil' }}">
 <meta property="og:description" content="{{ pageDescription or 'Sonic researcher and artist — MA Geo-Design, Design Academy Eindhoven.' }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Mathis Dabbarh Marsepoil">
+<meta name="copyright" content="© {% year %} Mathis Dabbarh Marsepoil. All rights reserved.">
 <link rel="stylesheet" href="/global.css">
 <link rel="stylesheet" href="/archive.css">
 <link rel="stylesheet" href="/new.css">
@@ -39,6 +42,8 @@
 
 {% block content %}{% endblock %}
 
+<footer class="site-footer">© {% year %} Mathis Dabbarh Marsepoil. All rights reserved.</footer>
+
 <script src="/sound.js"></script>
 <script src="/transition.js"></script>
 <script>
@@ -58,24 +63,26 @@ resumeSoundIfNeeded();
   window.addEventListener("scroll", update, { passive: true });
 })();
 
-// sequence videos are silent animations: don't fetch them until they're near
-// the viewport, play while on screen, pause once past. keeps a 27MB file off
-// the initial load.
+// sequence videos play only when clicked (nothing downloads before that) and
+// pause again once scrolled out of view, so nothing runs in the background
 (function () {
-  var vids = document.querySelectorAll(".wb-shot video");
-  if (!vids.length || !("IntersectionObserver" in window)) return;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      var v = e.target;
-      if (e.isIntersecting) {
-        if (v.preload === "none") v.preload = "auto";
-        v.play().catch(function () {});
-      } else {
-        v.pause();
-      }
-    });
-  }, { rootMargin: "200px" });
-  vids.forEach(function (v) { io.observe(v); });
+  document.querySelectorAll(".wb-shot video").forEach(function (v) {
+    var shot = v.parentElement;
+    var btn = shot.querySelector(".wb-play");
+    function toggle() {
+      if (v.paused) v.play().catch(function () {});
+      else v.pause();
+    }
+    if (btn) btn.addEventListener("click", toggle);
+    v.addEventListener("click", toggle);
+    v.addEventListener("play", function () { shot.classList.add("is-playing"); });
+    v.addEventListener("pause", function () { shot.classList.remove("is-playing"); });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting && !v.paused) v.pause();
+      }).observe(v);
+    }
+  });
 })();
 </script>
 {% block scripts %}{% endblock %}

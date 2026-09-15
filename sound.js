@@ -1,3 +1,4 @@
+// © Mathis Dabbarh Marsepoil. All rights reserved. See LICENSE.
 console.log("🔊 Ambient Engine Loaded");
 
 // root-relative: pages now live in subfolders (/works/x/, /info/), where a

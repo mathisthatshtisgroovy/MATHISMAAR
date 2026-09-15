@@ -19,6 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # the source is stored encrypted; the password lives in the repo's
+      # TRANSCRYPT_PASSWORD secret. skipped while the repo isn't encrypted.
+      - name: Decrypt source
+        if: hashFiles('.gitattributes') != ''
+        env:
+          TRANSCRYPT_PASSWORD: ${{ secrets.TRANSCRYPT_PASSWORD }}
+        run: ./transcrypt --cipher=aes-256-cbc --password="$TRANSCRYPT_PASSWORD" --yes
       - uses: actions/setup-node@v4
         with:
           node-version: 22

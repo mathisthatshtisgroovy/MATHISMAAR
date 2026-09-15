@@ -1,3 +1,4 @@
+/* © Mathis Dabbarh Marsepoil. All rights reserved. See LICENSE. */
 /* ---------------------------------------------------------------
    zero-margin full-bleed system, measured off tatjanastuermer.de:
    no container, no max-width, no centering. images run to the screen
@@ -182,6 +183,46 @@ a.wb-link:hover {
   display: block;
 }
 
+/* click-to-play video: a circle with a play mark, in the style of the home
+   and theme dots. white because it always sits over footage. hidden while
+   the video plays; clicking the video pauses it. */
+.wb-shot {
+  position: relative;
+}
+.wb-shot video {
+  cursor: pointer;
+}
+.wb-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  transform: translate(-50%, -50%);
+  border: var(--seam) solid #fff;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .25);
+  cursor: pointer;
+  transition: opacity .2s ease, background .2s ease;
+}
+.wb-play::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent #fff;
+}
+.wb-play:hover {
+  background: rgba(0, 0, 0, .45);
+}
+.is-playing .wb-play {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* big left, two stacked right — one row's height for three images, for
    works that shouldn't take a full screen each */
 .wb-row--lead {
@@ -242,6 +283,25 @@ body[data-page="archive"] .archive-grid {
 @media (max-width: 768px) {
   body[data-page="archive"] .archive-page {
     padding-top: 64px;
+  }
+}
+
+/* FOOTER --------------------------------------------------------- */
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+  padding: 6vh var(--text-inset) 8vh;
+  background: var(--bg);
+  color: var(--fg-mute);
+  font-family: var(--font-serif);
+  font-size: .8rem;
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  /* the theme dot and now-playing sit at the bottom of the screen on phones */
+  .site-footer {
+    padding-bottom: 150px;
   }
 }
 

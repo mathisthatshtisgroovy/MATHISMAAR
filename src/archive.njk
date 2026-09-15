@@ -1,10 +1,12 @@
 ---
 permalink: /archive/index.html
 ---
+{# © Mathis Dabbarh Marsepoil. All rights reserved. See LICENSE. #}
 {# the archive is carried over from the old archive.html as-is — same markup,
    same archive.css, same archive.js, same behaviour. it doesn't extend
-   base.njk because it brings its own dock and overlay; the only change is the
-   shared nav include in place of the old fetch("nav.html"). #}
+   base.njk because it brings its own dock and overlay; the only additions are
+   the shared nav include (in place of the old fetch("nav.html")), the
+   copyright meta tags and the footer. #}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +23,8 @@ permalink: /archive/index.html
   <meta charset="UTF-8">
   <title>Archive — Mathis Dabbarh Marsepoil</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Mathis Dabbarh Marsepoil">
+  <meta name="copyright" content="© {% year %} Mathis Dabbarh Marsepoil. All rights reserved.">
   <link rel="stylesheet" href="/global.css">
   <link rel="stylesheet" href="/archive.css">
   <link rel="stylesheet" href="/new.css">
@@ -48,6 +52,8 @@ permalink: /archive/index.html
       <div class="overlay-meta" id="overlay-meta"></div>
     </div>
   </div>
+
+<footer class="site-footer">© {% year %} Mathis Dabbarh Marsepoil. All rights reserved.</footer>
 
 <script src="/sound.js"></script>
 <script src="/transition.js"></script>

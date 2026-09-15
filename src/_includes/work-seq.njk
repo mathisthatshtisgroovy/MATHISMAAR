@@ -1,3 +1,4 @@
+{# © Mathis Dabbarh Marsepoil. All rights reserved. See LICENSE. #}
 {# the image sequence. expects: seqImages — a work's images, possibly with the
    one already shown beside the body text taken out #}
 {% if seqImages and seqImages.length %}
@@ -15,11 +16,13 @@
     <figure class="wb-frame" style="--r: {{ img | frameRatio }}">
       <span class="wb-shot">
         {% if img.src | isVideo %}
-        {# silent animation — nothing preloads until it's scrolled to, then
-           base.njk plays it while it's on screen and pauses it after #}
+        {# plays only when clicked — nothing downloads before that, the poster
+           stands in. base.njk wires the button and pauses it once scrolled away #}
         <video src="{{ img.src | assetPath(folder) }}" muted loop playsinline
                preload="none" aria-label="{{ img.alt }}"
+               {% if img.poster %}poster="{{ img.poster | assetPath(folder) }}"{% endif %}
                {% if img.w %}width="{{ img.w }}" height="{{ img.h }}"{% endif %}></video>
+        <button class="wb-play" type="button" aria-label="Play {{ img.alt }}"></button>
         {% else %}
         {# the opening frame is usually the LCP element — never lazy-load it #}
         <img src="{{ img.src | assetPath(folder) }}" alt="{{ img.alt }}"

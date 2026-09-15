@@ -1,3 +1,4 @@
+// © Mathis Dabbarh Marsepoil. All rights reserved. See LICENSE.
 const fs = require("fs");
 const path = require("path");
 
@@ -39,6 +40,8 @@ module.exports = function (eleventyConfig) {
       })
       .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
   });
+
+  eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
 
   eleventyConfig.addFilter("markdown", function (str) {
     return require("markdown-it")({ html: false }).render(str || "");
@@ -101,6 +104,8 @@ module.exports = function (eleventyConfig) {
   // not on the CDN, so served from the repo until it's uploaded to assets/img/.
   // this is an 1800px-tall copy (179KB) — the original is 9.3MB.
   eleventyConfig.addPassthroughCopy("assets/works/SYRINX_VISUAL_7-1800.webp");
+  // still frame shown on the Birds and Machines video until it's played
+  eleventyConfig.addPassthroughCopy("assets/home/teaser-poster.webp");
 
   eleventyConfig.addFilter("findWork", function (works, slug) {
     return (works || []).find((w) => w.data.slug === slug);

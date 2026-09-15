@@ -1,3 +1,15 @@
 node_modules/
 _site/
 new images/
+copyright-images/
+
+# mirrors of the images and sounds that live on the CDN (Cloudflare) — kept on
+# disk and in OneDrive, not in git. the few files the site itself ships from
+# the repo are re-included.
+assets/img/
+assets/work/
+assets/sound/
+assets/works/*
+!assets/works/SYRINX_VISUAL_7-1800.webp
+assets/home/*
+!assets/home/teaser-poster.webp

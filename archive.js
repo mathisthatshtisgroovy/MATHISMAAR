@@ -1,3 +1,4 @@
+// © Mathis Dabbarh Marsepoil. All rights reserved. See LICENSE.
 console.log("Loading archive.json...");
 
 const gridEl = document.getElementById('archive-grid');

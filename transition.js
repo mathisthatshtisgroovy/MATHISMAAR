@@ -1,3 +1,4 @@
+// © Mathis Dabbarh Marsepoil. All rights reserved. See LICENSE.
 document.querySelectorAll('a').forEach(link=>{
   if(link.href.includes('#')) return; // ignore anchor links
   link.addEventListener('click', e=>{
