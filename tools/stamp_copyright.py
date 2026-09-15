@@ -163,7 +163,16 @@ def stamp_png(data):
     return data[:8] + b"".join(chunk(t, p) for t, p in out), removed
 
 
-STAMPERS = {"webp": stamp_webp, "jpg": stamp_jpeg, "jpeg": stamp_jpeg, "png": stamp_png}
+def stamper_for(data):
+    # chosen by the file's contents, not its extension — some files on the CDN
+    # are PNGs saved with a .webp name
+    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        return stamp_webp
+    if data[:2] == b"\xff\xd8":
+        return stamp_jpeg
+    if data[:8] == b"\x89PNG\r\n\x1a\n":
+        return stamp_png
+    return None
 
 
 def pixels(data):
@@ -173,10 +182,10 @@ def pixels(data):
 
 
 def stamp(data, name):
-    ext = name.lower().rsplit(".", 1)[-1]
-    if ext not in STAMPERS:
-        raise ValueError(f"unsupported file type .{ext}")
-    new, removed = STAMPERS[ext](data)
+    fn = stamper_for(data)
+    if fn is None:
+        raise ValueError(f"{name}: not a WebP, JPEG or PNG image")
+    new, removed = fn(data)
     if pixels(data) != pixels(new):
         raise ValueError("image data changed — not written")
     exif = Image.open(io.BytesIO(new)).getexif()

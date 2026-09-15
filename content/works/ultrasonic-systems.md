@@ -25,14 +25,13 @@ images:
   - { src: "ULTRASONIC_SYSTEMS_VISUAL_3.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: full, w: 1920, h: 1080 }
   - { src: "ULTRASONIC_SYSTEMS_VISUAL_1.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: half, w: 1920, h: 1080 }
   - { src: "ULTRASONIC_SYSTEMS_VISUAL_2.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: half, w: 1920, h: 1080 }
-  - { src: "ULTRASONIC_SYSTEMS_VISUAL_4.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: half, w: 1920, h: 1080 }
+  # V10 fills the left half, as tall as the two images stacked on the right
+  # (V4 over V8) — 3:4 makes it exactly two 3:2 frames tall
+  - { src: "ULTRASONIC_SYSTEMS_VISUAL_10.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: lead, width: 50, ratio: "3/4", w: 4000, h: 6000 }
+  - { src: "ULTRASONIC_SYSTEMS_VISUAL_4.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: stack, w: 1920, h: 1080 }
+  - { src: "ULTRASONIC_SYSTEMS_VISUAL_8.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: stack, w: 1920, h: 1080 }
+  - { src: "ULTRASONIC_SYSTEMS_VISUAL_9.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: half, w: 1920, h: 1080 }
   - { src: "ULTRASONIC_SYSTEMS_VISUAL_5.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: half, w: 1920, h: 1080 }
-  - { src: "ULTRASONIC_SYSTEMS_VISUAL_7.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: half, w: 1920, h: 1080 }
-  - { src: "ULTRASONIC_SYSTEMS_VISUAL_8.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: half, w: 1920, h: 1080 }
-  - { src: "ULTRASONIC_SYSTEMS_VISUAL_9.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: solo, width: 50, w: 1920, h: 1080 }
-  # closes the work small and left, with the rest of the row held open for
-  # copy — add `note:` here when there's text to put beside it
-  - { src: "ULTRASONIC_SYSTEMS_VISUAL_10.webp", alt: "ULTRASONIC SYSTEMS installation view", layout: solo, width: 25, ratio: "2/3", w: 4000, h: 6000 }
 credits: []
 exhibitions: []
 ---

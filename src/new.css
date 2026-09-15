@@ -225,9 +225,11 @@ a.wb-link:hover {
 
 /* big left, two stacked right — one row's height for three images, for
    works that shouldn't take a full screen each */
+/* `width` on the lead image sets its share of the row (50 = half and half);
+   without it the lead takes two thirds */
 .wb-row--lead {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: var(--lead-cols, 2fr 1fr);
   grid-template-rows: 1fr 1fr;
   gap: var(--seam);
 }

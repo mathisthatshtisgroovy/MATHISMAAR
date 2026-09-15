@@ -10,7 +10,7 @@
      page) keeps half width and holds the rest of the row open, rather than
      blowing up full-bleed #}
   {% set isSolo = row[0].layout == "solo" or (row.length == 1 and row[0].layout == "half") %}
-  <div class="wb-row {% if isLead %}wb-row--lead{% elif isSolo %}wb-row--solo{% else %}wb-row--{{ row.length }}{% endif %}"{% if isSolo %} style="--w: {{ row[0].width or 50 }}%"{% endif %}>
+  <div class="wb-row {% if isLead %}wb-row--lead{% elif isSolo %}wb-row--solo{% else %}wb-row--{{ row.length }}{% endif %}"{% if isSolo %} style="--w: {{ row[0].width or 50 }}%"{% elif isLead and row[0].width %} style="--lead-cols: {{ row[0].width }}fr {{ 100 - row[0].width }}fr"{% endif %}>
     {% for img in row %}
     {% set folder = img.folder or "assets/img/" %}
     <figure class="wb-frame" style="--r: {{ img | frameRatio }}">
