@@ -1,0 +1,37 @@
+{# the image sequence. expects: seqImages — a work's images, possibly with the
+   one already shown beside the body text taken out #}
+{% if seqImages and seqImages.length %}
+<div class="wb-seq">
+  {% for row in seqImages | galleryRows %}
+  {% set firstRow = loop.first %}
+  {% set isLead = row[0].layout == "lead" %}
+  {% set isSolo = row[0].layout == "solo" %}
+  <div class="wb-row {% if isLead %}wb-row--lead{% elif isSolo %}wb-row--solo{% else %}wb-row--{{ row.length }}{% endif %}"{% if isSolo %} style="--w: {{ row[0].width or 50 }}%"{% endif %}>
+    {% for img in row %}
+    {% set folder = img.folder or "assets/img/" %}
+    <figure class="wb-frame" style="--r: {{ img | frameRatio }}">
+      <span class="wb-shot">
+        {% if img.src | isVideo %}
+        {# silent animation — nothing preloads until it's scrolled to, then
+           base.njk plays it while it's on screen and pauses it after #}
+        <video src="{{ img.src | assetPath(folder) }}" muted loop playsinline
+               preload="none" aria-label="{{ img.alt }}"
+               {% if img.w %}width="{{ img.w }}" height="{{ img.h }}"{% endif %}></video>
+        {% else %}
+        {# the opening frame is usually the LCP element — never lazy-load it #}
+        <img src="{{ img.src | assetPath(folder) }}" alt="{{ img.alt }}"
+             {% if img.w %}width="{{ img.w }}" height="{{ img.h }}"{% endif %}
+             {% if firstRow %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+        {% endif %}
+      </span>
+      {% if img.caption %}<figcaption>{{ img.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
+    {% if isSolo %}
+    {# holds the rest of the row open for copy — set `note` on the image #}
+    <div class="wb-aside">{% if row[0].note %}<p>{{ row[0].note }}</p>{% endif %}</div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

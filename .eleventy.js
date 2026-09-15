@@ -53,6 +53,17 @@ module.exports = function (eleventyConfig) {
     (String(s || "").match(/\S+/g) || []).length
   );
 
+  // the portrait shown beside a work's body text: `textImage` names a file
+  // from images[], otherwise it's the work's second image
+  eleventyConfig.addFilter("textImage", (data) => {
+    const imgs = (data && data.images) || [];
+    if (data && data.textImage) return imgs.find((i) => i.src === data.textImage) || { src: data.textImage };
+    return imgs[1] || imgs[0];
+  });
+  eleventyConfig.addFilter("withoutSrc", (images, src) =>
+    (images || []).filter((i) => i.src !== src)
+  );
+
   // mirrors the client-side assetUrl() bootstrap in base.njk, for building
   // absolute CDN urls server-side (og:image, srcset, etc.)
   eleventyConfig.addFilter("assetPath", function (filename, folder) {

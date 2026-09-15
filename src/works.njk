@@ -18,16 +18,41 @@ eleventyComputed:
 <article class="scroll-index">
 
   {% set linked = false %}
-  {% include "work-block.njk" %}
-
-  {# no body text → nothing at all. long text splits left/right across the
-     page's centre line; shorter text takes the left column only #}
   {% set body = work.templateContent | stripComments | trim %}
-  {% if body %}
-  <div class="wb-spread {% if (body | wordCount) > 220 %}wb-spread--two{% else %}wb-spread--one{% endif %}">
-    {{ body | markdown | safe }}
-  </div>
-  {% endif %}
+  {% set useLede = body and (body | wordCount) <= 220 %}
+  {% set lede = work.data | textImage %}
+  {% set seqImages = (work.data.images | withoutSrc(lede.src)) if useLede else work.data.images %}
+
+  <section class="wb" id="{{ work.data.slug }}"{% if work.data.accent %} style="--seam-color: {{ work.data.accent }}"{% endif %}>
+    {% include "work-band.njk" %}
+
+    {# body text comes before the images. short enough for half the page: a
+       portrait from the work on the left, the text on the right (that image
+       is then left out of the sequence below). longer: two columns. no body
+       text: nothing. #}
+    {% if useLede %}
+    <div class="wb-lede">
+      <figure class="wb-frame">
+        <span class="wb-shot" style="--r: 2 / 3">
+          <img src="{{ lede.src | assetPath(lede.folder or 'assets/img/') }}" alt="{{ lede.alt }}"
+               {% if lede.w %}width="{{ lede.w }}" height="{{ lede.h }}"{% endif %}
+               fetchpriority="high" decoding="async">
+        </span>
+      </figure>
+      <div class="wb-lede-text">
+        {% if work.data.textCredit %}<p class="wb-label">Text: {{ work.data.textCredit }}</p>{% endif %}
+        {{ body | markdown | safe }}
+      </div>
+    </div>
+    {% elif body %}
+    <div class="wb-spread">
+      {% if work.data.textCredit %}<p class="wb-label">Text: {{ work.data.textCredit }}</p>{% endif %}
+      {{ body | markdown | safe }}
+    </div>
+    {% endif %}
+
+    {% include "work-seq.njk" %}
+  </section>
 
   {% if work.data.exhibitions and work.data.exhibitions.length %}
   <div class="wb-text wb-tail">

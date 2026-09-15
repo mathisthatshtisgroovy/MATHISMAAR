@@ -32,5 +32,6 @@ images:
   - { src: "TAKEN_FOR_A_BAT_SPACE_VISUAL_4.webp", alt: "TAKEN FOR A BAT SPACE installation view", layout: half, w: 3376, h: 6000 }
 credits:
   - { role: "With", name: "Dora Heller Russel, Tymon Zaniewski, Celeste Zion" }
-exhibitions: []
+exhibitions:
+  - { year: 2025, title: Dutch Design Week, venue: Rewild Farming }
 ---

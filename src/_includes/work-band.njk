@@ -1,0 +1,27 @@
+{# three-column info band: facts left, title + text centre, credits right.
+   expects: work, linked (bool — title links to the work page) #}
+<div class="wb-text wb-band">
+  <div class="wb-col wb-col--meta">
+    <span class="wb-year">{{ work.data.year }}</span>
+    <span class="wb-medium">{{ work.data.medium }}</span>
+    {% if work.data.details %}<span class="wb-details">{{ work.data.details }}</span>{% endif %}
+  </div>
+
+  <div class="wb-col wb-col--main">
+    {% if linked %}<a class="wb-title" href="/works/{{ work.data.slug }}/">{{ work.data.title }}</a>
+    {% else %}<h1 class="wb-title">{{ work.data.title }}</h1>{% endif %}
+    <p class="wb-abstract">{{ work.data.abstract }}</p>
+  </div>
+
+  <div class="wb-col wb-col--side">
+    {% for c in work.data.credits %}
+    <span class="wb-credit">{{ c.role }}: {{ c.name }}</span>
+    {% endfor %}
+    {% for e in work.data.exhibitions %}
+    <span class="wb-credit wb-shown">{{ e.year }} {{ e.title }}{% if e.venue %}, {{ e.venue }}{% endif %}{% if e.city %}, {{ e.city }}{% endif %}</span>
+    {% endfor %}
+    {% for l in work.data.links %}
+    <a class="wb-credit wb-link" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }} ↗</a>
+    {% endfor %}
+  </div>
+</div>

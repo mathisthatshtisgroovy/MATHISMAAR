@@ -30,8 +30,9 @@ images:
   - { src: SYRINX_VISUAL_6.webp, alt: "SYRINXES installation view", layout: half, w: 4096, h: 2160 }
   - { src: SYRINX_PERFORMANCE_1.webp, alt: "SYRINXES activation", layout: half, w: 4096, h: 2160 }
   - { src: SYRINX_PERFORMANCE_2.webp, alt: "SYRINXES activation", layout: full, w: 4096, h: 2160 }
+# the long body text below is Nadine Botha's; the abstract above is Mathis's own
+textCredit: Nadine Botha
 credits:
-  - { role: Text, name: Nadine Botha }
   - { role: Photography (Visuals), name: Petr Kroschinsky }
   - { role: Photography (Activation), name: Celine Caly }
 exhibitions:

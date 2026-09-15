@@ -225,6 +225,26 @@ body[data-page="archive"] .overlay-meta {
   text-transform: uppercase;
 }
 
+/* the categories sit at the top of the page and scroll away with it instead
+   of staying pinned over the images. archive.css pins the bar and archive.js
+   pads the grid to clear a pinned bar — both are overridden here so those
+   files stay as they were. the page padding puts the bar where the pinned
+   one used to sit. */
+body[data-page="archive"] .archive-page {
+  padding-top: 100px;
+}
+body[data-page="archive"] .archive-filters {
+  position: static;
+}
+body[data-page="archive"] .archive-grid {
+  padding-top: 1.5rem !important;
+}
+@media (max-width: 768px) {
+  body[data-page="archive"] .archive-page {
+    padding-top: 64px;
+  }
+}
+
 /* INFO ----------------------------------------------------------- */
 
 /* fills the viewport rather than sitting as a short band with dead space
@@ -242,31 +262,59 @@ body[data-page="archive"] .overlay-meta {
 
 /* PROJECT PAGE EXTRAS -------------------------------------------- */
 
-/* the spread: body text at reading size. symmetric padding puts the gutter
-   of the two-column version exactly on the page's centre line, and the
-   one-column version takes the same width as that left column. */
+/* long body text: two columns, the gutter sitting exactly on the page's
+   centre line thanks to the symmetric padding */
 .wb-spread {
   --gutter: clamp(32px, 5vw, 96px);
   padding: 9vh var(--text-inset) 10vh;
   font-family: var(--font-serif);
   font-size: clamp(1.15rem, 1.3vw, 1.4rem);
   line-height: 1.5;
-}
-.wb-spread--two {
   column-count: 2;
   column-gap: var(--gutter);
   column-rule: 1px solid var(--fg-faint);
 }
-.wb-spread--one > * {
-  width: calc(50% - var(--gutter) / 2);
+.wb-spread .wb-label {
+  column-span: all;
+  margin: 0 0 1.4em;
 }
+
+/* shorter body text: a portrait from the work on the left half, the text on
+   the right. the seam between them takes the work's accent colour. */
+.wb-lede {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--seam);
+  background: var(--seam-color, transparent);
+}
+.wb-lede > .wb-frame {
+  min-width: 0;
+}
+.wb-lede-text {
+  background: var(--bg);
+  padding: 9vh var(--text-inset);
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.3vw, 1.4rem);
+  line-height: 1.5;
+}
+.wb-lede-text p {
+  margin: 0 0 1.1em;
+  max-width: 62ch;
+}
+.wb-lede-text p:last-child {
+  margin-bottom: 0;
+}
+.wb-lede-text .wb-label {
+  margin-bottom: 1.4em;
+}
+
 @media (max-width: 900px) {
-  .wb-spread--two {
+  .wb-spread {
     column-count: 1;
     column-rule: none;
   }
-  .wb-spread--one > * {
-    width: auto;
+  .wb-lede {
+    grid-template-columns: 1fr;
   }
 }
 .wb-spread p {
@@ -356,5 +404,94 @@ body[data-page="worksingle"].past-hero .menu-items a::after {
      keeping the same seam so the rhythm doesn't change */
   .wb-row {
     flex-direction: column;
+  }
+}
+
+/* MOBILE NAV ----------------------------------------------------- */
+
+@media (max-width: 768px) {
+  /* two lines at seam weight instead of the boxed three-bar icon; they cross
+     into an x when open. drawn in currentColor so they follow the nav's
+     white-over-photo and theme colour switching on their own. */
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
+    border: 0 !important;
+    background: none;
+    opacity: 1;
+    z-index: 2300;
+  }
+  .mobile-menu-toggle::before,
+  .mobile-menu-toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 22px;
+    height: var(--seam);
+    background: currentColor !important;
+    box-shadow: none !important;
+    transition: transform .25s ease;
+  }
+  .mobile-menu-toggle::before {
+    transform: translate(-50%, -4px);
+  }
+  .mobile-menu-toggle::after {
+    transform: translate(-50%, 3px);
+  }
+  body.menu-open .mobile-menu-toggle::before {
+    transform: translate(-50%, -1px) rotate(45deg);
+  }
+  body.menu-open .mobile-menu-toggle::after {
+    transform: translate(-50%, -1px) rotate(-45deg);
+  }
+
+  /* the home circle and the x stay above the open panel, in the panel's
+     colours — over the home photo they're forced white, which would vanish on
+     a light-mode panel */
+  .home-button {
+    position: relative;
+    z-index: 2300;
+  }
+  body.menu-open .mobile-menu-toggle {
+    color: var(--fg) !important;
+  }
+  body.menu-open .home-button {
+    border-color: var(--fg) !important;
+  }
+
+  /* full-screen panel on the page ground instead of the small blurred box,
+     links set like the work titles, hairlines between them */
+  .mobile-menu {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 96px var(--text-inset) 0 !important;
+    background: var(--bg) !important;
+    backdrop-filter: none !important;
+    border: 0 !important;
+    transform: none !important;
+    transition: opacity .25s ease;
+  }
+  .mobile-menu a {
+    color: var(--fg) !important;
+    font-family: var(--font-serif);
+    font-size: 1.5rem !important;
+    line-height: 1.1 !important;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 18px 0 !important;
+    opacity: .9;
+    border-top: 1px solid var(--fg-faint) !important;
+  }
+  .mobile-menu a:last-child {
+    border-bottom: 1px solid var(--fg-faint);
+  }
+  body.menu-open {
+    overflow: hidden;
   }
 }
