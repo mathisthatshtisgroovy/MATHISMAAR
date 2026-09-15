@@ -1,6 +1,8 @@
 console.log("🔊 Ambient Engine Loaded");
 
-const SOUND_FILE = "data/sound_archive.json";
+// root-relative: pages now live in subfolders (/works/x/, /info/), where a
+// relative path would resolve to the wrong place
+const SOUND_FILE = "/data/sound_archive.json";
 const FADE = 5.0;
 const TARGET_VOL = 0.5;
 const DARK_MODE_KEY = "mm-dark-mode";

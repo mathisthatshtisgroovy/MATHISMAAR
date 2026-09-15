@@ -28,5 +28,3 @@ images:
 credits: []
 exhibitions: []
 ---
-
-<!-- TODO(Mathis): long text (500-1200 words) goes here. -->

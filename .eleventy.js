@@ -11,6 +11,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("sound.js");
   eleventyConfig.addPassthroughCopy("transition.js");
   eleventyConfig.addPassthroughCopy("archive.js");
+  eleventyConfig.addPassthroughCopy("data/sound_archive.json");
   // archive.js fetches "data/archive.json" relative to the page, and the page
   // lives at /archive/ — so the data has to sit beside it. leaves archive.js
   // untouched.
@@ -42,6 +43,15 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("markdown", function (str) {
     return require("markdown-it")({ html: false }).render(str || "");
   });
+
+  // markdown-it runs with html off, so a leftover <!-- note --> in a work's
+  // body would print as visible text — drop comments before anything renders
+  eleventyConfig.addFilter("stripComments", (s) =>
+    String(s || "").replace(/<!--[\s\S]*?-->/g, "")
+  );
+  eleventyConfig.addFilter("wordCount", (s) =>
+    (String(s || "").match(/\S+/g) || []).length
+  );
 
   // mirrors the client-side assetUrl() bootstrap in base.njk, for building
   // absolute CDN urls server-side (og:image, srcset, etc.)

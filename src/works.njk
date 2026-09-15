@@ -20,11 +20,12 @@ eleventyComputed:
   {% set linked = false %}
   {% include "work-block.njk" %}
 
-  {# the long text gets the full width as a spread — columns rather than one
-     endless line, so it reads like a page rather than a caption #}
-  {% if work.templateContent %}
-  <div class="wb-spread">
-    {{ work.templateContent | markdown | safe }}
+  {# no body text → nothing at all. long text splits left/right across the
+     page's centre line; shorter text takes the left column only #}
+  {% set body = work.templateContent | stripComments | trim %}
+  {% if body %}
+  <div class="wb-spread {% if (body | wordCount) > 220 %}wb-spread--two{% else %}wb-spread--one{% endif %}">
+    {{ body | markdown | safe }}
   </div>
   {% endif %}
 

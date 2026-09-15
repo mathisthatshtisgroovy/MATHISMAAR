@@ -22,17 +22,12 @@ images:
   - { src: "BORDERS_OF_NEUTRALITY_VISUAL_3.webp", alt: "BORDERS OF NEUTRALITY installation view", layout: half, w: 5120, h: 3608 }
   - { src: "BORDERS_OF_NEUTRALITY_VISUAL_4.webp", alt: "BORDERS OF NEUTRALITY installation view", layout: half, w: 4961, h: 3508 }
   - { src: "BORDERS_OF_NEUTRALITY_VISUAL_6.webp", alt: "BORDERS OF NEUTRALITY installation view", layout: full, w: 3884, h: 2188 }
-  # V7 removed — the slate detail now stands alone, small and left, with the
-  # rest of the row held open for copy. add `note:` when the text is ready.
-  - { src: "BORDERS_OF_NEUTRALITY_VISUAL_1.webp", alt: "BORDERS OF NEUTRALITY, slate detail", layout: solo, width: 25, ratio: "2/3", w: 3413, h: 5120 }
-  # process shot — 4:5, kept at its own proportion rather than cropped to the
-  # portrait standard, which would trim the sides
-  - { src: "BORDERS_OF_NEUTRALITY_PROCESSL_9.webp", alt: "BORDERS OF NEUTRALITY, process", layout: full, ratio: "4/5", w: 1000, h: 1250 }
-  # the whole bench gets the full width rather than being squeezed into a pair
+  # slate detail beside the process shot. both cropped to the 2:3 portrait
+  # standard so the pair lines up — the process shot's source is 4:5
+  - { src: "BORDERS_OF_NEUTRALITY_VISUAL_1.webp", alt: "BORDERS OF NEUTRALITY, slate detail", layout: half, ratio: "2/3", w: 3413, h: 5120 }
+  - { src: "BORDERS_OF_NEUTRALITY_PROCESSL_9.webp", alt: "BORDERS OF NEUTRALITY, process", layout: half, ratio: "2/3", w: 1000, h: 1250 }
   - { src: "BORDERS_OF_NEUTRALITY_VISUAL_5.webp", alt: "BORDERS OF NEUTRALITY, slate bench", layout: full, w: 4961, h: 3508 }
 credits:
   - { role: "With", name: "Aleksandra Nazarova" }
 exhibitions: []
 ---
-
-<!-- TODO(Mathis): long text (500-1200 words) goes here. -->

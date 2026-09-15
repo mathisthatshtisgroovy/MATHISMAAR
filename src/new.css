@@ -242,16 +242,32 @@ body[data-page="archive"] .overlay-meta {
 
 /* PROJECT PAGE EXTRAS -------------------------------------------- */
 
-/* the spread: long text across the full width in columns, so it reads as
-   a page rather than one endless line. columns are at least 34ch, up to 3. */
+/* the spread: body text at reading size. symmetric padding puts the gutter
+   of the two-column version exactly on the page's centre line, and the
+   one-column version takes the same width as that left column. */
 .wb-spread {
-  padding: 8vh var(--text-inset) 8vh;
+  --gutter: clamp(32px, 5vw, 96px);
+  padding: 9vh var(--text-inset) 10vh;
   font-family: var(--font-serif);
-  font-size: .95rem;
+  font-size: clamp(1.15rem, 1.3vw, 1.4rem);
   line-height: 1.5;
-  columns: 34ch 3;
-  column-gap: clamp(24px, 4vw, 80px);
+}
+.wb-spread--two {
+  column-count: 2;
+  column-gap: var(--gutter);
   column-rule: 1px solid var(--fg-faint);
+}
+.wb-spread--one > * {
+  width: calc(50% - var(--gutter) / 2);
+}
+@media (max-width: 900px) {
+  .wb-spread--two {
+    column-count: 1;
+    column-rule: none;
+  }
+  .wb-spread--one > * {
+    width: auto;
+  }
 }
 .wb-spread p {
   margin: 0 0 1.1em;

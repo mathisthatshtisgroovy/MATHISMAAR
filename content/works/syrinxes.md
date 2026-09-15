@@ -6,20 +6,13 @@ subtitle: ""
 year: 2026
 medium: Multimedia Installation
 details: ""
-# TODO(Mathis): this is Nadine Botha's full summary paragraph, not yet
-# trimmed to the brief's 45-70 word target — you still owe a proper
-# abstract per the brief (section 11). Using it as-is so the pipeline
-# has something real to render; trim when ready, or tell me to.
 abstract: >-
-  A chance encounter between a singing chaffinch, a factory worker's whistle
-  and the electromagnetic emissions surrounding ASML led Mathis Dabbarh
-  Marsepoil to explore how culture is transmitted across human, technological
-  and more-than-human worlds. Following migratory bird routes from southern
-  Morocco, where his roots lie, to his current home in the Netherlands, the
-  designer spent five months recording birdsong, radio transmissions,
-  electromagnetic fields and spoken language; meeting conservationists,
-  scientists, musicians and craftspeople; and searching archival collections
-  and digital memory systems.
+  Syrinxes is a hyperarchive and a system based listening device of bird songs
+  spanning from five months, between South Morocco and the Netherlands
+  recording birdsongs, radio transmissions, electromagnetic fields and spoken
+  language; meeting conservationists, scientists, musicians and craftspeople;
+  and searching archival collections and digital memory systems. The work sits
+  as a question on the state of cultural memory within a post-colonial context.
 featured: true
 order: 0
 tags: [installation, sound, sculpture]
@@ -44,4 +37,6 @@ credits:
 exhibitions:
   - { year: 2026, title: Dutch Design Week — MA Geo-Design Graduation Show, venue: Microstad, city: Eindhoven, NL }
 ---
+A chance encounter between a singing chaffinch, a factory worker's whistle and the electromagnetic emissions surrounding ASML led Mathis Dabbarh Marsepoil to explore how culture is transmitted across human, technological and more-than-human worlds. Following migratory bird routes from southern Morocco, where his roots lie, to his current home in the Netherlands, the designer spent five months recording birdsong, radio transmissions, electromagnetic fields and spoken language; meeting conservationists, scientists, musicians and craftspeople; and searching archival collections and digital memory systems.
+
 These materials form an immersive installation in which networked signals pass between sculptural bird bodies, sound and electronics, generating an open-ended performance through which visitors move. Bringing together biological, technological and cultural systems of transmission, the installation traces how migration, language and territory carry memory and belonging. It reflects on how colonial legacies in contemporary technology shape what is preserved, what is lost through standardisation or left beyond the archive's reach.

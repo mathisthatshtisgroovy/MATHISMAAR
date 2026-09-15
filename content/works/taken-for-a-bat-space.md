@@ -34,5 +34,3 @@ credits:
   - { role: "With", name: "Dora Heller Russel, Tymon Zaniewski, Celeste Zion" }
 exhibitions: []
 ---
-
-<!-- TODO(Mathis): long text (500-1200 words) goes here. -->

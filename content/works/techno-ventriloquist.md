@@ -29,5 +29,3 @@ credits:
   - { role: Research in collaboration with, name: "MNHN; British Library Sound Archive; Bird Life Morocco (GREPOM) GOHNS; Dr. Olga Feher; Real Instituto y Observatorio de la Armada" }
 exhibitions: []
 ---
-
-<!-- TODO(Mathis): long text (500-1200 words) goes here. -->

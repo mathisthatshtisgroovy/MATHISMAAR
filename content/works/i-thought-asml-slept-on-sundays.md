@@ -28,5 +28,3 @@ credits:
   - { role: "With", name: "Emma Zerial, Aleksandra Nazarova" }
 exhibitions: []
 ---
-
-<!-- TODO(Mathis): long text (500-1200 words) goes here. -->
