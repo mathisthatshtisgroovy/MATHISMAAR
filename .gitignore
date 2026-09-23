@@ -11,7 +11,7 @@ assets/work/
 assets/sound/
 assets/works/*
 !assets/works/SYRINX_VISUAL_7-1800.webp
-!assets/works/SYRINX_VISUAL_7-2560.webp
+!assets/works/SYRINX_VISUAL_8-2560.webp
 assets/home/*
 !assets/home/teaser-poster.webp
 __pycache__/

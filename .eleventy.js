@@ -104,7 +104,7 @@ module.exports = function (eleventyConfig) {
   // not on the CDN, so served from the repo until it's uploaded to assets/img/.
   // this is an 1800px-tall copy (179KB) — the original is 9.3MB.
   eleventyConfig.addPassthroughCopy("assets/works/SYRINX_VISUAL_7-1800.webp");
-  eleventyConfig.addPassthroughCopy("assets/works/SYRINX_VISUAL_7-2560.webp");
+  eleventyConfig.addPassthroughCopy("assets/works/SYRINX_VISUAL_8-2560.webp");
   // still frame shown on the Birds and Machines video until it's played
   eleventyConfig.addPassthroughCopy("assets/home/teaser-poster.webp");
 
