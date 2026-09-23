@@ -16,12 +16,14 @@ abstract: >-
 featured: true
 order: 0
 tags: [installation, sound, sculpture]
-hero: SYRINX_VISUAL_3.webp
+hero: /assets/works/SYRINX_VISUAL_7-2560.webp
 links: []
 # w/h are the real pixel dimensions — emitted as width/height attributes so
 # the browser reserves the right space before the image loads. pair images
 # with matching ratios in the same row or the two frames won't line up.
 images:
+  # the main visual: opens the work, here and on the index scroll
+  - { src: /assets/works/SYRINX_VISUAL_7-2560.webp, alt: "SYRINXES installation view", layout: full, w: 2560, h: 1350 }
   - { src: SYRINX_VISUAL_3.webp, alt: "SYRINXES installation view", layout: full, w: 6000, h: 4000 }
   - { src: SYRINX_VISUAL_1.webp, alt: "SYRINXES installation view", layout: full, w: 4290, h: 2860 }
   - { src: SYRINX_VISUAL_2.webp, alt: "SYRINXES installation view", layout: half, w: 5000, h: 3333 }
@@ -36,6 +38,7 @@ textImage: /assets/works/SYRINX_VISUAL_7-1800.webp
 # fills the left page almost exactly, too close for the estimate to call.
 spread: image
 credits:
+  - { role: Photography (Main visual), name: Ronald Smits }
   - { role: Photography (Visuals), name: Petr Kroschinsky }
   - { role: Photography (Activation), name: Celine Caly }
 exhibitions:

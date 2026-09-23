@@ -1,4 +1,4 @@
-id;title;year;type;file_main;dimensions;tags;description;scale;credits
+﻿id;title;year;type;file_main;dimensions;tags;description;scale;credits
 ASML_VISUAL_1;I though ASML slept on Sundays;2024;visual/installation;ASML_VISUAL_1.webp;;"sonic;installation;";ambiphonic sound  installation;1;with Emma Zerial & Aleksandra Nazarova
 ASML_VISUAL_2;I though ASML slept on Sundays;2024;visual/installation;ASML_VISUAL_2.webp;;"sonic;installation;";tweet detail;2;with Emma Zerial & Aleksandra Nazarova
 ASML_VISUAL_3;I though ASML slept on Sundays;2024;visual/installation/still/research;ASML_VISUAL_3.webp;;"sonic;installation;video";still from video;1;with Emma Zerial & Aleksandra Nazarova
@@ -10,7 +10,6 @@ BORDERS OF NEUTRALITY_VISUAL_3;Borders of Neutrality;2024;visual/installation/st
 BORDERS OF NEUTRALITY_VISUAL_4;Borders of Neutrality;2024;visual/performance/ installation;BORDERS_OF_NEUTRALITY_VISUAL_4.webp;;"installation;sonic;performance";sound performance;2;with Aleksandra Nazarova
 BORDERS OF NEUTRALITY_VISUAL_5;Borders of Neutrality;2024;visual/object/installation;BORDERS_OF_NEUTRALITY_VISUAL_5.webp;;"installation;sonic;performance";slate bench;2;with Aleksandra Nazarova
 BORDERS OF NEUTRALITY_VISUAL_6;Borders of Neutrality;2024;visual/still/installation;BORDERS_OF_NEUTRALITY_VISUAL_6.webp;;"installation;sonic;video";still from video;1;with Aleksandra Nazarova
-BORDERS OF NEUTRALITY_VISUAL_7;Borders of Neutrality;2024;visual/object/installation;BORDERS_OF_NEUTRALITY_VISUAL_7.webp;;"installation;sonic;object";slate bench detail;3;with Aleksandra Nazarova
 BORDERS OF NEUTRALITY_VISUAL_8;Borders of Neutrality;2024;visual/still/installation;BORDERS_OF_NEUTRALITY_VISUAL_8.webp;;"installation;sonic;video";still from video;2;with Aleksandra Nazarova
 BORDERS OF NEUTRALITY_PROCESSL_9;Borders of Neutrality;2024;process/material;BORDERS_OF_NEUTRALITY_PROCESSL_9.webp;;"material;research;process";material research;3;with Aleksandra Nazarova
 LABORAT_VISUAL_1;Laborat;2024;video/still;LABORAT_VISUAL_1.webp;;"video;process";still from video;2;shot with  Céleste Zion
@@ -80,5 +79,6 @@ SYRINX_VISUAL_3;SYRINXES;2026;visual/installation;SYRINX_VISUAL_3.webp;;"sound;s
 SYRINX_VISUAL_4;SYRINXES;2026;visual/installation;SYRINX_VISUAL_4.webp;;"sound;sculpture;installation";Installation view;2;Photo: Petr Kroschinsky
 SYRINX_VISUAL_5;SYRINXES;2026;visual/installation;SYRINX_VISUAL_5.webp;;"sound;sculpture;installation";Installation view;2;
 SYRINX_VISUAL_6;SYRINXES;2026;visual/installation;SYRINX_VISUAL_6.webp;;"sound;sculpture;installation";Installation view;2;
+SYRINX_VISUAL_7;SYRINXES;2026;visual/installation;SYRINX_VISUAL_7.webp;;"sound;sculpture;installation";Installation view;2;Photo: Ronald Smits
 SYRINX_PERFORMANCE_1;SYRINXES;2026;performance/installation;SYRINX_PERFORMANCE_1.webp;;"performance;sound;installation";Activation;2;Photo: Céline Caly
 SYRINX_PERFORMANCE_2;SYRINXES;2026;performance/installation;SYRINX_PERFORMANCE_2.webp;;"performance;sound;installation";Activation;2;Photo: Céline Caly

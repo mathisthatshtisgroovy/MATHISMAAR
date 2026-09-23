@@ -1457,6 +1457,25 @@
     "scale": 2
   },
   {
+    "id": "SYRINX_VISUAL_7",
+    "title": "SYRINXES",
+    "year": 2026,
+    "types": [
+      "visual",
+      "installation"
+    ],
+    "file_main": "/assets/img/SYRINX_VISUAL_7.webp",
+    "tags": [
+      "sound;sculpture;installation",
+      "sound",
+      "sculpture",
+      "installation"
+    ],
+    "description": "Installation view",
+    "credits": "Photo: Ronald Smits",
+    "scale": 2
+  },
+  {
     "id": "SYRINX_PERFORMANCE_1",
     "title": "SYRINXES",
     "year": 2026,
