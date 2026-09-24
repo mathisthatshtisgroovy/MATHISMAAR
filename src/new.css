@@ -528,6 +528,22 @@ body[data-page="worksingle"].past-hero .menu-items a::after {
   .wb-row {
     flex-direction: column;
   }
+  /* the lead row is a grid, so it needs its own stacking: one column, and the
+     pair beside the lead goes back to its natural ratio */
+  .wb-row--lead {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .wb-row--lead > .wb-frame:first-child {
+    grid-row: auto;
+  }
+  .wb-row--lead > .wb-frame:not(:first-child) {
+    display: block;
+  }
+  .wb-row--lead > .wb-frame:not(:first-child) .wb-shot {
+    aspect-ratio: var(--r);
+    height: auto;
+  }
 }
 
 /* MOBILE NAV ----------------------------------------------------- */

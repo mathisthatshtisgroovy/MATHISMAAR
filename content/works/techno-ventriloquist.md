@@ -4,8 +4,8 @@ number: "02"
 title: TECHNO-VENTRILOQUIST
 subtitle: ""
 year: 2026
-medium: Essay in a collective publication
-details: A Body Holds a Body Holds a Body, MA Geo-Design 2026, Design Academy Eindhoven
+medium: Publication
+details: Essay published in collective publication 'A Body Holds a Body Holds a Body', MA Geo-Design
 # TODO(Mathis): this is the one line from your info.txt, not a 45-70 word
 # abstract. needs writing.
 abstract: >-
@@ -18,7 +18,7 @@ hero: TECHNO_VENTRILOQUIST_VISUAL_1.jpg
 # still reads when cropped to the portrait half
 textImage: TECHNO_VENTRILOQUIST_VISUAL_4.png
 links:
-  - { label: "A Body Holds a Body — full credits", url: "https://abodyholdsabody.github.io/a-body-holds-a-body-holds-a-body/credits.html" }
+  - { label: "A body holds a body", url: "https://abodyholdsabody.github.io/a-body-holds-a-body-holds-a-body/credits.html" }
 # all four are 3:2. still the original jpg/png you uploaded — worth converting
 # to webp at some point (the jpg alone is 9.6MB), but they work as they are.
 images:
@@ -27,10 +27,8 @@ images:
   - { src: TECHNO_VENTRILOQUIST_VISUAL_3.png, alt: "Techno-Ventriloquist publication", layout: half, w: 2999, h: 2000 }
   - { src: TECHNO_VENTRILOQUIST_VISUAL_4.png, alt: "Techno-Ventriloquist publication", layout: full, w: 2462, h: 1641 }
 credits:
-  # the publication is the class's; the essay inside it is Mathis's
-  - { role: Published in, name: "A Body Holds a Body Holds a Body — a collective publication by the MA Geo-Design 2026 class, Design Academy Eindhoven" }
-  - { role: Images of the publication, name: Sabina Scorţanu }
-  - { role: Research in collaboration with, name: "MNHN; British Library Sound Archive; Bird Life Morocco (GREPOM) GOHNS; Dr. Olga Feher; Real Instituto y Observatorio de la Armada" }
+  - { role: Images, name: Sabina Scorţanu }
+  - { role: Research in collaboration with, name: "MNHN; British Library Sound Archive; Bird Life Morocco (GREPOM); GOHNS; Dr. Olga Feher; Real Instituto y Observatorio de la Armada" }
 exhibitions: []
 ---
 ### Extracts from an essay by Mathis Dabbarh Marsepoil
