@@ -28,7 +28,6 @@ images:
   - { src: SYRINX_VISUAL_1.webp, alt: "SYRINXES installation view", layout: full, w: 4290, h: 2860 }
   - { src: SYRINX_VISUAL_2.webp, alt: "SYRINXES installation view", layout: half, w: 5000, h: 3333 }
   - { src: SYRINX_VISUAL_4.webp, alt: "SYRINXES installation view", layout: half, w: 5479, h: 3652 }
-  - { src: SYRINX_VISUAL_5.webp, alt: "SYRINXES installation view", layout: full, w: 2124, h: 1179 }
   - { src: SYRINX_VISUAL_6.webp, alt: "SYRINXES installation view", layout: half, w: 4096, h: 2160 }
   - { src: SYRINX_PERFORMANCE_1.webp, alt: "SYRINXES activation", layout: half, w: 4096, h: 2160 }
   - { src: SYRINX_PERFORMANCE_2.webp, alt: "SYRINXES activation", layout: full, w: 4096, h: 2160 }
