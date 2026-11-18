@@ -17,6 +17,8 @@ featured: true
 order: 0
 tags: [installation, sound, sculpture]
 hero: /assets/works/SYRINX_VISUAL_8-2560.webp
+# the sound archive track this page opens with — skip moves on as usual
+sound: BIRDS_AND_MACHINES_ECHOBOX
 links: []
 # w/h are the real pixel dimensions — emitted as width/height attributes so
 # the browser reserves the right space before the image loads. pair images

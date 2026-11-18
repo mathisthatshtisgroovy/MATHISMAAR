@@ -89,5 +89,18 @@
     "duration": 46,
     "random": 3,
     "notes": "performance"
+  },
+  {
+    "id": "BIRDS_AND_MACHINES_ECHOBOX",
+    "file_main": "Birds And Machines_Echobox mp3.mp3",
+    "title": "Birds and Machines — Echobox Radio",
+    "year": 2026,
+    "location": "Amsterdam",
+    "tags": [
+      "Radio set"
+    ],
+    "duration": null,
+    "random": 1,
+    "notes": "radio set"
   }
 ]

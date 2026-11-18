@@ -10,6 +10,7 @@ eleventyComputed:
   pageDescription: "{{ work.data.abstract }}"
   # the opening frame doubles as the share image — always a file we know exists
   ogImage: "{{ work.data.images[0].src | assetPath('assets/img/') }}"
+  pageSound: "{{ work.data.sound }}"
 ---
 {# © Mathis Dabbarh Marsepoil. All rights reserved. See LICENSE. #}
 {% extends "base.njk" %}

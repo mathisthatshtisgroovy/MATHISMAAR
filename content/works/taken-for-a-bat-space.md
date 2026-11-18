@@ -21,6 +21,8 @@ hero: "TAKEN_FOR_A_BAT_SPACE_LIVE_4.webp"
 textImage: "TAKEN_FOR_A_BAT_SPACE_VISUAL_4.webp"
 # the 2px seams run red on this work
 accent: "#ff2200"
+# the sound archive track this page opens with — skip moves on as usual
+sound: TAKEN_FOR_A_BAT_SPACE_1
 links: []
 # compact: the two lead rows put three images in one row's height each, so
 # this work reads in three rows instead of five

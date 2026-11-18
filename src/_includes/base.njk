@@ -27,7 +27,7 @@
 {% block head %}{% endblock %}
 </head>
 
-<body data-page="{{ pageKey }}"{% if pageKey == 'home' %} class="transparent-bg"{% endif %}>
+<body data-page="{{ pageKey }}"{% if pageSound %} data-sound="{{ pageSound }}"{% endif %}{% if pageKey == 'home' %} class="transparent-bg"{% endif %}>
 {# dark is the default now — only an explicit "0" (user toggled to light) opts out #}
 <script>if(localStorage.getItem("mm-dark-mode")!=="0")document.body.classList.add("dark-mode");</script>
 

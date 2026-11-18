@@ -17,6 +17,8 @@ let currentSource = null;
 let nextTimeout = null;
 let buffers = new Map();
 let playExtract = false;  // full by default, randomized per start/skip
+let currentAudio = null;  // the streamed page track, if that's what's playing
+let pageTrackUsed = false;
 
 async function initEngine(){
   if(engineReady) return;
@@ -66,7 +68,70 @@ async function loadBuffer(sound){
   return buffer;
 }
 
+/* a page can open with a named track: `sound:` in a work's frontmatter becomes
+   data-sound on <body>. only the first track is fixed — skipping goes back to
+   the random weighting like anywhere else. */
+function pageTrack(){
+  if(pageTrackUsed) return null;
+  const id = document.body.dataset.sound;
+  if(!id) return null;
+  return sounds.find(s => s.id === id) || null;
+}
+
+/* the page track plays straight from the file instead of being decoded whole
+   into memory first — these are long sets, and decoding one costs a phone
+   hundreds of megabytes */
+async function playStreamTrack(sound){
+  let url = sound.file_main.replace(/\\/g,"/");
+  if(!url.includes("/")) url = "assets/sound/"+url;
+
+  stopCurrent();
+
+  const el = new Audio(assetUrl(url));
+  el.crossOrigin = "anonymous";
+  el.preload = "auto";
+  audioCtx.createMediaElementSource(el).connect(masterGain);
+  currentAudio = el;
+
+  try{
+    await el.play();
+  }catch(e){
+    console.error("audio play blocked or failed:", e);
+    currentAudio = null;
+    return playRandomTrack();   // fall back to the archive
+  }
+
+  const now = audioCtx.currentTime;
+  masterGain.gain.cancelScheduledValues(now);
+  masterGain.gain.setValueAtTime(0,now);
+  masterGain.gain.linearRampToValueAtTime(TARGET_VOL,now+FADE);
+
+  console.log("▶",sound.title,"(streamed)");
+  const label = document.getElementById("now-playing");
+  if(label) label.textContent = `Now Playing: ${sound.title} `;
+}
+
+/* stops whichever of the two is playing — a decoded buffer or a streamed
+   element. `delay` lets a fade finish first. */
+function stopCurrent(delay = 0){
+  if(currentSource){
+    try{ currentSource.stop(delay ? audioCtx.currentTime + delay : 0); }catch{}
+    currentSource = null;
+  }
+  if(currentAudio){
+    const el = currentAudio;
+    currentAudio = null;
+    setTimeout(()=>{ try{ el.pause(); el.removeAttribute("src"); el.load(); }catch{} }, delay * 1000);
+  }
+}
+
 async function playRandomTrack(){
+  const fixed = pageTrack();
+  if(fixed){
+    pageTrackUsed = true;
+    return playStreamTrack(fixed);
+  }
+
 const weighted = [];
 sounds.forEach(s => {
   const w = s.random ? Number(s.random) : 1;
@@ -76,7 +141,7 @@ const sound = weighted[Math.floor(Math.random()*weighted.length)];
 
   const buffer = await loadBuffer(sound);
 
-  if(currentSource){ try{currentSource.stop();}catch{} }
+  stopCurrent();
 
   const src = audioCtx.createBufferSource();
   src.buffer = buffer;
@@ -144,10 +209,7 @@ if(notice){
   masterGain.gain.setValueAtTime(masterGain.gain.value, now);
   masterGain.gain.linearRampToValueAtTime(0, now + FADE);
 
-  if(currentSource){
-    try { currentSource.stop(now + FADE + 0.05); } catch{}
-    currentSource = null;
-  }
+  stopCurrent(FADE + 0.05);
 
   if(nextTimeout) clearTimeout(nextTimeout);
 
@@ -184,10 +246,7 @@ function stopEngine(){
   const label = document.getElementById("now-playing");
   if(label) label.textContent = "Now Playing: —";
 
-  if(currentSource){
-    try{currentSource.stop(now+FADE+0.1);}catch{}
-    currentSource = null;
-  }
+  stopCurrent(FADE + 0.1);
 }
 
 window.handleSoundState = function(){
