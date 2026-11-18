@@ -523,6 +523,13 @@ body[data-page="worksingle"].past-hero .menu-items a::after {
   .wb-text {
     padding: 7vh var(--text-inset) 5vh;
   }
+  /* the box's side lines used to sit on the outermost pixel column, where a
+     phone's curved glass or its back-swipe strip swallows them — usually the
+     left one. inset the box so all four sides stay on screen; the images
+     around it stay full-bleed. */
+  .wb-band {
+    margin: 0 clamp(4px, 1.5vw, 8px);
+  }
   /* side-by-side frames get too small to read below this — stack them,
      keeping the same seam so the rhythm doesn't change */
   .wb-row {
